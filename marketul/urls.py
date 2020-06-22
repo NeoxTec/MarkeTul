@@ -19,4 +19,7 @@ from web import views as web_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',web_views.home, name="home"),
+    path('categorias/',web_views.categorias, name="categorias"),
+    path('compras/',web_views.compras, name="compras"),
+    
 ]
