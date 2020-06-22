@@ -1,99 +1,163 @@
 {% extends 'sitio_web/master_web.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Inicio{% endblock %}
 
 {% block background %}{% load static %}{% static 'core/img/tulancingo.jpg' %}{% endblock %}
 
-{% block headers %}
-{% load static %}
-<img src="{% static 'core/img/marketul.png' %}" alt="" responsive >
-<span class="subheading"></span>
-{% endblock %}
-
 {% block content %}
 {% load static %}
-<div class="container" id="about">
- <div class="container-image" >
-        <img id="logo" src="{% static 'core/img/logo1.png' %}" alt="" responsive>
+<div class="site-section" id="about-section">
+  <br>
+  <br>
+  <div class="container">
+    <div class="row align-items-lg-center">
+      <div class="col-md-6 mb-5 mb-lg-0 position-relative">
+        <img src="{% static 'core/img/tul2.jpg' %}" class="img-fluid" alt="Image">
+      </div>
+      <div class="col-md-4 ml-auto">
+        <h2 class="section-title mb-3">Acerca De</h2>
+        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui fuga ipsa, repellat blanditiis nihil, consectetur. Consequuntur eum inventore, rem maxime, nisi excepturi ipsam libero ratione adipisci alias eius vero vel!</p>
+      </div>
+    </div>
   </div>
-        <p><h5>It's a web system that analyzes thoracic x-ray images and made a diagnosis of Covid-19 and other 4 diseases, we still training it because we want to make our algorithm more efficient, we have like a 45% or more percent of exactitud.</h5></p>
-        
 </div>
+<br>
 <hr>
-<div class="container" id="try">
-    <div class="row">
-        <div class="col-lg-6 col-md-8 " class="container-button">
-            <button class="btn btn-outline-info btn-lg btn-sm btn-block" onclick="window.open('screen')" aria-pressed="true" style="width: 420px; height: 300px; margin-bottom: 25px;"><h1>See How It Works!</h1><br><p>We are using AI to detect <b>COVID-19</b> or<br> another 4 <b>lung deseases</b> <br>even <b>healthy</b> patient </p><br><p style="margin-left: 200px;">Let's see it >>>>></p></button>
+<div class="site-section testimonial-wrap" id="Afiliados-section">
+  <br>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="section-title mb-3">Negocios Afiliados</h2>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="slide-one-item home-slider owl-carousel">
+      <div>
+        <div class="testimonial">
+          <figure class="mb-4 d-block align-items-center justify-content-center">
+            <div><img src="{% static 'core/img/barajas.png' %}" alt="Image" class="w-100 img-fluid mb-3"></div>
+          </figure>
         </div>
-        <div class="col-lg-4 col-md-8" class="container-button">
-            <button class="btn btn-outline-secondary btn-lg btn-sm btn-block" onclick="window.open('chatdimai')" aria-pressed="true" style="width: 420px; height: 300px;"><h1>DIMAI CHAT</h1><br><p>Chat with our chatbot if you have more<br> questions about <b>DIMAI</b><br></p><br><p style="margin-left: 200px;">GO >>>>></p>
-            </button>
+      </div>
+      <div>
+        <div class="testimonial">
+          <figure class="mb-4 d-block align-items-center justify-content-center">
+            <div><img src="{% static 'core/img/plaza.png' %}" alt="Image" class="w-100 img-fluid mb-3"></div>
+          </figure>
         </div>
+      </div>
+
+      <div>
+        <div class="testimonial">
+          <figure class="mb-4 d-block align-items-center justify-content-center">
+            <div><img src="{% static 'core/img/boutique.jpg' %}" alt="Image" class="w-100 img-fluid mb-3"></div>
+          </figure>
+        </div>
+      </div>
     </div>
 </div>
+<br>
 <hr>
-<div class="container" id="team">
-    <h1>TEAM</h1>
-    <br>
-    <div class="row">
-        <div class="col-sm-6">
-          <div class="card" style="margin-bottom: 25px;">
-            <div class="card-body">
-              <h5 class="card-title">Brenda Rodarte</h5>
-              <p class="card-text"><b>Email:</b> brenda.rodarte2000@gmail.com</p>
-              <p class="card-text"><b>Country:</b> México</p>
-              <p class="card-text"><b>Profession:</b> Design student, Universidad Politecnica Metrolpolitana del Estado de Hidalgo</p>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Martín Gonzalez Cuevas</h5>
-                <p class="card-text"><b>Email:</b> martingc2099@hotmail.com</p>
-                <p class="card-text"><b>Country:</b> Mexico</p>
-                <p class="card-text"><b>Profession:</b> Software engineering, Universidad Politecnica de Pachuca</p>
-            </div>
-          </div>
-        </div>
+<div class="site-section" id="perfiles-section">
+  <br>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="section-title mb-3">Perfiles</h2>
       </div>
-      <br>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card" style="margin-bottom: 25px;">
-            <div class="card-body">
-                <h5 class="card-title">Roberto Escorcia</h5>
-                <p class="card-text"><b>Email:</b> roberto.williams1@outlook.com</p>
-                <p class="card-text"><b>Country:</b> Mexico</p>
-                <p class="card-text"><b>Profession:</b> Software engineering, Universidad Politecnica de Pachuca</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Jhonatan David Giraldo Rodríguez</h5>
-                <p class="card-text"><b>Email:</b> giraldor.jhonatand@outlook.com</p>
-                <p class="card-text"><b>Country:</b> Colombia</p>
-                <p class="card-text"><b>Profession:</b> Medical student, Fundación Universitaria Juan N. Corpas - Clínica Juan N. Corpas</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Diego Bolaños Pardo</h5>
-                <p class="card-text"><b>Email:</b> diegobolpar@hotamil.com</p>
-                <p class="card-text"><b>Country:</b> Mexico</p>
-                <p class="card-text"><b>Profession:</b> IT engineering student, Universidad Tecnológica de Tulancingo</p>
-            </div>
-          </div>
-        </div>
-      </div>
-</div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+        <div class="h-entry">
+          <img src="{% static 'core/img/admin.png' %}" alt="Image" class="img-fluid">
+          <h2 class="font-size-regular"><a href="#" class="text-black">Administrador de Tienda</a></h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
+          <p><a href="#">Leer más...</a></p>
+        </div> 
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+        <div class="h-entry">
+          <img src="{% static 'core/img/salesman.png' %}" alt="Image" class="img-fluid">
+          <h2 class="font-size-regular"><a href="#" class="text-black">Vendedor</a></h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
+          <p><a href="#">Leer más...</a></p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+        <div class="h-entry">
+          <img src="{% static 'core/img/consumidor.png' %}" alt="Image" class="img-fluid">
+          <h2 class="font-size-regular"><a href="#" class="text-black">Consumidor.</a></h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
+          <p><a href="#">Leer más...</a></p>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="site-section bg-light" id="contacto-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="section-title mb-3">Contactános</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-7 mb-5">
+
+        
+
+        <form action="#" class="p-5 bg-white">
+          
+          <h2 class="h4 text-black mb-5">Datos</h2> 
+
+          <div class="row form-group">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <label class="text-black" for="fname">Nombre</label>
+              <input type="text" id="fname" class="form-control rounded-0">
+            </div>
+            <div class="col-md-6">
+              <label class="text-black" for="lname">Apellidos</label>
+              <input type="text" id="lname" class="form-control rounded-0">
+            </div>
+          </div>
+
+          <div class="row form-group">
+            
+            <div class="col-md-12">
+              <label class="text-black" for="email">Correo eletrónico</label> 
+              <input type="email" id="email" class="form-control rounded-0">
+            </div>
+          </div>
+
+          <div class="row form-group">
+            
+            <div class="col-md-12">
+              <label class="text-black" for="subject">Asunto</label> 
+              <input type="subject" id="subject" class="form-control rounded-0">
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="text-black" for="message">Mensaje</label> 
+              <textarea name="message" id="message" cols="30" rows="7" class="form-control rounded-0" placeholder="Escribe un comentario o haznos una pregunta..."></textarea>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <input type="submit" value="Enviar" class="btn btn-black rounded-0 py-3 px-4">
+            </div>
+          </div>
+        </form>
+      </div>
+    
+    </div>
+    
+  </div>
+</div>
 {% endblock %}
