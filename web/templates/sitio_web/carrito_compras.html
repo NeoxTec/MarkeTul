@@ -1,0 +1,50 @@
+{% extends 'sitio_web/master_tienda.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+</head>
+
+{% block content %}
+<body>
+ {% load static %}  
+<h1><center>Carrito de Compras</center></h1>
+   <div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+          <img src="{% static 'core/img/perfume.jpg' %}" width="200" height="200" class="card-img" alt="...">
+        <h5 style="margin-left: 15px" class="card-title">Perfume Giorgio Armani Acqua Di Gio for Women</h5>  
+        <p style="margin-left: 15px" class="card-text">Perfume Acqua Di Gio para mujer. 100 ml</p>
+        <p style="margin-left: 15px" class="card-text"><h7>$1,299.00</h7></p>
+        <a href="#" class="btn btn-dark btn-lg"><img src="{% static 'core/img/trash.png' %}" width="25" height="25"></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+          <img src="{% static 'core/img/nike.png' %}" width="200" height="200" class="card-img" alt="...">
+        <h5 class="card-title">Nike Air Force 1 Shadow</h5>
+        <p class="card-text">Tenis Nike Air Force 1 Shadow para mujer</p>
+        <p class="card-text"><h7>$2,299.00</h7></p>
+        <a href="#" class="btn btn-dark btn-lg"><img src="{% static 'core/img/trash.png' %}" width="25" height="25"></a>
+      </div>
+    </div>
+  </div>
+       <div class="card border-success mb-3" style="max-width: 135rem;" align="right">
+<div class="card-header bg-transparent border-primary"><h3>Cantidad de productos: 2 </h3></div>
+  <div class="card-header bg-transparent border-primary"><h3>Total:</h3></div>
+  <div class="card-body text-primary">
+    <h2 class="card-title">$2,600.00</h2>
+      <button type="button" class="btn btn-success btn-lg">Pagar</button>
+  </div>
+</div>
+       
+</div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
+   
+    </body>
+    {% endblock %}
+</html>

@@ -1,24 +1,56 @@
-
-
-{% block title %}Categorias{% endblock %}
-
+{% extends 'sitio_web/master_tienda.html' %}
+{% block title %}<h1><center>Categorias</center></h1>{% endblock %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+</head>
 
 {% block content %}
 {% load static %}
+<body>
+<h1><center>Compras</center></h1>
+<table  style="margin:20px">     
 <div class="container" id="categorias">
-    <table class="container-image">
-        <tr>
-            <td><img src="computo.jpeg" width="80" height="200" responsive ></td>
-            <td><img src="marketul.png" alt="" /></td>
-            <td></td>
-            <td></td>
+    <table style="margin-left:150px;" class="container-image">
+        <tr align="center">
+            <td>Computo</td>
+            <td>Muebles</td>
+            <td>Niños</td>
+            <td>Hombre</td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><img src="{% static 'core/img/computo.jpeg' %}" alt="Image" width="250" height="150" ></td>
+            <td><img src="{% static 'core/img/muebles.jpg' %}" alt="Image" width="250" height="150" ></td>
+            <td><img src="{% static 'core/img/niños.jpg' %}" alt="Image" width="250" height="150" ></td>
+            <td><img src="{% static 'core/img/hombre.jpg' %}"  width="250" height="150" ></td>
         </tr>
-    </table>
- </div>
+        <tr align="center">
+            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
+            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
+            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
+            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
+        </tr>
+        <tr align="center">
+            <td>Mujer</td>
+            <td>Electrodomesticos</td>
+            <td>Libros</td>
+            <td>Macotas</td>
+        </tr>
+        <tr>
+            <td><img src="{% static 'core/img/mujer.jpg' %}" alt="Image" width="250" height="150" ></td>
+            <td><img src="{% static 'core/img/electrodomesticos.png' %}" width="250" height="150" alt="Image" ></td>
+            <td><img src="{% static 'core/img/libros.png' %}" alt="Image"  width="250" height="150" ></td>
+            <td><img src="{% static 'core/img/mascotas.png' %}" alt="Image" width="250" height="150" ></td>
+        </tr>
+        <tr align="center">
+            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
+            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
+            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
+            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
+        </tr>
+    </div>
+</table>
+</body>
 {% endblock %}
+</html>
