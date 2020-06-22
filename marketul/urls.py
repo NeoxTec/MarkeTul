@@ -22,5 +22,6 @@ urlpatterns = [
     path('acceso/',web_views.acceso, name="acceso"),
     path('perfil_admin/',web_views.perfil_admin, name="perfil_admin"),
     path('perfil_vendedor/',web_views.perfil_vendedor, name="perfil_vendedor"),
-    path('perfil_admin',web_views.perfil_consumidor, name="perfil_consumidor"),
+    path('perfil_admin/',web_views.perfil_consumidor, name="perfil_consumidor"),
+    path('admin_dash/',web_views.admin_dash, name="admin_dash"),
 ]
