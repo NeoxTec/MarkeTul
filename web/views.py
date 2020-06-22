@@ -16,3 +16,6 @@ def perfil_vendedor(request):
 
 def perfil_consumidor(request):
     return render(request, "sitio_web/perfil_consumidor.html")
+
+def admin_dash(request):
+    return render(request, "sitio_web/admin_dash.html")
