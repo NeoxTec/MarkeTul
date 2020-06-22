@@ -24,4 +24,7 @@ urlpatterns = [
     path('perfil_vendedor/',web_views.perfil_vendedor, name="perfil_vendedor"),
     path('perfil_admin/',web_views.perfil_consumidor, name="perfil_consumidor"),
     path('admin_dash/',web_views.admin_dash, name="admin_dash"),
+    path('vendedor_dash/',web_views.vendedor_dash, name="vendedor_dash"),
+    path('tiendas/',web_views.tiendas, name="tiendas"),
+    path('vendedores/',web_views.tiendas, name="vendedores"),
 ]
