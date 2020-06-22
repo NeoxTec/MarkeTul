@@ -4,8 +4,32 @@
 
 {% block background %}{% load static %}{% static 'core/img/tulancingo.jpg' %}{% endblock %}
 
-{% block h1 %} Perfiles {% endblock %}
+{% block h1 %} Acceso {% endblock %}
 
 {% block content %}
 {% load static %}
+<form>
+    <label>
+      <p class="label-txt">ENTER YOUR EMAIL</p>
+      <input type="text" class="input">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">ENTER YOUR NAME</p>
+      <input type="text" class="input">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">ENTER YOUR PASSWORD</p>
+      <input type="text" class="input">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <button type="submit">submit</button>
+  </form>
 {% endblock %}
