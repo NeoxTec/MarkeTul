@@ -41,7 +41,7 @@
           <div class="row align-items-center">
             
             <div class="col-6 col-xl-2">
-            <img id="logo" src="{% static 'core/img/marketul.png' %}" alt="" responsive style="width: 4em;">
+            <a href="{% url 'home' %}"><img id="logo" src="{% static 'core/img/marketul.png' %}" alt="" responsive style="width: 4em;"></a>
             </div>
             <div class="col-12 col-md-10 d-none d-xl-block">
               <nav class="site-navigation position-relative text-right" role="navigation">
@@ -69,7 +69,7 @@
                           
               <div class="row mb-4">
                 <div class="col-md-7">
-                  <h1><center>MarkeTul</center></h1>
+                  <h1><center>{% block h1%}{% endblock %}</center></h1>
                 </div>
               </div>
             </div>
