@@ -1,4 +1,4 @@
-form {
+.form-registro {
   width: 60%;
   margin: 60px auto;
   background: #efefef;
@@ -22,6 +22,7 @@ label {
   color: rgb(120,120,120);
   transition: ease .3s;
 }
+
 .input {
   width: 100%;
   padding: 10px;
@@ -56,7 +57,7 @@ label {
   top: -3em;
 }
 
-button {
+#enviar-button {
   display: inline-block;
   padding: 12px 24px;
   background: rgb(220,220,220);
@@ -69,7 +70,7 @@ button {
   transition: ease .3s;
 }
 
-button:hover {
+#enviar-button:hover {
   background: #8BC34A;
   color: #ffffff;
 }

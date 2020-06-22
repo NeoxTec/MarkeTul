@@ -8,28 +8,67 @@
 
 {% block content %}
 {% load static %}
-<form>
+<div class="row">
+<form class="form-registro">
+    <h1>Registrate</h1> 
     <label>
-      <p class="label-txt">ENTER YOUR EMAIL</p>
+      <p class="label-txt">NOMBRE DE USUARIO*</p>
       <input type="text" class="input">
       <div class="line-box">
         <div class="line"></div>
       </div>
     </label>
     <label>
-      <p class="label-txt">ENTER YOUR NAME</p>
+      <p class="label-txt">CORREO ELECTRÓNICO*</p>
       <input type="text" class="input">
       <div class="line-box">
         <div class="line"></div>
       </div>
     </label>
     <label>
-      <p class="label-txt">ENTER YOUR PASSWORD</p>
-      <input type="text" class="input">
+      <p class="label-txt">CONTRASEÑA*</p>
+      <input type="password" class="input">
       <div class="line-box">
         <div class="line"></div>
       </div>
     </label>
-    <button type="submit">submit</button>
+    <label>
+        <p class="label-txt">CONFIRMAR CONTRASEÑA*</p>
+        <input type="password" class="input">
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Tipo Usuario
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="">Administrador de Tienda</a>
+        <a class="dropdown-item" href="">Vendedor</a>
+        <a class="dropdown-item" href="">Consumidor</a>
+      </div>
+      <br>
+      <br>
+    <button type="submit" id="enviar-button">REGISTRAR</button>
   </form>
+
+  <form class="form-registro">
+     <h1>Ingresar</h1> 
+    <label>
+      <p class="label-txt">CORREO ELECTRÓNICO</p>
+      <input type="text" class="input">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">CONTRASEÑA</p>
+      <input type="password" class="input">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <button type="submit" id="enviar-button">Ingresar</button>
+  </form>
+</div>
 {% endblock %}
