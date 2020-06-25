@@ -44,6 +44,9 @@ def admin_detalle_solicitud(request):
 def admin_solicitud_rechazo(request):
     return render(request, "sitio_web/admin_solicitud_rechazo.html") 
 
+def config_admin(request):
+    return render(request, "sitio_web/config_admin.html") 
+
 """ Dashboard Vendedor"""
 
 def vendedor_dash(request):
