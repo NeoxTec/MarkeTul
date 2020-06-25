@@ -51,8 +51,8 @@
                         <nav>
                             <ul class="metismenu" id="menu">
                                 <li><a href="{% url 'vendedores' %}"><i class="ti-user"></i><span>Vendedores</span></a></li>
-                                <li><a href="#"><i class="ti-dropbox-alt"></i><span>Productos</span></a></li>
-                                <li><a href="#"><i class="ti-settings"></i><span>Configuración cuenta</span></a></li>
+                                <li><a href="{% url '' %}"><i class="ti-dropbox-alt"></i><span>Productos</span></a></li>
+                                <li><a href="{% url 'config_admin' %}"><i class="ti-settings"></i><span>Configuración cuenta</span></a></li>
                                 <li><a href="{% url 'home' %}"><i class="ti-power-off"></i><span>Cerrar Sesión</span></a></li>
                             </ul>
                         </nav>
@@ -83,9 +83,9 @@
                                         <span>1</span>
                                     </i>
                                     <div class="dropdown-menu bell-notify-box notify-box">
-                                        <span class="notify-title">Tienes una nueva solicitud<a href="#">ver todas</a></span>
+                                        <span class="notify-title">Tienes una nueva solicitud<a href="{% url 'admin_solicitudes_vendedor' %}">ver todas</a></span>
                                         <div class="nofity-list">
-                                            <a href="#" class="notify-item">
+                                            <a href="{% url 'admin_detalle_solicitud' %}" class="notify-item">
                                                 <div class="notify-thumb"><i class="ti-pencil-alt btn-info"></i></div>
                                                 <div class="notify-text">
                                                     <p>Nueva solicitud de Vendedor</p>
