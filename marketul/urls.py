@@ -26,5 +26,5 @@ urlpatterns = [
     path('admin_dash/',web_views.admin_dash, name="admin_dash"),
     path('vendedor_dash/',web_views.vendedor_dash, name="vendedor_dash"),
     path('tiendas/',web_views.tiendas, name="tiendas"),
-    path('vendedores/',web_views.tiendas, name="vendedores"),
+    path('vendedores/',web_views.vendedores, name="vendedores"),
 ]
