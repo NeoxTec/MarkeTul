@@ -12,12 +12,12 @@
 
 <div class="izquierda"> 
     <!-- Barra lateral -->
-    <div class="fila" style="margin-left:10px;">
+    <div class="fila" style="margin-left:10px;"  class="d-flex flex-row bd-highlight mb-3">
       <div>
         <aside class="sidebar-left">
          <nav>
-     <div class="sidebar-card" style="width: 15rem;" align="center">
-   <img src="{% static 'core/img/user.png' %}"  width="5" height="30" class="card-img-top">
+     <div class="card" style="width: 15rem;" align="center">
+   <img src="{% static 'core/img/user.png' %}"  width="70" height="65">
    <div class="card-body" align="center">
      <h5 class="card-title">Isabella Zoey</h5>
      <p class="card-text">isabella@gmail.com</p>
@@ -25,11 +25,11 @@
    </div>
      <hr>
      <ul class="list-group list-group-flush">
-         <li class="list-group-item">
+         <li class="list-group-item active">
      <h5><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5>
    </li>
      <hr>
-   <li class="list-group-item active">
+   <li class="list-group-item ">
      <h5><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5>
    </li>
      <hr>
@@ -50,9 +50,9 @@
  </div>
      </div>
  </div>
-<div class="container">
-<div style="width:80rem;" valign="top">
-    <table class="table table-hover">
+<div class="d-flex justify-content-center" style="margin-top:-650px">
+<div>
+    <table class="table table-hover" style="margin-left:150px;" >
       <thead class="thead-dark">
         <tr>
           <th scope="col">Producto</th>

@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path
 from web import views as web_views
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('',web_views.home, name="home"),
     path('categorias/',web_views.categorias, name="categorias"),
     path('compras/',web_views.compras, name="compras"),
@@ -28,6 +27,9 @@ urlpatterns = [
     path('direccion_envio/',web_views.direccion_envio, name="direccion_envio"),
     path('forma_pago/',web_views.forma_pago, name="forma_pago"),
     path('proceso_pago/',web_views.proceso_pago, name="proceso_pago"),
-    
-    
+    path('admin/', admin.site.urls),
+    path('acceso/',web_views.acceso, name="acceso"),
+    path('perfil_admin/',web_views.perfil_admin, name="perfil_admin"),
+    path('perfil_vendedor/',web_views.perfil_vendedor, name="perfil_vendedor"),
+    path('perfil_admin',web_views.perfil_consumidor, name="perfil_consumidor"),
 ]

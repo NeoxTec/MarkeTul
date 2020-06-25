@@ -7,14 +7,56 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
 </head>
 {% block content %}
-{% load static %} 
 <body>
+{% load static %}
 <h1><center>Direcci&oacute;n</center></h1>
-    <form>
-        <div class="card mb-3" style="max-width: 1500px;">
+<div class="izquierda"> 
+  <!-- Barra lateral -->
+  <div class="fila" style="margin-left:10px;"  class="d-flex flex-row bd-highlight mb-3">
+    <div>
+      <aside class="sidebar-left">
+       <nav>
+   <div class="card" style="width: 15rem;" align="center">
+ <img src="{% static 'core/img/user.png' %}"  width="70" height="65">
+ <div class="card-body" align="center">
+   <h5 class="card-title">Isabella Zoey</h5>
+   <p class="card-text">isabella@gmail.com</p>
+   <p class="card-text">7751292878</p>
+ </div>
+   <hr>
+   <ul class="list-group list-group-flush">
+       <li class="list-group-item">
+   <h5><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5>
+ </li>
+   <hr>
+ <li class="list-group-item ">
+   <h5><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5>
+ </li>
+   <hr>
+ <li class="list-group-item active">
+   <h5><img src="{% static 'core/img/home-run.png' %}"  width="20" height="20" >Direcci&oacute;n</h5>
+ </li>
+   <hr>
+ <li class="list-group-item">
+   <h5><a tabindex="-1" aria-disabled="true">Configuraci&oacute;n de Cuenta</a></h5>
+ </li>
+   <hr>
+   <li class="list-group-item">
+   <h5><a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Cerrar Sesi&oacute;n</a></h5>
+ </li>
+</ul>
+</nav>
+</aside>
+</div>
+   </div>
+</div>
+<div class="card" style="max-width:1000px;">
   <div class="row no-gutters">
     <div class="col-md-4">
     </div>
+<div class="d-flex justify-content-center" style="margin-top:-650px">
+ 
+  <div class="card" style="width:55rem; margin-left:360px;">
     <div>
         <div class="col-md-8">
             <div class="card-body">
@@ -63,52 +105,17 @@
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      <label for="inputCity">Direcci&oacute;n</label>
-      <input type="text" class="form-control" id="inputCity" required>
+    <label for="inputCity">Direcci&oacute;n</label>
+    <input type="text" class="form-control" id="inputCity" required>
     </div>
   </div>
-  <button style="margin: 5px" type="submit" class="btn btn-success btn-lg">Guardar</button>
-  <button style="margin-left: 25px" type="submit" class="btn btn-dark btn-lg">Cancelar</button>
+  <button style="margin-left:70px" type="submit" class="btn btn-success btn-lg">Guardar</button>
+  <button style="margin-left:120px" type="submit" class="btn btn-dark btn-lg">Cancelar</button>
             </div>
         </div>
       </div>
             </div>
         </div>
-</form>
-    <form>
-    {% load static %}
-    <div class="card" style="width: 25rem;" align="left-top">
-  <img src="{% static 'core/img/user.png' %}"  width="80" height="80" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">Isabella Zoey</h5>
-    <p class="card-text">isabella@gmail.com</p>
-    <p class="card-text">7751292878</p>
-  </div>
-    <hr>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-    <h5><img src="{% static 'core/img/back.png' %}"  width="25" height="25">Compras</h5>
-  </li>
-    <hr>
-  <li class="list-group-item">
-    <h5><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5>
-  </li>
-    <hr>
-  <li class="list-group-item active">
-    <h5><img src="{% static 'core/img/home-run.png' %}"  width="20" height="20" >Direcci&oacute;n</h5>
-  </li>
-    <hr>
-  <li class="list-group-item">
-    <h5>Configuraci&oacute;n de Cuenta</h5>
-  </li>
-    <hr>
-    <li class="list-group-item">
-    <h5>Cerrar Sesi&oacute;n</h5>
-  </li>
-</ul>
-    
-    </div>
-    </form>
     </body>
     {% endblock %}
 </html>

@@ -22,6 +22,8 @@
      <link rel="stylesheet" href="{% static 'core/css/aos.css' %}">
 
      <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+
+     <link rel="stylesheet" href="{% static 'core/css/formulario.css' %}">
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
     <!-- Navegación -->
@@ -41,7 +43,7 @@
           <div class="row align-items-center">
             
             <div class="col-6 col-xl-2">
-            <img id="logo" src="{% static 'core/img/marketul.png' %}" alt="" responsive style="width: 4em;">
+            <a href="{% url 'home' %}"><img id="logo" src="{% static 'core/img/marketul.png' %}" alt="" responsive style="width: 4em;"></a>
             </div>
             <div class="col-12 col-md-10 d-none d-xl-block">
               <nav class="site-navigation position-relative text-right" role="navigation">
@@ -51,7 +53,7 @@
                   <li><a href="#about-section" class="nav-link">Acerca de</a></li>
                   <li><a href="#Afiliados-section" class="nav-link">Afiliados</a></li>
                   <li><a href="#perfiles-section" class="nav-link">Perfiles</a></li>
-                  <li><a href="" class="nav-link">Acceso</a></li>
+                  <li><a href="{% url 'acceso' %}" class="nav-link">Acceso</a></li>
                   <li><a href="#contacto-section" class="nav-link">Contacto</a></li>
                   <li><a href="" class="nav-link">Categorías</a></li>
                 </ul>
@@ -69,7 +71,7 @@
                           
               <div class="row mb-4">
                 <div class="col-md-7">
-                  <h1><center>MarkeTul</center></h1>
+                  <h1><center>{% block h1%}{% endblock %}</center></h1>
                 </div>
               </div>
             </div>
@@ -114,4 +116,5 @@
 <script src="{% static 'core/js/jquery.fancybox.min.js' %}"></script>
 <script src="{% static 'core/js/jquery.sticky.js' %}"></script>
 <script src="{% static 'core/js/main.js' %}"></script>
+<script src="{% static 'core/js/registro.js' %}"></script>
 </html>

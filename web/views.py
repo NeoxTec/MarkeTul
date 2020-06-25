@@ -22,3 +22,15 @@ def forma_pago(request):
     return render(request, "sitio_web/forma_pago.html")
 def proceso_pago(request):
     return render(request, "sitio_web/proceso_pago.html")
+
+def acceso(request):
+    return render(request, "sitio_web/acceso.html")
+
+def perfil_admin(request):
+    return render(request, "sitio_web/perfil_admin.html")
+
+def perfil_vendedor(request):
+    return render(request, "sitio_web/perfil_vendedor.html")
+
+def perfil_consumidor(request):
+    return render(request, "sitio_web/perfil_consumidor.html")
