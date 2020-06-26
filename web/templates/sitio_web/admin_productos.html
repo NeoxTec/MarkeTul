@@ -8,4 +8,46 @@
 
 {% block content %}
 {% load static %}
+<div class="row">
+    <div class="col-sm-3 my-1">
+        <a href="{% url 'admin_nuevo_producto' %}"><button class="btn btn-success mt-4 pr-4 pl-4"><i class="ti-plus"></i>Nuevo Producto</button></a>
+    </div>
+</div>
+<div class="row">
+    <!-- Dark table inicia -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Productos</h4>
+                <div class="data-tables datatable-dark">
+                    <table id="dataTable3" class="text-center">
+                        <thead class="text-capitalize">
+                            <tr>
+                                <th>Producto</th>
+                                <th>Descripción</th>
+                                <th>Marca</th>
+                                <th>Categoría</th>
+                                <th>Medidas</th>
+                                <th>Precio</th>
+                                <th>Cantidad existente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="{% url 'admin_detalle_producto' %}">Zapato</a></td>
+                                <td>Para caballero, colores, negro y gris</td>
+                                <td>Class</td>
+                                <td>Hombre</td>
+                                <td>25,26,27,28</td>
+                                <td><i class="ti-money"></i> 1260</td>
+                                <td><i class="ti-archive"></i> 20</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dark table finaliza -->
+    </div>
 {% endblock %}
