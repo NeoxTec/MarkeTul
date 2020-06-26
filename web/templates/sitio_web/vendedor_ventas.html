@@ -8,6 +8,11 @@
 
 {% block content %}
 {% load static %}
+<div class="row align-items-center">
+    <div class="col-sm-6 my-1">
+        <a href="{% url 'catalogos_vendedor' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em;"/></a>
+    </div>
+</div>
 <div class="row">
     <!-- Dark table inicia -->
     <div class="col-12 mt-5">
