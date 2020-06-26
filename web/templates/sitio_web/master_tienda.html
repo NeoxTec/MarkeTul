@@ -39,12 +39,12 @@
           <td>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-left:-65px;" >
                 <form class="form-inline" style="width:65rem;">
-                  <input class="form-control mr-sm-12"  type="search"  style="width:45rem;" placeholder="Buscar Productos" aria-label="Search" class="col-md-2">
+                  <input class="form-control mr-sm-12"  type="search"  style="width:45rem;" placeholder="Buscar Producto" aria-label="Search" class="col-md-2">
                   <button class="btn btn-secondary my-2 my-sm-0" style="margin-left:10px; height:2.5rem; " type="submit">Buscar</button>
                 </form>
               </nav>
               </td>
-              <td><button type="button" class="btn btn-success"  align="left">Carrito</button>
+              <td><a  href="{% url 'carrito_compras' %}"><button type="button" class="btn btn-success" align="left">Carrito 3</button></a>
           </td>
           </tr>
           <tr align="left">
@@ -52,7 +52,10 @@
           <td >
           <ul class="navbar-nav">
             <li class="nav-item" style="margin-left:10px">
-              <a class="nav-link" href="#computo" >Computo </a>
+              <a class="nav-link" href="{% url 'categorias' %}" >Inicio </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'categoria_computo' %}" >Computo</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#muebles" >Muebles</a>
@@ -81,7 +84,7 @@
     </td>
         </tr>
         </table>
-        <button style="margin-top:50px; margin-left:-98px;" type="button" class="btn btn-danger">Acceder</button>
+        <a href="{% url 'acceso' %}"><button style="margin-top:50px; width:6.5rem; margin-left:-105px;" type="button"  class="nav-link btn btn-danger">Acceder </button></a>
       </div>
        <!-- Contenido -->
     {% block content %}{% endblock %}
