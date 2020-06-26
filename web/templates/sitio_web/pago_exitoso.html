@@ -1,0 +1,142 @@
+{% extends 'sitio_web/master_tienda.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="Utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+{% block content %}
+<body>
+{% load static %}
+<h1><center>Forma de Pago</center></h1>
+   <div class="izquierda"> 
+    <!-- Barra lateral -->
+   <div class="fila" style="margin-left:10px;"  class="d-flex flex-row bd-highlight mb-3">
+    <div>
+    <aside class="sidebar-left">
+        <nav>
+            <div class="card" style="width: 15rem;" align="center">
+           <img src="{% static 'core/img/user.png' %}"  width="70" height="65">
+           <div class="card-body" align="center">
+             <h5 class="card-title">Isabella Zoey</h5>
+             <p class="card-text">isabella@gmail.com</p>
+             <p class="card-text">7751292878</p>
+           </div>
+             <hr>
+             <ul class="list-group list-group-flush">
+                 <li class="list-group-item">
+             <h5><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5>
+           </li>
+             <hr>
+           <li class="list-group-item active">
+             <h5><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5>
+           </li>
+             <hr>
+           <li class="list-group-item">
+             <h5><img src="{% static 'core/img/home-run.png' %}"  width="20" height="20" >Direcci&oacute;n</h5>
+           </li>
+             <hr>
+           <li class="list-group-item">
+             <h5><a tabindex="-1" aria-disabled="true">Configuraci&oacute;n de Cuenta</a></h5>
+           </li>
+             <hr>
+             <li class="list-group-item">
+             <h5><a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Cerrar Sesi&oacute;n</a></h5>
+           </li>
+          </ul>
+          </nav>
+          </aside>
+          </div>
+             </div>
+          </div>
+<div class="card" style="max-width:1000px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+        </div>
+    <div class="d-flex justify-content-center" style="margin-top:-650px">
+    <div class="card" style="width:55rem; margin-left:360px;">
+    <div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title">M&eacute;todos de Pago</h4>
+  <input style="margin-left: 50px" type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+  <label class="custom-control-label" for="customRadioInline1">Tarjeta de Cr&eacute;dito</label>
+  <input style="margin-left: 170px"  type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+  <label class="custom-control-label" for="customRadioInline2">Tarjeta de D&eacute;bito</label>
+        <div class="form-group row">
+    <label  for="inputPassword" class="col-form-label" required>Nombre de la Tarjeta</label>
+    <div class="col-sm-8">
+      <input class="form-control" placeholder="Nombre del propietario*" required>
+    </div>
+  </div>
+        <div class="form-group row">
+    <label  for="inputPassword" class="col-form-label" required>N&uacute;mero de la Tarjeta</label>
+    <div class="col-sm-8">
+      <input class="form-control" placeholder="0000 0000 0000 0000*" required>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label  for="inputPassword" class="col-sm-3 col-form-label" required>Fecha Vencimiento</label>
+    <div class="col-sm-2">
+      <input class="form-control" placeholder="D&iacute;a" required>
+        </div>
+    <div class="col-sm-2">
+        <input class="form-control" placeholder="Mes" required> 
+        </div>
+    <div class="col-sm-2">
+        <input class="form-control" placeholder="A&ntilde;o" required>
+    </div>
+    </div>
+    <div class="container">
+    <br>
+        <a style="margin-left:25px" type="submit" href="#ventana1" class="btn btn-success btn-lg" data-toggle="modal"><img src="{% static 'core/img/mastercard.png' %}" width="30" height="30">Guardar</a>
+        <a style="margin-left:25px" type="submit" href="#ventana2" class="btn btn-primary btn-lg" data-toggle="modal"><img src="{% static 'core/img/payment.png' %}" width="30" height="30">PayPal</a>
+        <!-- GUARDAR -->
+        <div class="modal fade" id="ventana1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                    <!-- CONTENIDO DE LA VENTANA EMERGENTE -->
+                    <div class="modal-body" align="center">
+                        <p></p>
+                        <p><h2>¡Se ha Guardado exitosamente!</h2></p>
+                     </div>
+                    <!-- FOOTER DE LA VENTANA EMERGENTE -->
+                    <div class="modal-footer" align="center">
+                        <button type="button" class="btn btn-ranger" data-dismiss="modal" >Regresar a la Tienda</button>           
+                </div>
+            </div>       
+        </div>    
+    </div>
+    
+    <!-- PAYÁL -->
+    <div class="modal fade" id="ventana2">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                    <!-- CONTENIDO DE LA VENTANA EMERGENTE -->
+                    <div class="modal-body" align="center">
+                        <img src="tick.png" width="160" height="160" >
+                        <p></p>
+                        <p><h2>¡Felicidades! Tu compra ha sido exitosa.</h2></p>
+                     </div>
+                    <!-- FOOTER DE LA VENTANA EMERGENTE -->
+                    <div class="modal-footer" align="center">
+                        <button type="button" class="btn btn-ranger" data-dismiss="modal" >Regresar a la Tienda</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</div>
+</div>
+</div>
+</div>
+</div> 
+</body>
+{% endblock %}
+</html>

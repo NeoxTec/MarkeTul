@@ -32,4 +32,7 @@ urlpatterns = [
     path('perfil_admin/',web_views.perfil_admin, name="perfil_admin"),
     path('perfil_vendedor/',web_views.perfil_vendedor, name="perfil_vendedor"),
     path('perfil_admin',web_views.perfil_consumidor, name="perfil_consumidor"),
+    path('pago_error/',web_views.pago_error, name="pago_erro"),
+    path('pago_exitoso/',web_views.pago_exitoso, name="pago_exitoso"),
+    path('catalogos/',web_views.catalogos, name="catalogos"),
 ]

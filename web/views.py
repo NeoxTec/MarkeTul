@@ -22,10 +22,14 @@ def forma_pago(request):
     return render(request, "sitio_web/forma_pago.html")
 def proceso_pago(request):
     return render(request, "sitio_web/proceso_pago.html")
-
+def pago_error(request):
+    return render(request, "sitio_web/pago_error.html")
+def pago_exitoso(request):
+    return render(request, "sitio_web/pago_exitoso.html")
 def acceso(request):
     return render(request, "sitio_web/acceso.html")
-
+def catalogos(request):
+    return render(request, "sitio_web/catalogos.html")
 def perfil_admin(request):
     return render(request, "sitio_web/perfil_admin.html")
 
