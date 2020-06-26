@@ -2,48 +2,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 {% block content %}
 <body>
  {% load static %}  
-<h1><center>Carrito de Compras</center></h1>
-   <div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-          <img src="{% static 'core/img/perfume.jpg' %}" width="200" height="200" class="card-img" alt="...">
-        <h5 style="margin-left: 15px" class="card-title">Perfume Giorgio Armani Acqua Di Gio for Women</h5>  
-        <p style="margin-left: 15px" class="card-text">Perfume Acqua Di Gio para mujer. 100 ml</p>
-        <p style="margin-left: 15px" class="card-text"><h7>$1,299.00</h7></p>
-        <a href="#" class="btn btn-dark btn-lg"><img src="{% static 'core/img/trash.png' %}" width="25" height="25"></a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-          <img src="{% static 'core/img/nike.png' %}" width="200" height="200" class="card-img" alt="...">
-        <h5 class="card-title">Nike Air Force 1 Shadow</h5>
-        <p class="card-text">Tenis Nike Air Force 1 Shadow para mujer</p>
-        <p class="card-text"><h7>$2,299.00</h7></p>
-        <a href="#" class="btn btn-dark btn-lg"><img src="{% static 'core/img/trash.png' %}" width="25" height="25"></a>
-      </div>
-    </div>
-  </div>
-       <div class="card border-success mb-3" style="max-width: 135rem;" align="right">
-<div class="card-header bg-transparent border-primary"><h3>Cantidad de productos: 2 </h3></div>
-  <div class="card-header bg-transparent border-primary"><h3>Total:</h3></div>
-  <div class="card-body text-primary">
-    <h2 class="card-title">$2,600.00</h2>
-      <button type="button" class="btn btn-success btn-lg">Pagar</button>
-  </div>
+ <h1><center>Carrito de Compras</center></h1>
+ <div></div>
+ <div style="margin-left: 400px" class="col-md-8">
+         <div class="card-body">
+     <h3 class="card-title">Cantidad de productos: 3</h3>
+ <h3>Total:</h3>
+<h4>$7,697.00</h4>
+ 
+ </div>
+         <p></p>
+ <button style="width: 30rem;" type="submit" class="btn btn-success btn-lg">Pagar</button>
+
+     </div>
+ <div class="container">
+<div class="card-deck mt-3">   
+ <div class="card text-center border-info">
+ <img src="{% static 'core/img/perfume.jpg' %}" width="290" height="290" class="card-img-top" alt="...">
+ <div class="card-body">
+   <h4 class="card-title"><strong>Perfume Giorgio Armani Acqua Di Gio for Women</strong></h4>
+   <p class="card-text"><strong>Perfume Acqua Di Gio para mujer. 100 ml</strong></p>
+   <p style="margin-left: 15px" class="card-text"><h7>$1,299.00</h7></p>
+ </div>
+     <P>
+         <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/trash.png' %}" width="25" height="25">Eliminar</button> 
+          </P>
+   </div>
+<div class="card text-center border-info">
+ <img src="{% static 'core/img/nike.png' %}" width="290" height="290" class="card-img-top" alt="...">
+ <div class="card-body">
+   <h4 class="card-title"><strong>Nike Air Force 1 Shadow</strong></h4>
+   <p class="card-text"><strong>Tenis Nike Air Force 1 Shadow para mujer</strong></p>
+   <p style="margin-left: 15px" class="card-text"><h7>$2,299.00</h7></p>
+ </div>
+     <P>
+         <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/trash.png' %}" width="25" height="25">Eliminar</button> 
+          </P>
+   </div>
+<div class="card text-center border-info">
+ <img src="{% static 'core/img/huawie.png' %}" width="290" height="290" class="card-img-top" alt="...">
+ <div class="card-body">
+   <h4 class="card-title"><strong>Huawei P20 Lite</strong></h4>
+   <p class="card-text"><strong>El espacio que necesitas Con su memoria interna de 32 GB descarga tus aplicaciones favoritas y guarda todas las fotos y videos que quieras.</strong></p>
+   <p style="margin-left: 15px" class="card-text"><h7>$4,099.00</h7></p>
+ </div>
+     <P>
+         <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/trash.png' %}" width="25" height="25">Eliminar</button> 
+          </P>
+   </div>
 </div>
-       
+ 
+    
 </div>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
    
     </body>
     {% endblock %}
