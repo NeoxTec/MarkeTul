@@ -1,0 +1,215 @@
+{% extends 'sitio_web/master_tienda.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+{% block content %}
+<body>
+{% load static %} 
+<div style="margin-top:30px;">
+<img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:50px;">
+</div>
+<div class="izquierda" style="margin-top:30px;"> 
+    <!-- Barra lateral -->
+    <div class="fila" style="margin-left:10px;"  class="d-flex flex-row bd-highlight mb-3">
+      <div>
+        <aside class="sidebar-left">
+         <nav>
+     <div class="card" style="width: 15rem;" align="center">
+   <img src="{% static 'core/img/user.png' %}"  width="70" height="65">
+   <div class="card-body" align="center">
+     <h5 class="card-title">Isabella Zoey</h5>
+     <p class="card-text">isabella@gmail.com</p>
+     <p class="card-text">7751292878</p>
+   </div>
+     <hr>
+     <ul class="list-group list-group-flush">
+         <li class="list-group-item active">
+     <h5><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5>
+   </li>
+     <hr>
+   <li class="list-group-item ">
+     <h5><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5>
+   </li>
+     <hr>
+   <li class="list-group-item">
+     <h5><img src="{% static 'core/img/home-run.png' %}"  width="20" height="20" >Direcci&oacute;n</h5>
+   </li>
+     <hr>
+   <li class="list-group-item">
+     <h5><a tabindex="-1" aria-disabled="true">Configuraci&oacute;n de Cuenta</a></h5>
+   </li>
+     <hr>
+     <li class="list-group-item">
+     <h5><a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Cerrar Sesi&oacute;n</a></h5>
+   </li>
+ </ul>
+ </nav>
+ </aside>
+ </div>
+     </div>
+ </div>
+ <div style="margin-top:-800px">
+    <!-- PARTE UNO -->
+    <div class="container" style="margin-left:250px;">
+    <div class="card-deck mt-3">   
+    <div class="card text-center border-info">
+    <img src="{% static 'core/img/Impresora1.png' %}" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora Epson</strong></h4>
+      <p class="card-text"><strong>Ecotank L120/ Tinta continua/ Color/ USB</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}"width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$3,299.00</strong>
+             </P>
+      </div>
+  <div class="card text-center border-info">
+    <img src="{% static 'core/img/Impresora2.png' %}"width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora Epson</strong></h4>
+      <p class="card-text"><strong>Ecotank L805/ Tinta continua/ Color/ Wi-Fi/ USB</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$8,599.00</strong>
+             </P>
+      </div>
+  <div class="card text-center border-info">
+    <img src="{% static 'core/img/Impresora3.png' %}" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora Canon</strong></h4>
+      <p class="card-text"><strong>Pixma G1110/ Tinta continua/ Color/ USB</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$2,999.00</strong>
+             </P>
+      </div>
+  </div>
+</div>
+    
+    <!-- PARTE DOS -->
+     <div class="container" style="margin-left:250px;" >
+  <div class="card-deck mt-3">   
+  <div class="card text-center border-info">
+    <img src="Impresora5.PNG" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora Canon</strong></h4>
+      <p class="card-text"><strong>Pixma GM2010/ Tinta continua/ Blanco y negro/ Wi-Fi/ USB</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$4,499.00</strong>
+             </P>
+      </div>
+  <div class="card text-center border-info">
+    <img src="Impresora6.PNG" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora HP</strong></h4>
+      <p class="card-text"><strong>OfficeJet Pro 8210/ Color/ Inyecci&oacute;n/ Inal&aacute;mbrico/ Wi-Fi</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$1,259.00</strong>
+             </P>
+      </div>
+      <div class="card text-center border-info">
+    <img src="{% static 'core/img/Impresora4.png' %}" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora Epson</strong></h4>
+      <p class="card-text"><strong>Ecotank M1120/ Tinta continua/ Blanco y negro/ Wi-Fi/ USB</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$3,999.00</strong>
+             </P>
+      </div>
+  </div>
+</div>
+    
+    <!-- PARTE TRES -->
+    <div class="container" style="margin-left:250px;">
+  <div class="card-deck mt-3">   
+    <div class="card text-center border-info">
+    <img src="Impresora7.PNG" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora OKI</strong></h4>
+      <p class="card-text"><strong>C332DN/ Color/ LED/ Inal&aacute;mbrico/ Print</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$7,833.00</strong>
+             </P>
+      </div>
+  <div class="card text-center border-info">
+    <img src="Impresora9.PNG" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora Xerox</strong></h4>
+      <p class="card-text"><strong>Phaser 6510DN/ Color/ L&aacute;ser/ Al&aacute;mbrico/ Print</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$8,238.00</strong>
+             </P>
+      </div>
+  <div class="card text-center border-info">
+    <img src="Impresora8.PNG" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora Brother</strong></h4>
+      <p class="card-text"><strong>HL-L3230CDW/ Color/ LED/ Inal&aacute;mbrico/ Print</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$7,663.00</strong>
+             </P>
+      </div>
+  </div>
+</div>
+    
+    <!-- PARTE CUATRO -->
+    <div class="container" style="margin-left:250px;">
+  <div class="card-deck mt-3">   
+    <div class="card text-center border-info">
+    <img src="{% static 'core/img/Impresora10.png' %}" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora Xerox</strong></h4>
+      <p class="card-text"><strong>Phaser 3020/ Blanco y negro/ L&aacute;ser/ Inal&aacute;mbrico/ Print</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$1,458.00</strong>
+             </P>
+      </div>
+  <div class="card text-center border-info">
+    <img src="{% static 'core/img/Impresora11.png' %}" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora Xerox</strong></h4>
+      <p class="card-text"><strong>VersaLink B400DN/ Blanco y negro/ L&aacute;ser</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$10,123.00</strong>
+             </P>
+      </div>
+  <div class="card text-center border-info">
+    <img src= "{% static 'core/img/Impresora12.png' %}" width="190" height="190" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Impresora Xerox</strong></h4>
+      <p class="card-text"><strong>Phaser 6700DN/ Color/ L&aacute;ser/ Print- Requiere instalaci&oacute;n por parte de Xerox</strong></p>
+    </div>
+        <P>
+            <button style="margin: 5px" type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button>  
+      <strong>$23,598.00</strong>
+             </P>
+      </div>
+        </div>
+    </div>
+</div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
+</body>
+{% endblock %}
+</html>
