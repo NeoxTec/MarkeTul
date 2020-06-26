@@ -8,4 +8,69 @@
 
 {% block content %}
 {% load static %}
+<div class="row">
+    <a href="{% url 'admin_productos' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em; margin-top: 3em;"/></a>
+    <!-- basic form start -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Nuevo Producto</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="producto">Producto</label>
+                        <input type="text" class="form-control" id="producto" required placeholder="Nombre Producto">
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" class="form-control" id="descripcion" placeholder="Descripción del Producto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="marca">Marca</label>
+                        <input type="text" class="form-control" id="marca" placeholder="Marca" required>
+                    </div>
+                    <div class="form-row align-items-center">
+                    <div class="col-sm-3 my-1">
+                        <label class="col-form-label">Categoría</label>
+                        <select class="form-control">
+                            <option>Selecciona una Categoría</option>
+                            <option>Mujer</option>
+                            <option>Niñ@s</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 my-1">
+                        <label for="precio">Precio</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">$</div>
+                            </div>
+                            <input type="text" class="form-control" id="precio" placeholder="0.00" required>
+                        </div>
+                    </div>  
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="medidas">Medidas</label>
+                    <input type="text" class="form-control" id="medidas" placeholder="Medidas del producto" required>
+                </div>
+               <div class="form-group">
+                <label class="col-form-label">Existencias</label>
+                <select class="form-control">
+                    <option>Seleccione cantidad de existencias</option>
+                    <option>21</option>
+                    <option>22</option>
+                </select>
+               </div> 
+               <div class="form-row align-items-center">
+                   <div class="col-sm-3 my-1">
+                    <button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button>
+                    </div>
+                    <div class="col-sm-3 my-1">
+                        <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Guardar</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
