@@ -52,7 +52,7 @@ urlpatterns = [
     path('catalogos_vendedor/',web_views.catalogos_vendedor, name="catalogos_vendedor"),
     path('editar_catalogo/',web_views.editar_catalogo, name="editar_catalogo"),
     path('catalogo_tienda/',web_views.catalogo_tienda, name="catalogo_tienda"),
-    path('vendedor_vendas/',web_views.vendedor_vendas, name="vendedor_vendas"),
+    path('vendedor_ventas/',web_views.vendedor_ventas, name="vendedor_ventas"),
     path('config_vendedor/',web_views.config_vendedor, name="config_vendedor"),
     
 

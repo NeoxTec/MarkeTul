@@ -92,8 +92,8 @@ def vendedor_nueva_solicitud(request):
 def vendedor_solicitudes(request):
     return render(request, "sitio_web/vendedor_solicitudes.html") 
 
-def vendedor_vendas(request):
-    return render(request, "sitio_web/vendedor_vendas.html") 
+def vendedor_ventas(request):
+    return render(request, "sitio_web/vendedor_ventas.html") 
 
 def config_vendedor(request):
     return render(request, "sitio_web/config_vendedor.html") 
