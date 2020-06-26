@@ -9,6 +9,11 @@
 {% block content %}
 {% load static %}
 <div class="row">
+    <div class="col-sm-3 my-1">
+        <a href="{% url 'admin_nuevo_producto' %}"><button class="btn btn-success mt-4 pr-4 pl-4"><i class="ti-plus"></i>Nuevo Producto</button></a>
+    </div>
+</div>
+<div class="row">
     <!-- Dark table inicia -->
     <div class="col-12 mt-5">
         <div class="card">
@@ -29,7 +34,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Zapato</td>
+                                <td><a href="{% url 'admin_detalle_producto' %}">Zapato</a></td>
                                 <td>Para caballero, colores, negro y gris</td>
                                 <td>Class</td>
                                 <td>Hombre</td>
