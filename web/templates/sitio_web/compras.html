@@ -9,7 +9,7 @@
 <body>
 {% load static %}  
 <div style="margin-top:15px;">
-    <img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:1000px;">
+  <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:1000px;"></a>
     <h5 style="margin-top:-25px; margin-left:1050px;">Continuar comprando</h5>
  </div>
 <h1><center>Compras</center></h1>
@@ -29,19 +29,19 @@
      <hr>
      <ul class="list-group list-group-flush">
          <li class="list-group-item active">
-     <h5><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5>
+     <h5><a href="{% url 'compras' %}"><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5></a>
    </li>
      <hr>
    <li class="list-group-item ">
-     <h5><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5>
+     <h5><a href="{% url 'forma_pago' %}"><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5></a>
    </li>
      <hr>
    <li class="list-group-item">
-     <h5><img src="{% static 'core/img/home-run.png' %}"  width="20" height="20" >Direcci&oacute;n</h5>
+     <h5><a href="{% url 'direccion_envio' %}"><img src="{% static 'core/img/home-run.png' %}"  width="20" height="20" >Direcci&oacute;n</h5></a>
    </li>
      <hr>
    <li class="list-group-item">
-     <h5><a tabindex="-1" aria-disabled="true">Configuraci&oacute;n de Cuenta</a></h5>
+     <h5><a href="{% url 'configuracion_cuenta' %}" tabindex="-1" aria-disabled="true">Configuraci&oacute;n de Cuenta</a></h5></a>
    </li>
      <hr>
      <li class="list-group-item">

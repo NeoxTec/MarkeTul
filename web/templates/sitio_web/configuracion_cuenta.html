@@ -8,8 +8,12 @@
 {% block content %}
 <body>
 {% load static %}
+<div style="margin-top:15px;">
+<a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:1000px;"></a>
+<h5 style="margin-top:-25px; margin-left:1050px;">Continuar comprando</h5>
+</div>
 <h1><center>Configuraci&oacute;n de Cuenta</center></h1>
-<div class="izquierda"> 
+<div class="izquierda" style="margin-top:-35px;"> 
     <!-- Barra lateral -->
     <div class="fila" style="margin-left:10px;"  class="d-flex flex-row bd-highlight mb-3">
       <div>
@@ -24,17 +28,17 @@
    </div>
      <hr>
      <ul class="list-group list-group-flush">
-         <li class="list-group-item">
-     <h5><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5>
-   </li>
+      <li class="list-group-item">
+  <h5><a href="{% url 'compras' %}"><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5></a>
+</li>
      <hr>
-   <li class="list-group-item ">
-     <h5><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5>
-   </li>
+     <li class="list-group-item ">
+      <h5><a href="{% url 'forma_pago' %}"><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5></a>
+    </li>
      <hr>
-   <li class="list-group-item">
-     <h5><img src="{% static 'core/img/home-run.png' %}"  width="20" height="20" >Direcci&oacute;n</h5>
-   </li>
+     <li class="list-group-item">
+      <h5><a href="{% url 'direccion_envio' %}"><img src="{% static 'core/img/home-run.png' %}"  width="20" height="20" >Direcci&oacute;n</h5></a>
+    </li>
      <hr>
    <li class="list-group-item active">
      <h5>Configuraci&oacute;n de Cuenta</h5>
@@ -55,13 +59,13 @@
     </div>
     <div class="d-flex justify-content-center" style="margin-top:-650px">
         <div class="col-md-8">
-            <div class="card" style=" width: 55rem; height:30rem; margin-left:170px;">
+            <div class="card" style="width:55rem; height:30rem; margin-left:170px;">
         <h3 class="card-title">Cambio de Contrase&ntilde;a</h3>
         <label for="inputEmail4">Nombre Completo</label>
         <form>
           <div class="form-row">
             <div class="col">
-              <input align="center" style="width: 55rem;" type="text" class="form-control" placeholder="Nombre Completo*">
+              <input align="center" style="width:54rem;" type="text" class="form-control" placeholder="Nombre Completo*">
             </div>
           <div class="form-row">
               <label for="inputEmail4">Correo Electr&oacute;nico</label>

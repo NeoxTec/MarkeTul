@@ -8,7 +8,7 @@
 {% load static %}
 <h1><center>Computo</center></h1>
 <div style="margin-top:10px;">
-        <img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:50px;">
+       <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:50px;"></a>
       </div>  
 <table  >     
 <div class="container" id="categorias">
@@ -21,7 +21,7 @@
             <td>Nombre Vendedor</td>
         </tr>
         <tr>
-            <td><img src="{% static 'core/img/salesman.png' %}" alt="Image" width="250" height="150" ></td>
+            <td><a href="{% url 'catalogos' %}"><img src="{% static 'core/img/salesman.png' %}" alt="Image" width="250" height="150" ></a></td>
             <td><img src="{% static 'core/img/salesman.png' %}" alt="Image" width="250" height="150"></td>
             <td><img src="{% static 'core/img/salesman.png' %}" alt="Image" width="250" height="150" ></td>
             <td><img src="{% static 'core/img/salesman.png' %}" alt="Image" width="250" height="150"></td>
