@@ -35,4 +35,18 @@ urlpatterns = [
     path('pago_error/',web_views.pago_error, name="pago_erro"),
     path('pago_exitoso/',web_views.pago_exitoso, name="pago_exitoso"),
     path('catalogos/',web_views.catalogos, name="catalogos"),
+    path('perfil_admin/',web_views.perfil_consumidor, name="perfil_consumidor"),
+    path('admin_dash/',web_views.admin_dash, name="admin_dash"),
+    path('vendedores/',web_views.vendedores, name="vendedores"),
+    path('admin_solicitudes_vendedor/',web_views.admin_solicitudes_vendedor, name="admin_solicitudes_vendedor"),
+    path('admin_detalle_solicitud/',web_views.admin_detalle_solicitud, name="admin_detalle_solicitud"),
+    path('admin_solicitud_rechazo/',web_views.admin_solicitud_rechazo, name="admin_solicitud_rechazo"),
+    path('admin_productos/',web_views.admin_productos, name="admin_productos"),
+    path('admin_nuevo_producto/',web_views.admin_nuevo_producto, name="admin_nuevo_producto"),
+    path('admin_detalle_producto/',web_views.admin_detalle_producto, name="admin_detalle_producto"),
+    path('config_admin/',web_views.config_admin, name="config_admin"),
+    path('vendedor_dash/',web_views.vendedor_dash, name="vendedor_dash"),
+    path('tiendas/',web_views.tiendas, name="tiendas"),
+    
+
 ]

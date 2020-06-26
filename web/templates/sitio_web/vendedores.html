@@ -1,0 +1,61 @@
+{% extends 'sitio_web/master_dashboard.html' %}
+
+{% block titulo_pag %}Administrador de Tienda{% endblock %}
+
+{% block pagina %}Vendedores{% endblock %}
+
+{% block sub_pagina %}Inicio{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+<!-- Dark table inicia -->
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Vendedores</h4>
+            <div class="data-tables datatable-dark">
+                <table id="dataTable3" class="text-center">
+                    <thead class="text-capitalize">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Dirección</th>
+                            <th>Telefóno</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Airi Satou</td>
+                            <td>airi@gmail.com</td>
+                            <td>Tokyo</td>
+                            <td>4632578946</td>
+                        </tr>
+                        <tr>
+                            <td>Angelica Ramos</td>
+                            <td>angelica@gmail.com</td>
+                            <td>London</td>
+                            <td>1325647958</td>
+                        </tr>
+                        <tr>
+                            <td>Brenden Wagner</td>
+                            <td>bren@gmail.com</td>
+                            <td>San Francisco</td>
+                            <td>7758963245</td>
+                        </tr>
+                        <tr>
+                            <td>Caesar Vance</td>
+                            <td>caesar@gmail.com</td>
+                            <td>New York</td>
+                            <td>7768932546</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Dark table finaliza -->
+</div>
+
+{% endblock %}
