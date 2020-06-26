@@ -47,6 +47,13 @@ urlpatterns = [
     path('config_admin/',web_views.config_admin, name="config_admin"),
     path('vendedor_dash/',web_views.vendedor_dash, name="vendedor_dash"),
     path('tiendas/',web_views.tiendas, name="tiendas"),
+    path('vendedor_nueva_solicitud/',web_views.vendedor_nueva_solicitud, name="vendedor_nueva_solicitud"),
+    path('vendedor_solicitudes/',web_views.vendedor_solicitudes, name="vendedor_solicitudes"),
+    path('catalogos_vendedor/',web_views.catalogos_vendedor, name="catalogos_vendedor"),
+    path('editar_catalogo/',web_views.editar_catalogo, name="editar_catalogo"),
+    path('catalogo_tienda/',web_views.catalogo_tienda, name="catalogo_tienda"),
+    path('vendedor_vendas/',web_views.vendedor_vendas, name="vendedor_vendas"),
+    path('config_vendedor/',web_views.config_vendedor, name="config_vendedor"),
     
 
 ]
