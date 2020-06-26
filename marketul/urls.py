@@ -40,13 +40,20 @@ urlpatterns = [
     path('vendedores/',web_views.vendedores, name="vendedores"),
     path('admin_solicitudes_vendedor/',web_views.admin_solicitudes_vendedor, name="admin_solicitudes_vendedor"),
     path('admin_detalle_solicitud/',web_views.admin_detalle_solicitud, name="admin_detalle_solicitud"),
-    path('admin_solicitud_rechazo/',web_views.admin_solicitud_rechazo, name="admin_solicitud_rechazo"),
+    path('admin_rechazo_solicitud/',web_views.admin_rechazo_solicitud, name="admin_rechazo_solicitud"),
     path('admin_productos/',web_views.admin_productos, name="admin_productos"),
     path('admin_nuevo_producto/',web_views.admin_nuevo_producto, name="admin_nuevo_producto"),
     path('admin_detalle_producto/',web_views.admin_detalle_producto, name="admin_detalle_producto"),
     path('config_admin/',web_views.config_admin, name="config_admin"),
     path('vendedor_dash/',web_views.vendedor_dash, name="vendedor_dash"),
     path('tiendas/',web_views.tiendas, name="tiendas"),
+    path('vendedor_nueva_solicitud/',web_views.vendedor_nueva_solicitud, name="vendedor_nueva_solicitud"),
+    path('vendedor_solicitudes/',web_views.vendedor_solicitudes, name="vendedor_solicitudes"),
+    path('catalogos_vendedor/',web_views.catalogos_vendedor, name="catalogos_vendedor"),
+    path('editar_catalogo/',web_views.editar_catalogo, name="editar_catalogo"),
+    path('catalogo_tienda/',web_views.catalogo_tienda, name="catalogo_tienda"),
+    path('vendedor_ventas/',web_views.vendedor_ventas, name="vendedor_ventas"),
+    path('config_vendedor/',web_views.config_vendedor, name="config_vendedor"),
     
 
 ]

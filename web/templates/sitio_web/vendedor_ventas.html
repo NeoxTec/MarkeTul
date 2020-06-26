@@ -2,39 +2,37 @@
 
 {% block titulo_pag %}Vendedor{% endblock %}
 
-{% block pagina %}Solicitudes{% endblock %}
+{% block pagina %}Tiendas{% endblock %}
 
 {% block sub_pagina %}Inicio{% endblock %}
 
 {% block content %}
 {% load static %}
+<div class="row align-items-center">
+    <div class="col-sm-6 my-1">
+        <a href="{% url 'catalogos_vendedor' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em;"/></a>
+    </div>
+</div>
 <div class="row">
-    <a href="{% url 'admin_dash' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em; margin-top: 3em;"/></a>
     <!-- Dark table inicia -->
     <div class="col-12 mt-5">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Solicitudes Enviadas</h4>
+                <h4 class="header-title">Ventas</h4>
                 <div class="data-tables datatable-dark">
                     <table id="dataTable3" class="text-center">
                         <thead class="text-capitalize">
                             <tr>
-                                <th>Nombre Tienda</th>
-                                <th>Estatus</th>
+                                <th>Catálogo</th>
+                                <th>Ganancia</th>
+                                <th>Fecha</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Juan Nieto</td>
-                                <td>Pendiente</td>
-                            </tr>
-                            <tr>
-                                <td>Juan Nieto</td>
-                                <td>Pendiente</td>
-                            </tr>
-                            <tr>
-                                <td>Juan Nieto</td>
-                                <td>Pendiente</td>
+                            <tr>                                                            
+                                <td>Kock ans Sons</td>
+                                <td><i class="ti-money"> </i>5000</td>
+                                <td>20/06/2020 </td>
                             </tr>
                         </tbody>
                     </table>

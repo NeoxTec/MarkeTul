@@ -8,4 +8,35 @@
 
 {% block content %}
 {% load static %}
+<div class="row">
+    <!-- Dark table inicia -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Tiendas</h4>
+                <div class="data-tables datatable-dark">
+                    <table id="dataTable3" class="text-center">
+                        <thead class="text-capitalize">
+                            <tr>
+                                <th>Nombre de Tienda</th>
+                                <th>Nombre Administrador</th>
+                                <th>Dirección</th>
+                                <th>Contacto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>                                                            
+                                <td><a href="{% url 'catalogo_tienda' %}">Kock ans Sons</a></td>
+                                <td>Janice Monahan</td>
+                                <td>Tulancingo, Centro 40, Hidalgo </td>
+                                <td>7715632489</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dark table finaliza -->
+    </div>
 {% endblock %}

@@ -5,6 +5,11 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>MarkeTul</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Start datatable css -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
         {% load static %}
         <link rel="shortcut icon" type="image/png" href="{% static 'core/assets/images/icon/favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'core/assets/css/bootstrap.min.css' %}">
@@ -38,7 +43,7 @@
             <div class="sidebar-menu">
                 <div class="sidebar-header">
                     <div class="logo">
-                        <a href="#"><img src="{% static 'core/img/marketul2.png' %}" alt="logo"></a>
+                        <a href="{% url 'vendedor_dash'%}"><img src="{% static 'core/img/marketul2.png' %}" alt="logo"></a>
                     </div>
                 </div>
                 <div class="main-menu">
@@ -46,8 +51,8 @@
                         <nav>
                             <ul class="metismenu" id="menu">
                                 <li><a href="{% url 'tiendas' %}"><i class="ti-agenda"></i><span>Tiendas</span></a></li>
-                                <li><a href="#"><i class="ti-calendar"></i><span>Catálogos</span></a></li>
-                                <li><a href="#"><i class="ti-settings"></i><span>Configuración cuenta</span></a></li>
+                                <li><a href="{% url 'catalogos_vendedor' %}"><i class="ti-calendar"></i><span>Catálogos</span></a></li>
+                                <li><a href="{% url 'config_vendedor' %}"><i class="ti-settings"></i><span>Configuración cuenta</span></a></li>
                                 <li><a href="{% url 'home' %}"><i class="ti-power-off"></i><span>Cerrar Sesión</span></a></li>
                             </ul>
                         </nav>
@@ -78,9 +83,9 @@
                                         <span>1</span>
                                     </i>
                                     <div class="dropdown-menu bell-notify-box notify-box">
-                                        <span class="notify-title">Solicitudes<a href="#">ver todas</a></span>
+                                        <span class="notify-title">Solicitudes<a href="{% url 'vendedor_solicitudes'%}">ver todas</a></span>
                                         <div class="nofity-list">
-                                            <a href="#" class="notify-item">
+                                            <a href="{% url 'vendedor_solicitudes' %}" class="notify-item">
                                                 <div class="notify-thumb"><i class="ti-pencil-alt btn-info"></i></div>
                                                 <div class="notify-text">
                                                     <p>Status Solicitud</p>
@@ -132,6 +137,12 @@
         </div>
         <!-- page container area end -->
             <!-- jquery latest version -->
+    <!-- Start datatable js -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     {% load static %}
     <script src="{% static 'core/assets/js/vendor/jquery-2.2.4.min.js' %}"></script>
     <!-- bootstrap 4 js -->

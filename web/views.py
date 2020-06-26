@@ -63,8 +63,8 @@ def admin_solicitudes_vendedor(request):
 def admin_detalle_solicitud(request):
     return render(request, "sitio_web/admin_detalle_solicitud.html") 
 
-def admin_solicitud_rechazo(request):
-    return render(request, "sitio_web/admin_solicitud_rechazo.html") 
+def admin_rechazo_solicitud(request):
+    return render(request, "sitio_web/admin_rechazo_solicitud.html") 
 
 def config_admin(request):
     return render(request, "sitio_web/config_admin.html") 
@@ -77,9 +77,24 @@ def vendedor_dash(request):
 def tiendas(request):
     return render(request, "sitio_web/tiendas.html")
 
+def catalogos_vendedor(request):
+    return render(request, "sitio_web/catalogos_vendedor.html")
+
+def editar_catalogo(request):
+    return render(request, "sitio_web/editar_catalogo.html")
+
+def catalogo_tienda(request):
+    return render(request, "sitio_web/catalogo_tienda.html")
+
 def vendedor_nueva_solicitud(request):
     return render(request, "sitio_web/vendedor_nueva_solicitud.html") 
 
 def vendedor_solicitudes(request):
     return render(request, "sitio_web/vendedor_solicitudes.html") 
+
+def vendedor_ventas(request):
+    return render(request, "sitio_web/vendedor_ventas.html") 
+
+def config_vendedor(request):
+    return render(request, "sitio_web/config_vendedor.html") 
 
