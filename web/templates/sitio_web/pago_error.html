@@ -9,8 +9,12 @@
 {% block content %}
 <body>
 {% load static %}
+<div style="margin-top:15px;">
+        <img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:1000px;">
+        <h5 style="margin-top:-25px; margin-left:1050px;">Continuar comprando</h5>
+     </div>
     <h1><center>Forma de Pago</center></h1>
-        <div class="izquierda"> 
+        <div class="izquierda" style="margin-top:-35px;"> 
             <!-- Barra lateral -->
             <div class="fila" style="margin-left:10px;"  class="d-flex flex-row bd-highlight mb-3">
               <div>
@@ -121,9 +125,9 @@
                     
                     <!-- CONTENIDO DE LA VENTANA EMERGENTE -->
                     <div class="modal-body" align="center">
-                        <img src="close.png" width="160" height="160" >
+                        <img src="{% static 'core/img/close.png' %}" width="160" height="160" >
                         <p></p>
-                        <p><h2>Lo sentimos, hubo un error con tu pago.</h2></p>
+                        <p><h4>Lo sentimos, hubo un error con tu pago.</h4></p>
                      </div>
                     <!-- FOOTER DE LA VENTANA EMERGENTE -->
                     <div class="modal-footer" align="center">

@@ -8,10 +8,13 @@
 {% block content %}
 {% load static %} 
 <body>
+<div style="margin-top:30px;">
+  <img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:50px;">
+</div>   
 <h1><center>Proceso de Pago</center></h1>  
     <p></p>
- <h4>Lista de Compra</h4>
-<div style="width:80rem;" valign="top">
+ <h4 style="margin-left:50px;">Lista de Compra</h4>
+<div style="margin-left:50px; width:80rem;" valign="top">
     <table class="table table-hover">
       <thead class="thead-dark">
         <tr>
@@ -36,11 +39,11 @@
         </tr>
       </tbody>
     </table>
-    <p></p>
+
     <h4>Total a pagar</h4>
     <h2 class="card-title">$4,049.00</h2>
             </div>
-    <button style="margin: right" type="submit" class="btn btn-success btn-lg">Pagar</button>
+    <button style="margin-left:50px;" type="submit" class="btn btn-success btn-lg">Pagar</button>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
     </body>
     {% endblock %}
