@@ -18,6 +18,15 @@ from django.urls import path
 from web import views as web_views
 urlpatterns = [
     path('',web_views.home, name="home"),
+    path('categorias/',web_views.categorias, name="categorias"),
+    path('compras/',web_views.compras, name="compras"),
+    path('carrito_compras/',web_views.carrito_compras, name="carrito_compras"),
+    path('detalle_producto/',web_views.detalle_producto, name="detalleproducto"),
+    path('configuracion_cuenta/',web_views.configuracion_cuenta, name="configuracion_cuenta"),
+    path('categoria_computo/',web_views.categoria_computo, name="categoria_computo"),
+    path('direccion_envio/',web_views.direccion_envio, name="direccion_envio"),
+    path('forma_pago/',web_views.forma_pago, name="forma_pago"),
+    path('proceso_pago/',web_views.proceso_pago, name="proceso_pago"),
     path('admin/', admin.site.urls),
     path('acceso/',web_views.acceso, name="acceso"),
     path('perfil_admin/',web_views.perfil_admin, name="perfil_admin"),

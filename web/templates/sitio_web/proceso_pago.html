@@ -1,0 +1,47 @@
+{% extends 'sitio_web/master_tienda.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+</head>
+{% block content %}
+{% load static %} 
+<body>
+<h1><center>Proceso de Pago</center></h1>  
+    <p></p>
+ <h4>Lista de Compra</h4>
+<div style="width:80rem;" valign="top">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Producto</th>
+          <th scope="col">Descripci&oacute;n</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><img src="{% static 'core/img/perfume.jpg' %}" width="160" height="160"/></th>
+          <td>Perfume Giorgio Armani Acqua Di Gio para mujer.100ml</td>
+          <td>1</td>
+          <td>$1,750.00</td>
+        </tr>
+        <tr>
+          <th scope="row"><img src="{% static 'core/img/nike.png' %}"  width="160" height="160"/></th>
+          <td>Tenis Nike Air Force 1 Shadow para mujer</td>
+          <td>1</td>
+          <td>$2,299.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <h4>Total a pagar</h4>
+    <h2 class="card-title">$4,049.00</h2>
+            </div>
+    <button style="margin: right" type="submit" class="btn btn-success btn-lg">Pagar</button>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
+    </body>
+    {% endblock %}
+</html>

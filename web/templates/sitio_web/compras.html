@@ -1,0 +1,97 @@
+{% extends 'sitio_web/master_tienda.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+</head>
+{% block content %}
+<body>
+{% load static %}  
+<h1><center>Compras</center></h1>
+
+<div class="izquierda"> 
+    <!-- Barra lateral -->
+    <div class="fila" style="margin-left:10px;"  class="d-flex flex-row bd-highlight mb-3">
+      <div>
+        <aside class="sidebar-left">
+         <nav>
+     <div class="card" style="width: 15rem;" align="center">
+   <img src="{% static 'core/img/user.png' %}"  width="70" height="65">
+   <div class="card-body" align="center">
+     <h5 class="card-title">Isabella Zoey</h5>
+     <p class="card-text">isabella@gmail.com</p>
+     <p class="card-text">7751292878</p>
+   </div>
+     <hr>
+     <ul class="list-group list-group-flush">
+         <li class="list-group-item active">
+     <h5><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5>
+   </li>
+     <hr>
+   <li class="list-group-item ">
+     <h5><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5>
+   </li>
+     <hr>
+   <li class="list-group-item">
+     <h5><img src="{% static 'core/img/home-run.png' %}"  width="20" height="20" >Direcci&oacute;n</h5>
+   </li>
+     <hr>
+   <li class="list-group-item">
+     <h5><a tabindex="-1" aria-disabled="true">Configuraci&oacute;n de Cuenta</a></h5>
+   </li>
+     <hr>
+     <li class="list-group-item">
+     <h5><a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Cerrar Sesi&oacute;n</a></h5>
+   </li>
+ </ul>
+ </nav>
+ </aside>
+ </div>
+     </div>
+ </div>
+<div class="d-flex justify-content-center" style="margin-top:-650px">
+<div>
+    <table class="table table-hover" style="margin-left:150px;" >
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Producto</th>
+          <th scope="col">Tienda</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Huawei P20 Lite</th>
+          <td>Liverpool</td>
+          <td>1</td>
+          <td>$6,000.00</td>
+        </tr>
+        <tr>
+          <th scope="row">Perfume Giorgio Armani Acqua Di Gio for Women</th>
+          <td>Liverpool</td>
+          <td>1</td>
+          <td>$1,750.00</td>
+        </tr>
+        <tr>
+          <th scope="row">Tenis Nike Air Force</th>
+          <td>Liverpool</td>
+          <td>1</td>
+          <td>$3,099.00</td>
+        </tr>
+      </tbody>
+    </table>
+            </div>
+    </center>
+
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
+   
+    </body>
+    {% endblock %}
+</html>
+
+
+
+
