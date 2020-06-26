@@ -30,7 +30,7 @@
      {% load static %}
      <div>
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img id="logo" src="{% static 'core/img/logo_marketul.JPG' %}"  alt="" responsive></a>
+        <a class="navbar-brand" href="{% url 'home' %}"><img id="logo" src="{% static 'core/img/logo_marketul.JPG' %}"  alt="" responsive></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -84,7 +84,8 @@
     </td>
         </tr>
         </table>
-        <a href="{% url 'acceso' %}"><button style="margin-top:50px; width:6.5rem; margin-left:-105px;" type="button"  class="nav-link btn btn-danger">Acceder </button></a>
+        <a href="{% url 'configuracion_cuenta' %}"><button style="margin-top:50px; width:6.5rem; margin-left:-105px;" type="button"  class="nav-link btn btn-danger">Cuenta
+           </button></a>
       </div>
        <!-- Contenido -->
     {% block content %}{% endblock %}

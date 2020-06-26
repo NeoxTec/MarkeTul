@@ -1,5 +1,5 @@
 {% extends 'sitio_web/master_tienda.html' %}
-{% block title %}<h1><center>Categorias</center></h1>{% endblock %}
+{% block title %}Categorias{% endblock %}
 <html>
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
             <td>Hombre</td>
         </tr>
         <tr>
-            <td><img src="{% static 'core/img/computo.jpeg' %}" alt="Image" width="250" height="150" ></td>
+            <td><a href="{% url 'categoria_computo' %}"><img src="{% static 'core/img/computo.jpeg' %}" alt="Image" width="250" height="150" ></td></a>
             <td><img src="{% static 'core/img/muebles.jpg' %}" alt="Image" width="250" height="150" ></td>
             <td><img src="{% static 'core/img/niños.jpg' %}" alt="Image" width="250" height="150" ></td>
             <td><img src="{% static 'core/img/hombre.jpg' %}"  width="250" height="150" ></td>
