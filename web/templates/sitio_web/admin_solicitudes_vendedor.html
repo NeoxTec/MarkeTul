@@ -8,4 +8,52 @@
 
 {% block content %}
 {% load static %}
+<div class="row">
+    <a href="{% url 'admin_dash' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em; margin-top: 3em;"/></a>
+    <!-- Dark table inicia -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Solicitudes</h4>
+                <div class="data-tables datatable-dark">
+                    <table id="dataTable3" class="text-center">
+                        <thead class="text-capitalize">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Dirección</th>
+                                <th>Teléfono</th>
+                                <th>Estatus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="{% url 'admin_detalle_solicitud' %}">Juan Nieto</a></td>
+                                <td>juan@gmail.com</td>
+                                <td>San Lucas Tepemajalco, Colima 126, Estado de México</td>
+                                <td><i class="ti-mobile"></i> 7757510152</td>
+                                <td>Pendiente</td>
+                            </tr>
+                            <tr>
+                                <td>Alberto Ramírez</a></td>
+                                <td>alberto@gmail.com</td>
+                                <td>San Antonio la Isla, Manuel Sosa 126, Estado de México</td>
+                                <td><i class="ti-mobile"></i> 7751269763</td>
+                                <td>Aceptado</td>
+                            </tr>
+                            <tr>
+                                <td>Pedro Castillo</a></td>
+                                <td>pedro@gmail.com</td>
+                                <td>Santa María Rayón, Centro 26, Estado de México</td>
+                                <td><i class="ti-mobile"></i> 7751698452</td>
+                                <td>Rechazado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dark table finaliza -->
+    </div>
 {% endblock %}
