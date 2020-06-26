@@ -1,0 +1,51 @@
+{% extends 'sitio_web/master_dashboard2.html' %}
+
+{% block titulo_pag %}Vendedor{% endblock %}
+
+{% block pagina %}Configuración de Cuenta{% endblock %}
+
+{% block sub_pagina %}Datos{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+    <!-- basic form start -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Cuenta</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" required value="Daniel Vargas">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" class="form-control" id="telefono" placeholder="7719632584" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correp">Correo Electrónico</label>
+                        <input type="text" class="form-control" id="correo" value="daniel@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nc">Nueva Contraseña</label>
+                        <input type="password" class="form-control" id="nc" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cc">Confirmar Contraseña</label>
+                        <input type="password" class="form-control" id="cc" required>
+                    </div>
+               <div class="form-row align-items-center">
+                   <div class="col-sm-3 my-1">
+                    <a href="{% url 'vendedor_dash' %}"><button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button></a>
+                    </div>
+                    <div class="col-sm-3 my-1">
+                        <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Aceptar</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

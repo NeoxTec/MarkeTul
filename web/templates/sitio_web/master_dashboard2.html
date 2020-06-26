@@ -38,7 +38,7 @@
             <div class="sidebar-menu">
                 <div class="sidebar-header">
                     <div class="logo">
-                        <a href="#"><img src="{% static 'core/img/marketul2.png' %}" alt="logo"></a>
+                        <a href="{% url 'vendedor_dash'%}"><img src="{% static 'core/img/marketul2.png' %}" alt="logo"></a>
                     </div>
                 </div>
                 <div class="main-menu">
@@ -47,7 +47,7 @@
                             <ul class="metismenu" id="menu">
                                 <li><a href="{% url 'tiendas' %}"><i class="ti-agenda"></i><span>Tiendas</span></a></li>
                                 <li><a href="#"><i class="ti-calendar"></i><span>Catálogos</span></a></li>
-                                <li><a href="#"><i class="ti-settings"></i><span>Configuración cuenta</span></a></li>
+                                <li><a href="{% url 'config_vendedor' %}"><i class="ti-settings"></i><span>Configuración cuenta</span></a></li>
                                 <li><a href="{% url 'home' %}"><i class="ti-power-off"></i><span>Cerrar Sesión</span></a></li>
                             </ul>
                         </nav>
@@ -80,7 +80,7 @@
                                     <div class="dropdown-menu bell-notify-box notify-box">
                                         <span class="notify-title">Solicitudes<a href="#">ver todas</a></span>
                                         <div class="nofity-list">
-                                            <a href="#" class="notify-item">
+                                            <a href="{% url 'vendedor_solicitudes' %}" class="notify-item">
                                                 <div class="notify-thumb"><i class="ti-pencil-alt btn-info"></i></div>
                                                 <div class="notify-text">
                                                     <p>Status Solicitud</p>
