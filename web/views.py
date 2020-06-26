@@ -63,8 +63,8 @@ def admin_solicitudes_vendedor(request):
 def admin_detalle_solicitud(request):
     return render(request, "sitio_web/admin_detalle_solicitud.html") 
 
-def admin_solicitud_rechazo(request):
-    return render(request, "sitio_web/admin_solicitud_rechazo.html") 
+def admin_rechazo_solicitud(request):
+    return render(request, "sitio_web/admin_rechazo_solicitud.html") 
 
 def config_admin(request):
     return render(request, "sitio_web/config_admin.html") 
