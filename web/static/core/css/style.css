@@ -1811,3 +1811,23 @@ h1, h2, h3, h4, h5,
         font-size: 2rem; } }
     .product-item-2 .product-title-wrap h2 a {
       color: #000; }
+    
+      .ec-stars-wrapper {
+        font-size: 0;
+        display: inline-block;
+      }
+      .ec-stars-wrapper a {
+        text-decoration: none;
+        display: inline-block;
+        font-size: 32px;
+        font-size: 2rem;
+        
+        color: rgb(78, 75, 75);
+      }
+      
+      .ec-stars-wrapper:hover a {
+        color: rgb(39, 130, 228);
+      }
+      .ec-stars-wrapper > a:hover ~ a {
+        color: rgb(78, 75, 75);
+      }
