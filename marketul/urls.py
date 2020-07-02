@@ -24,7 +24,9 @@ urlpatterns = [
     # Paths de vendedor
     path('', include('vendedor.urls')),
 
-    path('',web_views.home, name="home"),
+    # Paths de vendedor
+    path('', include('web.urls')),
+    
     path('categorias/',web_views.categorias, name="categorias"),
     path('compras/',web_views.compras, name="compras"),
     path('carrito_compras/',web_views.carrito_compras, name="carrito_compras"),
@@ -34,14 +36,11 @@ urlpatterns = [
     path('direccion_envio/',web_views.direccion_envio, name="direccion_envio"),
     path('forma_pago/',web_views.forma_pago, name="forma_pago"),
     path('proceso_pago/',web_views.proceso_pago, name="proceso_pago"),
+    
     path('admin/', admin.site.urls),
-    path('acceso/',web_views.acceso, name="acceso"),
-    path('perfil_admin/',web_views.perfil_admin, name="perfil_admin"),
-    path('perfil_vendedor/',web_views.perfil_vendedor, name="perfil_vendedor"),
-    path('perfil_admin',web_views.perfil_consumidor, name="perfil_consumidor"),
+    
     path('pago_error/',web_views.pago_error, name="pago_erro"),
     path('pago_exitoso/',web_views.pago_exitoso, name="pago_exitoso"),
     path('catalogos/',web_views.catalogos, name="catalogos"),
-    path('perfil_admin/',web_views.perfil_consumidor, name="perfil_consumidor"),
 
 ]
