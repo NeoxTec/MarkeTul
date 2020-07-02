@@ -21,6 +21,9 @@ urlpatterns = [
     # Paths de admin_dash
     path('', include('admin_dash.urls')),
 
+    # Paths de vendedor
+    path('', include('vendedor.urls')),
+
     path('',web_views.home, name="home"),
     path('categorias/',web_views.categorias, name="categorias"),
     path('compras/',web_views.compras, name="compras"),
@@ -40,15 +43,5 @@ urlpatterns = [
     path('pago_exitoso/',web_views.pago_exitoso, name="pago_exitoso"),
     path('catalogos/',web_views.catalogos, name="catalogos"),
     path('perfil_admin/',web_views.perfil_consumidor, name="perfil_consumidor"),
-    path('vendedor_dash/',web_views.vendedor_dash, name="vendedor_dash"),
-    path('tiendas/',web_views.tiendas, name="tiendas"),
-    path('vendedor_nueva_solicitud/',web_views.vendedor_nueva_solicitud, name="vendedor_nueva_solicitud"),
-    path('vendedor_solicitudes/',web_views.vendedor_solicitudes, name="vendedor_solicitudes"),
-    path('catalogos_vendedor/',web_views.catalogos_vendedor, name="catalogos_vendedor"),
-    path('editar_catalogo/',web_views.editar_catalogo, name="editar_catalogo"),
-    path('catalogo_tienda/',web_views.catalogo_tienda, name="catalogo_tienda"),
-    path('vendedor_ventas/',web_views.vendedor_ventas, name="vendedor_ventas"),
-    path('config_vendedor/',web_views.config_vendedor, name="config_vendedor"),
-    
 
 ]
