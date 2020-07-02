@@ -27,20 +27,9 @@ urlpatterns = [
     # Paths de vendedor
     path('', include('web.urls')),
     
-    path('categorias/',web_views.categorias, name="categorias"),
-    path('compras/',web_views.compras, name="compras"),
-    path('carrito_compras/',web_views.carrito_compras, name="carrito_compras"),
-    path('detalle_producto/',web_views.detalle_producto, name="detalleproducto"),
-    path('configuracion_cuenta/',web_views.configuracion_cuenta, name="configuracion_cuenta"),
-    path('categoria_computo/',web_views.categoria_computo, name="categoria_computo"),
-    path('direccion_envio/',web_views.direccion_envio, name="direccion_envio"),
-    path('forma_pago/',web_views.forma_pago, name="forma_pago"),
-    path('proceso_pago/',web_views.proceso_pago, name="proceso_pago"),
+    # Paths de Tienda
+    path('', include('tienda.urls')),
     
     path('admin/', admin.site.urls),
-    
-    path('pago_error/',web_views.pago_error, name="pago_erro"),
-    path('pago_exitoso/',web_views.pago_exitoso, name="pago_exitoso"),
-    path('catalogos/',web_views.catalogos, name="catalogos"),
 
 ]
