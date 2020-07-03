@@ -39,3 +39,4 @@ def pago_exitoso(request):
 
 def catalogos(request):
     return render(request, "tienda/catalogos.html")
+
