@@ -1,0 +1,35 @@
+{% extends 'sitio_web/master_web.html' %}
+
+{% block title %}Acceso{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/tulancingo.jpg' %}{% endblock %}
+
+{% block h1 %} Acceso {% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+  <form class="form-registro" method="post">{% csrf_token %}
+        <h1>Ingresar</h1>
+        {% if form.non_field_errors %}
+        <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+      {% endif %} 
+      <label>
+        <p class="label-txt">USUARIO</p>
+        <input type="text" class="input" name="username" id="id_username">
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <label>
+        <p class="label-txt">CONTRASEÑA</p>
+        <input type="password" class="input" name="password"id="id_password" >
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <button type="submit" id="enviar-button">Ingresar</button>
+      <a href="{% url 'signup' %}"><button type="button" id="enviar-button">Registro</button></a>
+  </form>
+</div>
+{% endblock %}

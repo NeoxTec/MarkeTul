@@ -15,5 +15,8 @@ urlpatterns = [
     path('pago_error/',tienda_views.pago_error, name="pago_erro"),
     path('pago_exitoso/',tienda_views.pago_exitoso, name="pago_exitoso"),
     path('catalogos/',tienda_views.catalogos, name="catalogos"),
+    path('carrito_compras2/',tienda_views.carrito_compras2, name="carrito_compras2"),
+    
+    
 
 ]

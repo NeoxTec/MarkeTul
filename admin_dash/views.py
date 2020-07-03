@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from admin_dash.models import Producto
 
 # Create your views here.
 """ Dashboard Administrador """
@@ -10,7 +11,9 @@ def vendedores(request):
     return render(request, "admin_dash/vendedores.html")
 
 def admin_productos(request):
-    return render(request, "admin_dash/admin_productos.html") 
+    listaP = Producto.objects.all()
+    context = {'productos': listaP}
+    return render(request, "admin_dash/admin_productos.html", context)
 
 def admin_detalle_producto(request):
     return render(request, "admin_dash/admin_detalle_producto.html")

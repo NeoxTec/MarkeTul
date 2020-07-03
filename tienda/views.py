@@ -40,3 +40,6 @@ def pago_exitoso(request):
 def catalogos(request):
     return render(request, "tienda/catalogos.html")
 
+def carrito_compras2(request):
+    return render(request, "tienda/carrito_compras2.html")
+

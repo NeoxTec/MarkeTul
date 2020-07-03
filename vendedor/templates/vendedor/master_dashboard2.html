@@ -54,7 +54,7 @@
                                 <li><a href="{% url 'tiendas' %}"><i class="ti-agenda"></i><span>Tiendas</span></a></li>
                                 <li><a href="{% url 'catalogos_vendedor' %}"><i class="ti-calendar"></i><span>Catálogos</span></a></li>
                                 <li><a href="{% url 'config_vendedor' %}"><i class="ti-settings"></i><span>Configuración cuenta</span></a></li>
-                                <li><a href="{% url 'home' %}"><i class="ti-power-off"></i><span>Cerrar Sesión</span></a></li>
+                                <li><a href="{% url 'logout' %}"><i class="ti-power-off"></i><span>Cerrar Sesión</span></a></li>
                             </ul>
                         </nav>
                     </div>
@@ -81,7 +81,7 @@
                                 <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                                 <li class="dropdown">
                                     <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
-                                        <span>1</span>
+                                        <span></span>
                                     </i>
                                     <div class="dropdown-menu bell-notify-box notify-box">
                                         <span class="notify-title">Solicitudes<a href="{% url 'vendedor_solicitudes'%}">ver todas</a></span>

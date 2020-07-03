@@ -33,8 +33,14 @@
                         <label class="col-form-label">Categoría</label>
                         <select class="form-control">
                             <option>Selecciona una Categoría</option>
-                            <option>Mujer</option>
-                            <option>Niñ@s</option>
+                            <option value="Cómputo y tecnología">Tecnología</option>
+                            <option value="Mueblería">Muebles</option>
+                            <option value="Mujer">Mujer</option>
+                            <option value="Hombre">Hombre</option>
+                            <option value="Niños">Niñ@s</option>
+                            <option value="Mascota">Mascota</option>
+                            <option value="Libros">Libros</option>
+                            <option value="Electrodomésticos">Electrodomésticos</option>
                         </select>
                     </div>
                     <div class="col-sm-3 my-1">
@@ -53,12 +59,8 @@
                     <input type="text" class="form-control" id="medidas" placeholder="Medidas del producto" required>
                 </div>
                <div class="form-group">
-                <label class="col-form-label">Existencias</label>
-                <select class="form-control">
-                    <option>Seleccione cantidad de existencias</option>
-                    <option>21</option>
-                    <option>22</option>
-                </select>
+                    <label class="col-form-label">Existencias</label>
+                    <input type="text" class="form-control" id="existencias" placeholder="Inserte el número de productos existentes" required>
                </div> 
                <div class="form-row align-items-center">
                    <div class="col-sm-3 my-1">
