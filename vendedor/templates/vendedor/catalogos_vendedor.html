@@ -16,22 +16,24 @@
     </div>
 <div class="card-area">
     <div class="row">
-        <div class="col-lg-4 col-md-6 mt-5">
-            <div class="card card-bordered">
-                <img class="card-img-top img-fluid" src="{% static 'core/img/barajas.png' %}" alt="image">
-                <div class="card-body">
-                    <h5 class="title">Super Barajitas</h5>
-                    <div class="form-row align-items-center">
-                        <div class="col-sm-6 my-1">
-                            <a href="#" class="btn btn-danger"><i class="ti-close">  </i>Eliminar</a>
-                        </div>
-                        <div class="col-sm-6 my-1">
-                            <a href="{% url 'editar_catalogo'%} " class="btn btn-primary"><i class="ti-pencil-alt"> </i>Editar</a>
+        {% for listaT in tiendas %}
+            <div class="col-lg-7 col-md-8 mt-5">
+                <div class="card card-bordered">
+                    <img class="card-img-top img-fluid" src="{% static 'core/img/computo.jpeg' %}" alt="image">
+                    <div class="card-body">
+                        <h5 class="title">{{listaT.nombreTi}}</h5>
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-6 my-1">
+                                <a href="#" class="btn btn-danger"><i class="ti-close">  </i>Eliminar</a>
+                            </div>
+                            <div class="col-sm-6 my-1">
+                                <a href="{% url 'editar_catalogo'%} " class="btn btn-primary"><i class="ti-pencil-alt"> </i>Editar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

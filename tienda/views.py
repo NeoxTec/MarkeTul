@@ -13,6 +13,9 @@ def compras(request):
 def carrito_compras(request):
     return render(request, "tienda/carrito_compras.html")
 
+def carrito(request):
+    return render(request, "tienda/carrito.html")
+
 def detalle_producto(request):
     return render(request, "tienda/detalle_producto.html")
 

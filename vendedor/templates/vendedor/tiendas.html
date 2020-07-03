@@ -25,12 +25,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>                                                            
-                                <td><a href="{% url 'catalogo_tienda' %}">Kock ans Sons</a></td>
-                                <td>Janice Monahan</td>
-                                <td>Tulancingo, Centro 40, Hidalgo </td>
-                                <td>7715632489</td>
-                            </tr>
+                            {% for listaT in tiendas %}
+                                <tr>                                                            
+                                    <td><a href="{% url 'catalogo_tienda' %}">{{ listaT.nombreTi }}</a></td>
+                                    <td>Jorge Gomez</td>
+                                    <td>Tulancingo, Centro 40, Hidalgo </td>
+                                    <td>7751931356</td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
