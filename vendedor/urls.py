@@ -15,4 +15,5 @@ urlpatterns = [
     path('vendedor_solicitudes/',vendedor_views.vendedor_solicitudes, name="vendedor_solicitudes"),
     path('vendedor_ventas/',vendedor_views.vendedor_ventas, name="vendedor_ventas"),
     path('config_vendedor/',vendedor_views.config_vendedor, name="config_vendedor"),
+    path('config_vendedor_r/',vendedor_views.config_vendedor_r, name="config_vendedor_r"),
 ]

@@ -46,3 +46,6 @@ def vendedor_ventas(request):
 
 def config_vendedor(request):
     return render(request, "vendedor/config_vendedor.html") 
+
+def config_vendedor_r(request):
+    return render(request, "vendedor/config_vendedor_r.html") 
