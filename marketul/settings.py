@@ -127,3 +127,4 @@ STATIC_URL = '/static/'
 
 # Auth redirects
 LOGIN_REDIRECT_URL = 'vendedor_dash'
+LOGOUT_REDIRECT_URL = 'home'
