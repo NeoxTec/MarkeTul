@@ -28,6 +28,9 @@ def categoria_computo(request):
 def direccion_envio(request):
     return render(request, "tienda/direccion_envio.html")
 
+def direccion_envio1(request):
+    return render(request, "tienda/direccion_envio1.html")
+
 def forma_pago(request):
     return render(request, "tienda/forma_pago.html")
 

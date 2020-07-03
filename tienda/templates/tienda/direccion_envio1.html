@@ -114,27 +114,8 @@
     <input type="text" class="form-control" id="inputCity" required>
     </div>
   </div>
-  <div class="container">
-  <br>
-  <button style="margin-left:70px" type="submit" class="btn btn-success btn-lg"  href="#ventana3" class="btn btn-success btn-lg" data-toggle="modal">Guardar</button>
-  <a href="{% url 'direccion_envio1' %}"><button style="margin-left:120px" type="reset" class="btn btn-dark btn-lg">Cancelar</button></a>
-  <!-- GUARDAR -->
-        <div class="modal fade" id="ventana3">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    
-                    <!-- CONTENIDO DE LA VENTANA EMERGENTE -->
-                    <div class="modal-body" align="center">
-                    <img src="{% static 'core/img/tick.png' %}" width="160" height="160" >
-                        <p></p>
-                        <p><h2>¡Se ha Guardado exitosamente!</h2></p>
-                     </div>
-                    <!-- FOOTER DE LA VENTANA EMERGENTE -->
-                    <div class="modal-footer" align="center">
-                        <button type="button" class="btn btn-ranger" data-dismiss="modal" >Aceptar</button>           
-                </div>
-            </div>       
-        </div> 
+  <button style="margin-left:70px" type="submit" class="btn btn-success btn-lg">Guardar</button>
+  <button style="margin-left:120px" type="reset" class="btn btn-dark btn-lg">Cancelar</button>
             </div>
         </div>
       </div>

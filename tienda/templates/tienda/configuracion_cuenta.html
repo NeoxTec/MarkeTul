@@ -91,7 +91,24 @@
             
             </div>
                     <p></p>
-            <button style="width: 53rem;" type="submit" class="btn btn-dark btn-lg">Guardar</button>
+            <button style="width: 53rem;" type="submit" class="btn btn-dark btn-lg" href="#ventana4" class="btn btn-success btn-lg" data-toggle="modal">Guardar</button>
+            <!-- GUARDAR -->
+        <div class="modal fade" id="ventana4">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                    <!-- CONTENIDO DE LA VENTANA EMERGENTE -->
+                    <div class="modal-body" align="center">
+                    <img src="{% static 'core/img/tick.png' %}" width="160" height="160" >
+                        <p></p>
+                        <p><h2>¡Se ha Guardado exitosamente!</h2></p>
+                     </div>
+                    <!-- FOOTER DE LA VENTANA EMERGENTE -->
+                    <div class="modal-footer" align="center">
+                        <button type="button" class="btn btn-ranger" data-dismiss="modal" >Aceptar</button>           
+                </div>
+            </div>       
+        </div> 
         
                 </div>
                 </div>
