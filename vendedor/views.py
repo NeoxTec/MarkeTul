@@ -17,7 +17,9 @@ def tiendas(request):
     return render(request, "vendedor/tiendas.html", context)
 
 def catalogos_vendedor(request):
-    return render(request, "vendedor/catalogos_vendedor.html")
+    listaT = Tienda.objects.all()
+    context = {'tiendas': listaT}
+    return render(request, "vendedor/catalogos_vendedor.html", context)
 
 def editar_catalogo(request):
     return render(request, "vendedor/editar_catalogo.html")
