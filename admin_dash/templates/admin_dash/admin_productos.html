@@ -33,15 +33,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for listaP in productos %}
                             <tr>
-                                <td><a href="{% url 'admin_detalle_producto' %}">Zapato</a></td>
-                                <td>Para caballero, colores, negro y gris</td>
-                                <td>Class</td>
-                                <td>Hombre</td>
-                                <td>25,26,27,28</td>
-                                <td><i class="ti-money"></i> 1260</td>
-                                <td><i class="ti-archive"></i> 20</td>
+                                <td><a href="{% url 'admin_detalle_producto' %}">{{ listaP.nombreProd }}</a></td>
+                                <td>{{listaP.descripcionProd}}</td>
+                                <td>{{listaP.marcaProd}}</td>
+                                <td>{{listaP.categoriaProd}}</td>
+                                <td>{{listaP.medidasProd}}</td>
+                                <td><i class="ti-money"></i> {{listaP.precioProd}}</td>
+                                <td><i class="ti-archive"></i> {{listaP.existenciasProd}}</td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
