@@ -1,5 +1,7 @@
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
+from admin_dash.models import Producto
+from admin_dash.models import Tienda
 
 # Create your views here.
 
@@ -18,7 +20,9 @@ def editar_catalogo(request):
     return render(request, "vendedor/editar_catalogo.html")
 
 def catalogo_tienda(request):
-    return render(request, "vendedor/catalogo_tienda.html")
+    listaP = Producto.objects.all()
+    context = {'productos': listaP}
+    return render(request, "vendedor/catalogo_tienda.html",context)
 
 def vendedor_nueva_solicitud(request):
     return render(request, "vendedor/vendedor_nueva_solicitud.html") 
