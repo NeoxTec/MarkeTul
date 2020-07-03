@@ -1,11 +1,12 @@
+from django.views.generic.base import TemplateView
 from django.shortcuts import render
 
 # Create your views here.
 
 """ Dashboard Vendedor"""
 
-def vendedor_dash(request):
-    return render(request, "vendedor/vendedor_dash.html")
+class VendorHomeView(TemplateView):
+    template_name = "vendedor/vendedor_dash.html"
 
 def tiendas(request):
     return render(request, "vendedor/tiendas.html")

@@ -1,9 +1,10 @@
 from django.urls import path
 from . import views as vendedor_views
+from .views import VendorHomeView
 
 urlpatterns = [
     # Paths de vendedor
-    path('vendedor_dash/',vendedor_views.vendedor_dash, name="vendedor_dash"),
+    path('vendedor_dash/',VendorHomeView.as_view(), name="vendedor_dash"),
     path('tiendas/',vendedor_views.tiendas, name="tiendas"),
     path('catalogos_vendedor/',vendedor_views.catalogos_vendedor, name="catalogos_vendedor"),
     path('editar_catalogo/',vendedor_views.editar_catalogo, name="editar_catalogo"),
