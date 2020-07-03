@@ -2,6 +2,7 @@ from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from admin_dash.models import Producto
 from admin_dash.models import Tienda
+from admin_dash.models import Administrador
 
 # Create your views here.
 
@@ -11,7 +12,9 @@ class VendorHomeView(TemplateView):
     template_name = "vendedor/vendedor_dash.html"
 
 def tiendas(request):
-    return render(request, "vendedor/tiendas.html")
+    listaT = Tienda.objects.all()
+    context = {'tiendas': listaT}
+    return render(request, "vendedor/tiendas.html", context)
 
 def catalogos_vendedor(request):
     return render(request, "vendedor/catalogos_vendedor.html")
