@@ -1,0 +1,20 @@
+{% extends 'sitio_web/master_web.html' %}
+
+{% block title %}Acceso{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/tulancingo.jpg' %}{% endblock %}
+
+{% block h1 %} Acceso {% endblock %}
+
+{% block content %}
+<style>.errorlist{color:red;} label{display:none;} </style>
+{% load static %}
+<div class="row">
+  <form class="form-registro" method="post">{% csrf_token %}
+        <h1>Registro</h1>
+        <br>
+        {{form.as_p}}
+      <button type="submit" id="enviar-button">Registrar</button>
+  </form>
+</div>
+{% endblock %}
