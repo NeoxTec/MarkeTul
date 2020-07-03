@@ -1,0 +1,85 @@
+{% extends 'vendedor/master_dashboard2.html' %}
+
+{% block titulo_pag %}Vendedor{% endblock %}
+
+{% block pagina %}Barajitas{% endblock %}
+
+{% block sub_pagina %}Edición de Catálogo{% endblock %}
+
+{% block content %}
+{% load static %}
+<br>
+<br>
+<div class="row align-items-center">
+    <div class="col-sm-3 my-1">
+        <a href="{% url 'catalogos_vendedor' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em;"/></a>
+    </div>
+    <div class="col-sm-3 my-1">
+        <a href="{% url 'catalogos'%}" class="btn btn-primary">Vista Previa</a>
+    </div>
+    <div class="col-sm-3 my-1">
+        <a href="{% url 'catalogos_vendedor'%}" class="btn btn-success">Guardar</a>
+    </div>
+</div>  
+<div class="card-area">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mt-5">
+            <div class="card card-bordered">
+                <img class="card-img-top img-fluid" src="{% static 'core/img/Impresora1.png' %}" alt="image">
+                <div class="card-body">
+                    <h5 class="title">Impresora Epson</h5>
+                    <p class="card-text">Descripción del Producto <br>Impresora en blanco y negro con escaner
+                     <br>4 tintas
+                    </p>
+                    <div class="form-row align-items-center">
+                        <div class="col-sm-6 my-1">
+                            <a href="#" class="btn btn-danger"><i class="ti-close">  </i>Eliminar</a>
+                        </div>
+                        <div class="col-sm-6 my-1">
+                            <h3>$ 3600,00</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-5">
+            <div class="card card-bordered">
+                <img class="card-img-top img-fluid" src="{% static 'core/img/Impresora1.png' %}" alt="image">
+                <div class="card-body">
+                    <h5 class="title">Impresora Canon</h5>
+                    <p class="card-text">Descripción del Producto <br>Impresora multicolor
+                    <br>4 tintas
+                    </p>
+                    <div class="form-row align-items-center">
+                        <div class="col-sm-6 my-1">
+                            <a href="#" class="btn btn-danger"><i class="ti-close">  </i>Eliminar</a>
+                        </div>
+                        <div class="col-sm-6 my-1">
+                            <h3>$ 2500,00</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-5">
+            <div class="card card-bordered">
+                <img class="card-img-top img-fluid" src="{% static 'core/img/Impresora1.png' %}" alt="image">
+                <div class="card-body">
+                    <h5 class="title">Impresora Canon</h5>
+                    <p class="card-text">Descripción del Producto <br>Impresora multicolor
+                    <br>4 tintas
+                    </p>
+                    <div class="form-row align-items-center">
+                        <div class="col-sm-6 my-1">
+                            <a href="#" class="btn btn-danger"><i class="ti-close">  </i>Eliminar</a>
+                        </div>
+                        <div class="col-sm-6 my-1">
+                            <h3>$ 2500,00</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

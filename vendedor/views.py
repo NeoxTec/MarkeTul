@@ -24,6 +24,12 @@ def catalogos_vendedor(request):
 def editar_catalogo(request):
     return render(request, "vendedor/editar_catalogo.html")
 
+def editar_catalogo_2(request):
+    return render(request, "vendedor/editar_catalogo_2.html")
+
+def editar_catalogo_3(request):
+    return render(request, "vendedor/editar_catalogo_3.html")
+
 def catalogo_tienda(request):
     listaP = Producto.objects.all()
     context = {'productos': listaP}
