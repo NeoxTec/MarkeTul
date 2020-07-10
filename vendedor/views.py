@@ -34,7 +34,7 @@ def editar_catalogo(request,idCatal):
 def catalogo_tienda_sn(request,idTi):
     listaP = Producto.objects.filter(idTi_id=idTi)
     context = {'productos': listaP}
-    return render(request, "catalogo_tienda_sn.html",context)
+    return render(request, "vendedor/catalogo_tienda_sn.html",context)
 
 def editar_catalogo_2(request):
     return render(request, "vendedor/editar_catalogo_2.html")
