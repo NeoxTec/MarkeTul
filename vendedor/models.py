@@ -18,3 +18,9 @@ class SolicitudesVendedor(models.Model):
     idTi = models.ForeignKey(Tienda, null=True, blank=True, on_delete=models.CASCADE)
     idVen = models.ForeignKey(Vendedor, null=True, blank=True, on_delete=models.CASCADE)
 
+class Catalogo(models.Model):
+    idCatal = models.BigIntegerField(primary_key=True,auto_created=True)
+    categoria = models.CharField(max_length=200)
+    status = models.BooleanField(null=True, default=0)
+    idVen = models.ForeignKey(Vendedor, null=True, blank=True, on_delete=models.CASCADE)
+
