@@ -27,9 +27,14 @@ def editar_catalogo(request,idCatal):
     productos = []
     for producto in listaP:
         pro = Producto.objects.get(idProd=producto.idProducto_id)
-        productos = productos + pro
+        productos.append(pro)
     catalogo = Catalogo.objects.get(idCatal=idCatal)
     return render(request, "vendedor/editar_catalogo.html",{'productos':productos,'catalogo':catalogo})
+
+def catalogo_tienda_sn(request,idTi):
+    listaP = Producto.objects.filter(idTi_id=idTi)
+    context = {'productos': listaP}
+    return render(request, "catalogo_tienda_sn.html",context)
 
 def editar_catalogo_2(request):
     return render(request, "vendedor/editar_catalogo_2.html")
@@ -37,10 +42,17 @@ def editar_catalogo_2(request):
 def editar_catalogo_3(request):
     return render(request, "vendedor/editar_catalogo_3.html")
 
-def catalogo_tienda(request,idTi):
+def catalogo_tienda(request,idTi,idCatal):
     listaP = Producto.objects.filter(idTi_id=idTi)
-    context = {'productos': listaP}
+    context = {'productos': listaP,'idCatal':idCatal}
+    idCatal = idCatal
     return render(request, "vendedor/catalogo_tienda.html",context)
+
+def añadir_producto_catalogo(request,idProd,idCatal):
+    catalogo_producto = CatalogoProducto(idCatalogo_id=idCatal,idProducto_id=idProd).save()
+    listaC = Catalogo.objects.all()
+    context = {'catalogos': listaC}
+    return render(request, "vendedor/catalogos_vendedor.html", context)
 
 def vendedor_nueva_solicitud(request, idTi):
     userid = request.user.id

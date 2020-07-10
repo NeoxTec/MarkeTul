@@ -12,11 +12,10 @@
 <br>
 <div class="row align-items-center">
     <div class="col-sm-6 my-1">
-        <a href="{% url 'catalogos_vendedor' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em;"/></a>
+        <a href="{% url 'tiendas' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em;"/></a>
     </div>
 </div>
 {% for listaP in productos %}
-<form  action="{% url 'añadir_producto_catalogo' listaP.idProd idCatal %}" method="POST">{% csrf_token %}
 <div class="card-area">
     <div class="row">
         <div class="col-lg-4 col-md-6 mt-5">
@@ -26,9 +25,6 @@
                     <h5 class="title">{{ listaP.nombreProd }}</h5>
                     <p class="card-text">Descripción del Producto <br>{{listaP.descripcionProd}} <br> {{listaP.medidasProd}}</p>
                     <div class="form-row align-items-center">
-                        <div class="col-sm-6 my-1">
-                                <button type="submit" class="btn btn-warning"><i class="ti-book"> </i>Añadir al catálogo</a>
-                        </div>
                         <div class="col-sm-6 my-1" style="margin-left: 1em;">
                             <h3>$ {{listaP.precioProd}}</h3>
                         </div>
@@ -39,6 +35,5 @@
     
     </div>
 </div>
- </form>
 {% endfor %}
 {% endblock %}

@@ -14,14 +14,9 @@
     <div class="col-sm-3 my-1">
         <a href="{% url 'catalogos_vendedor' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em;"/></a>
     </div>
+
     <div class="col-sm-3 my-1">
-        <a href="{% url 'catalogos'%}" class="btn btn-primary">Vista Previa</a>
-    </div>
-    <div class="col-sm-3 my-1">
-        <a href="{% url 'catalogo_tienda' catalogo.idTien_id %}" class="btn btn-warning">Añadir Productos</a>
-    </div>
-    <div class="col-sm-3 my-1">
-        <a href="{% url 'catalogos_vendedor'%}" class="btn btn-success">Guardar</a>
+        <a href="{% url 'catalogo_tienda' catalogo.idTien_id  catalogo.idCatal %}" class="btn btn-warning">Añadir Productos</a>
     </div>
 </div> 
 <div class="card-area">
@@ -36,9 +31,6 @@
                         <br>
                         </p>
                         <div class="form-row align-items-center">
-                            <div class="col-sm-6 my-1">
-                                <a href="#" class="btn btn-danger"><i class="ti-close">  </i>Eliminar</a>
-                            </div>
                             <div class="col-sm-6 my-1">
                                 <h3>$ {{producto.precioProd}}</h3>
                             </div>
