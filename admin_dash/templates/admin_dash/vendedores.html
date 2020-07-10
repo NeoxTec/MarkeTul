@@ -21,29 +21,20 @@
                             <th>Nombre</th>
                             <th>Correo</th>
                             <th>Dirección</th>
-                            <th>Telefóno</th>
+                            <th>Edad</th>
                         </tr>
                     </thead>
                     <tbody>
+                    {% for  vendedor in  solicitudes %}
+                        {% if vendedor.status == 1 %}
                         <tr>
-                            <td>Daniel Vargas</td>
-                            <td>daniel_v@gmail.com</td>
-                            <td>Luis Ponce,Centro,110, Tulancingo</td>
-                            <td>77519632584</td>
+                            <td>{{vendedor.nombreV}}</td>
+                            <td>{{vendedor.correoV}}</td>
+                            <td>{{vendedor.direccionV}}</td>
+                            <td>{{vendedor.edadVen}}</td>
                         </tr>
-                        <tr>
-                            <td>Monserrat Ortega</a></td>
-                            <td>monseo@gmail.com</td>
-                            <td>Tamaulipas, Insurgentes 406, Tulancingo</td>
-                            <td> 7751269763</td>
-                        </tr>
-                            <tr>
-                                <td>Samuel Regil</a></td>
-                                <td>samregil@gmail.com</td>
-                                <td>Doria, Centro 101, Tulancingo</td>
-                                <td> 7751239685</td>
-                                
-                            </tr>
+                        {% endif %}
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

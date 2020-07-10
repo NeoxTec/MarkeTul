@@ -39,7 +39,9 @@ def admin_dash(request):
     return render(request, "admin_dash/admin_dash.html",{'ida':ida})
 
 def vendedores(request):
-    return render(request, "admin_dash/vendedores.html")
+    tienda = Tienda.objects.get(idAdmin_id=idAdmin)
+    solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
+    return render(request, "admin_dash/vendedores.html",{'solicitudes':solicitudes})
 
 def admin_productos(request):
     listaP = Producto.objects.all()
@@ -155,7 +157,7 @@ def cambiar_status_solicitud(request,idSolVen):
     sol = SolicitudesVendedor.objects.filter(idSolVen=idSolVen).update(status=cambio)
     tienda = Tienda.objects.get(idAdmin_id=idAdmin)
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
-    
+
     return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes}) 
 
 
