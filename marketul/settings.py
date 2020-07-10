@@ -78,12 +78,25 @@ WSGI_APPLICATION = 'marketul.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+"""if DEBUG == True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:"""
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mktul',
+        'USER': 'market',
+        'PASSWORD': 'mark1234',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
+
 
 
 # Password validation
@@ -128,3 +141,7 @@ STATIC_URL = '/static/'
 # Auth redirects
 LOGIN_REDIRECT_URL = 'admin_dash'  # Cambiar a vendedor_dash
 LOGOUT_REDIRECT_URL = 'home'
+
+# Media Files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

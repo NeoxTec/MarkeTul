@@ -15,6 +15,15 @@ def admin_productos(request):
     context = {'productos': listaP}
     return render(request, "admin_dash/admin_productos.html", context)
 
+def admin_tiendas(request):
+    return render(request, "admin_dash/admin_tiendas.html")
+
+def admin_nueva_tienda(request):
+    return render(request, "admin_dash/admin_nueva_tienda.html")
+    
+def admin_detalle_tienda(request):
+    return render(request, "admin_dash/admin_detalle_tienda.html")
+
 def admin_detalle_producto(request):
     return render(request, "admin_dash/admin_detalle_producto.html")
 

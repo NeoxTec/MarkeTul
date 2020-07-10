@@ -1,0 +1,40 @@
+{% extends 'admin_dash/master_dashboard.html' %}
+
+{% block titulo_pag %}Administrador de Tienda{% endblock %}
+
+{% block pagina %}Tiendas{% endblock %}
+
+{% block sub_pagina %}Nueva Tienda{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+    <a href="{% url 'admin_tiendas' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em; margin-top: 3em;"/></a>
+    <!-- basic form start -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Nueva Tienda</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="tienda">Tienda</label>
+                        <input type="text" class="form-control" id="tienda" required placeholder="Nombre Tienda">
+                    </div>
+                    <div class="custom-file">
+                        <label for="descripcion" class="custom-file-label">Elija Logo...</label>
+                        <input type="file" class="custom-file-input" id="logo" placeholder="Descripción del Producto" required>
+                    </div>
+               <div class="form-row align-items-center">
+                   <div class="col-sm-3 my-1">
+                    <button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button>
+                    </div>
+                    <div class="col-sm-3 my-1">
+                        <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Guardar</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

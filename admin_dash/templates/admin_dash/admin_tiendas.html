@@ -1,0 +1,49 @@
+{% extends 'admin_dash/master_dashboard.html' %}
+
+{% block titulo_pag %}Administrador de Tienda{% endblock %}
+
+{% block pagina %}Tiendas{% endblock %}
+
+{% block sub_pagina %}Inicio{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+    <div class="col-sm-3 my-1">
+        <a href="{% url 'admin_nueva_tienda' %}"><button class="btn btn-success mt-4 pr-4 pl-4"><i class="ti-plus"></i>Nueva Tienda</button></a>
+    </div>
+</div>
+<div class="row">
+    <!-- Dark table inicia -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Tiendas</h4>
+                <div class="data-tables datatable-dark">
+                    <table id="dataTable3" class="text-center">
+                        <thead class="text-capitalize">
+                            <tr>
+                                <th>Nombre de Tienda</th>
+                                <th>Nombre Administrador</th>
+                                <th>Dirección</th>
+                                <th>Contacto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for listaT in tiendas %}
+                                <tr>                                                            
+                                    <td><a href="{% url 'catalogo_tienda' %}">{{ listaT.nombreTi }}</a></td>
+                                    <td>Jorge Gomez</td>
+                                    <td>Tulancingo, Centro 40, Hidalgo </td>
+                                    <td>7751931356</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dark table finaliza -->
+    </div>
+{% endblock %}

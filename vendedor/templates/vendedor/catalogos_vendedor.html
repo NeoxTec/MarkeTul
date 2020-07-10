@@ -19,7 +19,7 @@
         {% for listaT in tiendas %}
             <div class="col-lg-7 col-md-8 mt-5">
                 <div class="card card-bordered">
-                    <img class="card-img-top img-fluid" src="{% static 'core/img/computo.jpeg' %}" alt="image">
+                    <img class="card-img-top img-fluid" src="{{listaT.logoTi.url}}" alt="">
                     <div class="card-body">
                         <h5 class="title">{{listaT.nombreTi}}</h5>
                         <div class="form-row align-items-center">

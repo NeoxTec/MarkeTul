@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 
 class UserCreationFormWithEmail(UserCreationForm):
     email = forms.EmailField(required=True, help_text="Requerido. 254 carácteres como máx. Debe ser válido")
-
+    
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username","first_name","last_name", "email", "password1", "password2","groups")
 
     def clean_email(self):
         email = self.cleaned_data.get("email")

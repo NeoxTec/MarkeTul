@@ -6,12 +6,10 @@ class Administrador(models.Model):
     telefonoAdmin = models.CharField(max_length=12)
     direccionAdmin = models.CharField(max_length=200)
 
-
-
 class Tienda(models.Model):
     idTi = models.BigIntegerField(primary_key=True,auto_created=True)
     nombreTi = models.CharField(max_length=200)
-    logoTi = models.ImageField()
+    logoTi = models.ImageField(upload_to="tienda")
     idAdmin = models.ForeignKey(Administrador, null=True, on_delete=models.SET_NULL)
 
 class Producto(models.Model):
