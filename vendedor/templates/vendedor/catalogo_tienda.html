@@ -12,7 +12,7 @@
 <br>
 <div class="row align-items-center">
     <div class="col-sm-6 my-1">
-        <a href="{% url 'tiendas' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em;"/></a>
+        <a href="{% url 'catalogos_vendedor' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em;"/></a>
     </div>
 </div>
 <div class="card-area">
@@ -26,12 +26,7 @@
                     <p class="card-text">Descripción del Producto <br>{{listaP.descripcionProd}} <br> {{listaP.medidasProd}}</p>
                     <div class="form-row align-items-center">
                         <div class="col-sm-6 my-1">
-                            {% if listaP.nombreProd == 'Impresora Canon' %}
-                                <a href="{% url 'editar_catalogo_3' %}" class="btn btn-warning"><i class="ti-book"> </i>Añadir al catálogo  </a>
-                            {% endif %}
-                            {% if listaP.nombreProd == 'Impresora Epson' %}
                                 <a href="{% url 'editar_catalogo_2' %}" class="btn btn-warning"><i class="ti-book"> </i>Añadir al catálogo  </a>
-                            {% endif %}
                         </div>
                         <div class="col-sm-6 my-1" style="margin-left: 1em;">
                             <h3>$ {{listaP.precioProd}}</h3>
