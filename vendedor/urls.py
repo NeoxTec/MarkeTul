@@ -12,6 +12,7 @@ urlpatterns = [
     path('editar_catalogo_3/',vendedor_views.editar_catalogo_3, name="editar_catalogo_3"),
     path('catalogo_tienda/',vendedor_views.catalogo_tienda, name="catalogo_tienda"),
     path('vendedor_nueva_solicitud/',vendedor_views.vendedor_nueva_solicitud, name="vendedor_nueva_solicitud"),
+    path('guardar_config/',vendedor_views.guardar_config, name="guardar_config"),
     path('vendedor_solicitudes/',vendedor_views.vendedor_solicitudes, name="vendedor_solicitudes"),
     path('vendedor_ventas/',vendedor_views.vendedor_ventas, name="vendedor_ventas"),
     path('config_vendedor/',vendedor_views.config_vendedor, name="config_vendedor"),

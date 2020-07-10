@@ -28,7 +28,7 @@
                             {% for listaT in tiendas %}
                                 <tr>                                                            
                                     <td><a href="{% url 'catalogo_tienda'%}">{{ listaT.nombreTi }}</a></td>
-                                    <td>Jorge Gomez</td>
+                                    <td>{{administrador.nombreAdmin}}</td>
                                     <td>Tulancingo, Centro 40, Hidalgo </td>
                                     <td>7751931356</td>
                                 </tr>
