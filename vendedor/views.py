@@ -2,7 +2,7 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from admin_dash.models import Producto,Tienda,Administrador
-from vendedor.models import Vendedor,SolicitudesVendedor
+from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo
 
 # Create your views here.
 
@@ -18,8 +18,8 @@ def tiendas(request):
     return render(request, "vendedor/tiendas.html", context)
 
 def catalogos_vendedor(request):
-    listaT = Tienda.objects.all()
-    context = {'tiendas': listaT}
+    listaC = Catalogo.objects.all()
+    context = {'catalogos': listaC}
     return render(request, "vendedor/catalogos_vendedor.html", context)
 
 def editar_catalogo(request):

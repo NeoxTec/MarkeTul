@@ -27,6 +27,7 @@ class Catalogo(models.Model):
     categoria = models.CharField(max_length=200)
     status = models.BooleanField(null=True, default=0)
     idVen = models.ForeignKey(Vendedor, null=True, blank=True, on_delete=models.CASCADE)
+    idTien = models.ForeignKey(Tienda,null=True, blank=True, on_delete=models.CASCADE)
 
 
 

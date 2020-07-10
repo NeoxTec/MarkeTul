@@ -171,8 +171,9 @@ def cambiar_status_solicitud(request,idSolVen):
     categoria = "Computo",
     status_nuevo = 1
     idVendedor = int(str(solicitud.idVen_id))
+    idTienda = tienda.idTi
 
-    catalogo = Catalogo(categoria=str(categoria),status=status_nuevo,idVen_id=idVendedor).save()
+    catalogo = Catalogo(categoria=categoria,status=status_nuevo,idVen_id=idVendedor,idTien_id=idTienda).save()
     
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
 
