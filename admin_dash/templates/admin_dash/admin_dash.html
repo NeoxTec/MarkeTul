@@ -1,6 +1,12 @@
 {% extends 'admin_dash/master_dashboard.html' %}
 
-{% block titulo_pag %}Administrador de Tienda{% endblock %}
+{% block titulo_pag %}
+{% if user.is_staff%}
+    Administrador de Tienda
+{% else %}
+    Vendedor
+{% endif %}
+{% endblock %}
 
 {% block pagina %}Inicio{% endblock %}
 
