@@ -123,8 +123,12 @@
                         </div>
                         <div class="col-sm-6 clearfix">
                             <div class="user-profile pull-right">
-                                <img class="avatar user-thumb" src="{% static 'core/img/nike.png' %}" alt="avatar">
-                                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Tennis Backs</h4>
+                                {% if user.is_staff %}
+                                    <img class="avatar user-thumb" src="{% static 'core/img/admin.png' %}" alt="avatar">
+                                {% else %}
+                                    <img class="avatar user-thumb" src="{% static 'core/img/salesman.png' %}" alt="avatar">
+                                {% endif %}
+                                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{user.username}}</h4>
                             </div>
                         </div>
                     </div>
