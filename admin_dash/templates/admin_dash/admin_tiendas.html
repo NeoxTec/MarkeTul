@@ -9,9 +9,11 @@
 {% block content %}
 {% load static %}
 <div class="row">
-    <div class="col-sm-3 my-1">
-        <a href="{% url 'admin_nueva_tienda' %}"><button class="btn btn-success mt-4 pr-4 pl-4"><i class="ti-plus"></i>Nueva Tienda</button></a>
-    </div>
+    
+        <button type="button" class="btn btn-success mt-4 pr-4 pl-4" data-toggle="modal" data-target="#openNew">
+            <i class="ti-plus"> </i>Nueva Tienda
+        </button>
+    
 </div>
 <div class="row">
     <!-- Dark table inicia -->
@@ -27,7 +29,7 @@
                                 <th>Nombre Administrador</th>
                                 <th>Dirección</th>
                                 <th>Contacto</th>
-                                <th></th>
+                                <!--th></th-->
                             </tr>
                         </thead>
                         <tbody>
@@ -37,12 +39,12 @@
                                     <td>{{admin.nombreAdmin}}</td>
                                     <td>{{admin.direccionAdmin}}</td>
                                     <td>{{admin.telefonoAdmin}}</td>
-                                    <td>
-                                        <a href="{% url 'admin_detalle_tienda' %}">
+                                    <!--td>
+                                        <a href="/admin_detalle_tienda/{{listaT.idTi}}">
                                         <input type="button" value="Editar"class="btn btn-success mt-3 pr-3 pl-3"/>
                                         </a>
-                                        <input type="hidden" value={{listaT.idTi}}/>
-                                    </td>
+                                        <input type="text" value="{{listaT.idTi}}"/>
+                                    </td-->
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -53,4 +55,37 @@
     </div>
     <!-- Dark table finaliza -->
     </div>
+
+
+<div id="openNew" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title">Agregar Tienda</h4><br>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <form method="POST" action="{% url 'admin_nueva_tienda' %}">
+            {% csrf_token %}
+                <div class="form-group">
+                        <label for="tienda">Nombre de la tienda</label>
+                        <input type="text" class="form-control" name="nombreTi" required placeholder="Nombre de la tienda">
+                    </div>
+                    <div class="custom-file">
+                        <label for="descripcion" class="custom-file-label">Elija Logo...</label>
+                        <input type="file" class="custom-file-input" name="logoTi" placeholder="Imagen" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Añadir</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+        </form>
+      </div>
+    </div>
+   </div>
+</div>
+
 {% endblock %}

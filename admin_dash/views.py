@@ -63,7 +63,16 @@ def admin_tiendas(request):
 
 def admin_nueva_tienda(request):
     print(idAdmin)
-    return render(request, "admin_dash/admin_nueva_tienda.html")
+    idad = idAdmin
+    name = request.POST['nombreTi'],
+    image = request.POST['logoTi']
+    idTienda = Tienda.objects.last()
+    print("Ultima tienda registrada es: " + str(idTienda.idTi + 1))
+    Tienda(idAdmin_id=idad, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi="tienda/"+ str(image)).save()
+
+    listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
+    admin = Administrador.objects.get(id=idAdmin)
+    return render(request, "admin_dash/admin_tiendas.html", {'tiendas': listaT, 'admin': admin})
 
 def nueva_tienda(request):
     print("admin es:"+ str(idAdmin))
