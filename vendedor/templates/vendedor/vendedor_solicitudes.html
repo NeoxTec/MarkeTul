@@ -19,17 +19,17 @@
                     <table id="dataTable3" class="text-center">
                         <thead class="text-capitalize">
                             <tr>
-                                <th>Nombre Tienda</th>
                                 <th>Estatus</th>
                             </tr>
                         </thead>
                         <tbody>
+                        {% for solicitud in solicitudes  %}
                             <tr>
-                                <td>{{tiendas.nombreTi}}</td>
-                                {% if solicitudes.status == 0 %}
+                                {% if solicitud.status == 0 %}
                                     <td>Pendiente</td>
                                 {% endif %}
                             </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>

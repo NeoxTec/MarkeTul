@@ -22,32 +22,22 @@
                                 <th>Nombre</th>
                                 <th>Correo Electrónico</th>
                                 <th>Dirección</th>
-                                <th>Teléfono</th>
+                                <th>Edad</th>
                                 <th>Estatus</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for solicitud in solicitudes%}
                             <tr>
-                                <td><a href="{% url 'admin_detalle_solicitud' %}">Daniel Vargas</a></td>
-                                <td>daniel_v@gmail.com</td>
-                                <td>Luis Ponce,Centro,110, Tulancingo </td>
-                                <td><i class="ti-mobile"></i> 77519632584</td>
-                                <td>Pendiente</td>
+                                <td><a href="{% url 'admin_detalle_solicitud' %}">{{solicitud.nombreV}}</a></td>
+                                <td>{{solicitud.correoV}}</td>
+                                <td>{{solicitud.direccionV}}</td>
+                                <td>{{solicitud.edadVen}}</td>
+                                {% if solicitud.status == 0 %}
+                                    <td>Pendiente</td>
+                                {% endif %}
                             </tr>
-                            <tr>
-                                <td>Monserrat Ortega</a></td>
-                                <td>monseo@gmail.com</td>
-                                <td>Tamaulipas, Insurgentes 406, Tulancingo</td>
-                                <td><i class="ti-mobile"></i> 7751269763</td>
-                                <td>Aceptado</td>
-                            </tr>
-                            <tr>
-                                <td>Samuel Regil</a></td>
-                                <td>samregil@gmail.com</td>
-                                <td>Doria, Centro 101, Tulancingo</td>
-                                <td><i class="ti-mobile"></i> 7751239685</td>
-                                <td>Aceptado</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

@@ -47,9 +47,8 @@ def vendedor_solicitudes(request):
     userid = request.user.id
     id_usuario = User.objects.get(id=userid)
     vendedor = Vendedor.objects.get(idUser_id=userid)
-    solicitudes = SolicitudesVendedor.objects.get(idVen_id=vendedor.idVend)
-    tiendas = Tienda.objects.get(idTi=solicitudes.idTi_id)
-    return render(request, "vendedor/vendedor_solicitudes.html",{'solicitudes':solicitudes,'tiendas':tiendas}) 
+    solicitudes = SolicitudesVendedor.objects.filter(idVen_id=vendedor.idVend)
+    return render(request, "vendedor/vendedor_solicitudes.html",{'solicitudes':solicitudes}) 
 
 def vendedor_ventas(request):
     return render(request, "vendedor/vendedor_ventas.html") 
@@ -85,7 +84,7 @@ def enviar_solicitud(request,idTi):
     genero = request.POST['genero'],
     motivo = request.POST['motivos'],
 
-    sol = SolicitudesVendedor(nombreV=str(nombre[0]), direccionV=str(direccion), correoV = str(correo),
+    sol = SolicitudesVendedor(nombreV=str(nombre[0]), direccionV=direccion, correoV = correo,
                 edadVen=edad, genero=str(genero[0]), motivos=str(motivo), idTi_id=tienda.idTi, idVen_id=vendedor.idVend).save()
 
     return render(request, "vendedor/vendedor_solicitudes.html")
