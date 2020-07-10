@@ -1,4 +1,4 @@
-{% extends 'vendedor/master_dashboard2.html' %}
+{% extends 'admin_dash/master_dashboard.html' %}
 
 {% block titulo_pag %}Vendedor{% endblock %}
 
@@ -27,7 +27,7 @@
                         <tbody>
                             {% for listaT in tiendas %}
                                 <tr>                                                            
-                                    <td><a href="{% url 'catalogo_tienda' %}">{{ listaT.nombreTi }}</a></td>
+                                    <td><a href="{% url 'catalogo_tienda'%}">{{ listaT.nombreTi }}</a></td>
                                     <td>Jorge Gomez</td>
                                     <td>Tulancingo, Centro 40, Hidalgo </td>
                                     <td>7751931356</td>
