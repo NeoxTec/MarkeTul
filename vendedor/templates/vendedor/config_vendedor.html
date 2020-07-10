@@ -17,15 +17,15 @@
                 <form>
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" required value="Daniel Vargas">
+                        <input type="text" class="form-control" id="nombre" required value={{user.username}}>
                     </div>
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="text" class="form-control" id="telefono" placeholder="7719632584" required>
+                        <input type="text" class="form-control" id="telefono" required>
                     </div>
                     <div class="form-group">
                         <label for="correp">Correo Electrónico</label>
-                        <input type="text" class="form-control" id="correo" value="daniel@gmail.com" required>
+                        <input type="text" class="form-control" id="correo" value="{{user.email}}" required>
                     </div>
                     <div class="form-group">
                         <label for="nc">Nueva Contraseña</label>
@@ -40,7 +40,7 @@
                     <a href="{% url 'vendedor_dash' %}"><button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button></a>
                     </div>
                     <div class="col-sm-3 my-1">
-                        <a href="{% url 'config_vendedor_r' %}"><button type="button" class="btn btn-success mt-4 pr-4 pl-4">Aceptar</button></a>
+                        <a href=""><button type="sumbit" class="btn btn-success mt-4 pr-4 pl-4">Aceptar</button></a>
                     </div>
                 </div>
                 </form>
