@@ -17,15 +17,15 @@
                 <form action="{% url 'guardar_config' %}" method="post">{% csrf_token %}
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre"  name="nombreVend" required value={{user.username}}>
+                        <input type="text" class="form-control" id="nombre"  name="nombreVend" required value={{datos.nombreVend}}>
                     </div>
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="text" class="form-control" id="telefono" name="telefono" required>
+                        <input type="text" class="form-control" id="telefono" name="telefono" required value={{datos.telefono}}>
                     </div>
                     <div class="form-group">
                         <label for="correp">Correo Electrónico</label>
-                        <input type="text" class="form-control" id="correo" name="correo" value="{{user.email}}" required>
+                        <input type="text" class="form-control" id="correo" name="correo" value="{{datos.correo}}" required>
                     </div>
                     <div class="form-group">
                         <label for="nc">Nueva Contraseña</label>

@@ -1,9 +1,7 @@
 from django.views.generic.base import TemplateView
 from django.contrib.auth.models import User
 from django.shortcuts import render
-from admin_dash.models import Producto
-from admin_dash.models import Tienda
-from admin_dash.models import Administrador
+from admin_dash.models import Producto,Tienda,Administrador
 from vendedor.models import Vendedor
 
 # Create your views here.
@@ -49,21 +47,20 @@ def vendedor_ventas(request):
     return render(request, "vendedor/vendedor_ventas.html") 
 
 def config_vendedor(request):
-    return render(request, "vendedor/config_vendedor.html") 
+    userid = request.user.id
+    id_usuario = User.objects.get(id=userid)
+    datos_vendedor = Vendedor.objects.get(idUser_id=userid)
+    return render(request, "vendedor/config_vendedor.html", {'datos':datos_vendedor}) 
 
 def guardar_config(request):
     userid = request.user.id
     id_usuario = User.objects.get(id=userid)
-    print ("ID_USUARIO:" + str(userid))
     nombre = request.POST['nombreVend'],
     telefono = request.POST['telefono'],
     correo = request.POST['correo']
-    print (correo)
     telefono = int(str(telefono[0]))
-    configuracion = Vendedor(nombreVend=str(nombre[0]), telefono=telefono, correo=str(correo[0]),idUser=id_usuario)
-    configuracion.save()
+    configuracion = Vendedor.objects.filter(idUser_id = userid).update(nombreVend=str(nombre[0]), telefono=telefono, correo=str(correo))
 
-    return render(request,"vendedor/vendedor_dash.html") 
-
-def config_vendedor_r(request):
-    return render(request, "vendedor/config_vendedor_r.html") 
+    datos_vendedor = Vendedor.objects.get(idUser_id=userid)
+    return render(request, "vendedor/config_vendedor.html", {'datos':datos_vendedor}) 
+ 

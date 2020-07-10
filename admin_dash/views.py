@@ -163,6 +163,6 @@ def update_config(request):
     telefono = int(str(telefono[0]))
     # Objeto del modelo
     config = Administrador.objects.filter(idUser_id = idAdmin).update(nombreAdmin=str(nombre[0]),direccionAdmin=str(direccion[0]),
-                                          telefonoAdmin=telefono,correoAdmin=str(correo[0]))
+                                          telefonoAdmin=telefono,correoAdmin=str(correo))
     datos_admin = Administrador.objects.get(id=idAdmin)
     return render(request, "admin_dash/config_admin.html",{'datos':datos_admin})
