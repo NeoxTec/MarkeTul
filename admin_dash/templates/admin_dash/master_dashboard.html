@@ -51,10 +51,17 @@
                     <div class="menu-inner">
                         <nav>
                             <ul class="metismenu" id="menu">
-                                <li><a href="{% url 'admin_tiendas' %}"><i class="ti-agenda"></i><span>Tiendas</span></a></li>
-                                <li><a href="{% url 'vendedores' %}"><i class="ti-user"></i><span>Vendedores</span></a></li>
-                                <li><a href="{% url 'admin_productos' %}"><i class="ti-dropbox-alt"></i><span>Productos</span></a></li>
-                                <li><a href="{% url 'config_admin' %}"><i class="ti-settings"></i><span>Configuración cuenta</span></a></li>
+                                {% if user.is_staff %}
+                                    <li><a href="{% url 'admin_tiendas' %}"><i class="ti-agenda"></i><span>Tiendas</span></a></li>
+                                    <li><a href="{% url 'vendedores' %}"><i class="ti-user"></i><span>Vendedores</span></a></li>
+                                    <li><a href="{% url 'admin_productos' %}"><i class="ti-dropbox-alt"></i><span>Productos</span></a></li>
+                                    <li><a href="{% url 'config_admin' %}"><i class="ti-settings"></i><span>Configuración cuenta</span></a></li>
+                                {% endif %}
+                                {% if not user.is_staff %}
+                                    <li><a href="{% url 'tiendas' %}"><i class="ti-agenda"></i><span>Tiendas</span></a></li>
+                                    <li><a href="{% url 'catalogos_vendedor' %}"><i class="ti-calendar"></i><span>Catálogos</span></a></li>
+                                    <li><a href="{% url 'config_vendedor' %}"><i class="ti-settings"></i><span>Configuración cuenta</span></a></li>
+                                {% endif %}
                                 <li><a href="{% url 'home' %}"><i class="ti-power-off"></i><span>Cerrar Sesión</span></a></li>
                             </ul>
                         </nav>

@@ -21,5 +21,5 @@ class SignupView(CreateView):
         form.fields['email'].widget = forms.EmailInput(attrs={'class':'form-control mb-2', 'placeholder':'Correo electrónico'})
         form.fields['password1'].widget = forms.PasswordInput(attrs={'class':'form-control mb-2', 'placeholder':'Contraseña'})
         form.fields['password2'].widget = forms.PasswordInput(attrs={'class':'form-control mb-2', 'placeholder':'Repite la contraseña'})
-        #form.fields['groups'].widget = forms.SelectMultiple(attrs={'class':'form-control mb-2', 'placeholder':'Selecciona un Tipo de usuario'})
+
         return form
