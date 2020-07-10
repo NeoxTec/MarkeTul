@@ -146,8 +146,18 @@ def admin_solicitudes_vendedor(request):
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
     return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes}) 
 
-def admin_detalle_solicitud(request):
-    return render(request, "admin_dash/admin_detalle_solicitud.html") 
+def admin_detalle_solicitud(request,idSolVen):
+    solicitud = SolicitudesVendedor.objects.get(idSolVen=idSolVen)
+    return render(request, "admin_dash/admin_detalle_solicitud.html",{'solicitud':solicitud}) 
+
+def cambiar_status_solicitud(request,idSolVen):
+    cambio = 1
+    sol = SolicitudesVendedor.objects.filter(idSolVen=idSolVen).update(status=cambio)
+    tienda = Tienda.objects.get(idAdmin_id=idAdmin)
+    solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
+    
+    return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes}) 
+
 
 def admin_rechazo_solicitud(request):
     return render(request, "admin_dash/admin_rechazo_solicitud.html") 

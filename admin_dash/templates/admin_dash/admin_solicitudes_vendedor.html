@@ -29,12 +29,14 @@
                         <tbody>
                             {% for solicitud in solicitudes%}
                             <tr>
-                                <td><a href="{% url 'admin_detalle_solicitud' %}">{{solicitud.nombreV}}</a></td>
+                                <td><a href="{% url 'admin_detalle_solicitud' solicitud.idSolVen %}">{{solicitud.nombreV}}</a></td>
                                 <td>{{solicitud.correoV}}</td>
                                 <td>{{solicitud.direccionV}}</td>
                                 <td>{{solicitud.edadVen}}</td>
                                 {% if solicitud.status == 0 %}
                                     <td>Pendiente</td>
+                                {% elif solicitud.status == 1 %}
+                                    <td>Aceptada</td>
                                 {% endif %}
                             </tr>
                             {% endfor %}

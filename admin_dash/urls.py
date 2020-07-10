@@ -5,7 +5,8 @@ urlpatterns = [
     # Paths de admin
     path('admin_dash/',admin_views.admin_dash, name="admin_dash"),
     path('admin_solicitudes_vendedor/',admin_views.admin_solicitudes_vendedor, name="admin_solicitudes_vendedor"),
-    path('admin_detalle_solicitud/', admin_views.admin_detalle_solicitud, name="admin_detalle_solicitud"),
+    path('cambiar_status_solicitud/<int:idSolVen>',admin_views.cambiar_status_solicitud, name="cambiar_status_solicitud"),
+    path('admin_detalle_solicitud/<int:idSolVen>', admin_views.admin_detalle_solicitud, name="admin_detalle_solicitud"),
     path('admin_rechazo_solicitud/',admin_views.admin_rechazo_solicitud, name="admin_rechazo_solicitud"),
     path('admin_tiendas/', admin_views.admin_tiendas, name="admin_tiendas"),
     path('admin_nueva_tienda/', admin_views.admin_nueva_tienda, name="admin_nueva_tienda"),

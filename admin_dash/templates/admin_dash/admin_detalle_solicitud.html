@@ -15,44 +15,39 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Solicitud Vendedor</h4>
-                <form>
+                <form action="{% url 'cambiar_status_solicitud' solicitud.idSolVen%}" method="post">{% csrf_token %}
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" required value="Daniel Vargas" disabled>
+                        <input type="text" class="form-control" id="nombre"  value="{{solicitud.nombreV}}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="direccion">Dirección</label>
-                        <input type="text" class="form-control" id="direccion" value="Luis Ponce,Centro,110, Tulancingo " required disabled>
+                        <input type="text" class="form-control" id="direccion" value="{{solicitud.direccionV}}"  required disabled>
                     </div>
                     <div class="form-group">
                         <label for="correo">Correo Electrónico</label>
-                        <input type="text" class="form-control" id="correo" value="daniel_v@gmail.com" required disabled>
+                        <input type="text" class="form-control" id="correo" value="{{solicitud.correoV}}" required disabled>
                     </div>
                <div class="form-group">
-                <label class="col-form-label">Edad</label>
-                <select class="form-control" disabled>
-                    <option>21</option>
-                    <option>21</option>
-                </select>
+                <label class="col-form-label" for="edad">Edad</label>
+                <input type="text" class="form-control" id="edad" value="{{solicitud.edadVen}}" required disabled>
                </div> 
                <div class="form-group">
                 <label class="col-form-label">Género</label>
                 <select class="form-control" disabled>
-                    <option>Masculino</option>
-                    <option>Femenino</option>
-                    <option>Otro</option>
+                    <option>{{solicitud.genero}}</option>
                 </select>
                </div> 
                <div class="form-group">
                 <label for="motivo">Motivo</label>
-                <textarea class="form-control" id="motivo" rows="3" disabled>Me interesa colaborar porque adoro la tecnologia</textarea>
+                <textarea class="form-control" id="motivo" rows="3" disabled>{{solicitud.motivos}}</textarea>
                </div> 
                <div class="form-row align-items-center">
                    <div class="col-sm-3 my-1">
                     <a href="{% url 'admin_rechazo_solicitud' %}"><button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Rechazar</button></a>
                     </div>
                     <div class="col-sm-3 my-1">
-                        <a href="{% url 'admin_solicitudes_vendedor_n'%}"><button type="button" class="btn btn-success mt-4 pr-4 pl-4">Aceptar</button></a>
+                        <a href="#"><button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Aceptar</button></a>
                     </div>
                 </div>
                 </form>
