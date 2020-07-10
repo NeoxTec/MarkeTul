@@ -15,38 +15,35 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Solicitud Vendedor</h4>
-                <form>
+                <form method="post" action="{% url 'enviar_solicitud' tienda.idTi %}">{% csrf_token %}
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" required placeholder="Daniel Vargas" disabled>
+                        <input type="text" class="form-control" id="nombre" name="nombreV" value="{{datos.nombreVend}}" >
                     </div>
                     <div class="form-group">
                         <label for="direccion">Dirección</label>
-                        <input type="text" class="form-control" id="direccion" placeholder="Dirección del Vendedor *" required>
+                        <input type="text" class="form-control" id="direccion" name="direccionV" placeholder="Dirección del Vendedor *" required>
                     </div>
                     <div class="form-group">
                         <label for="correo">Correo Electrónico</label>
-                        <input type="text" class="form-control" id="correo" value="daniel@gmail.com" required disabled>
+                        <input type="text" class="form-control" id="correoV" name="correoV" value="{{datos.correo}}"  >
                     </div>
                <div class="form-group">
-                <label class="col-form-label">Edad</label>
-                <select class="form-control">
-                    <option>Selecciona tu edad...</option>
-                    <option>21</option>
-                    <option>22</option>
-                </select>
+                <label class="col-form-label" for="edadVend">Edad</label>
+                <input type="text" class="form-control" id="edadVend" name="edadVend" placeholder="Edad del Vendedor *" required>
                </div> 
                <div class="form-group">
                 <label class="col-form-label">Género</label>
-                <select class="form-control">
+                <select class="form-control" name="genero">
                     <option>Selecciona tu género...</option>
-                    <option>21</option>
-                    <option>22</option>
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                    <option value="LGBTIQ">LGBTIQ+</option>
                 </select>
                </div> 
                <div class="form-group">
                 <label for="motivo">Motivo</label>
-                <textarea class="form-control" id="motivo" rows="3" aria-describedby="info_motivo"></textarea>
+                <textarea class="form-control" id="motivo" rows="3" aria-describedby="info_motivo" name="motivos"></textarea>
                 <small id="info_motivo" class="form-text text-muted">Ingresa los motivos por los cuales te gustaría trabajar para esta tienda.</small>
                </div> 
                <div class="form-row align-items-center">

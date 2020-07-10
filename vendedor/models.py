@@ -15,7 +15,10 @@ class SolicitudesVendedor(models.Model):
     motivos = models.TextField()
     edadVen = models.IntegerField(null=True,blank=True)
     genero = models.CharField(max_length=50, null=True,blank=True)
-    status = models.SmallIntegerField()
+    nombreV = models.CharField(max_length=200, null=True)
+    correoV = models.CharField(max_length=200, null=True, blank=True)
+    direccionV = models.CharField(max_length=200, null=True)
+    status = models.SmallIntegerField(default=0)
     idTi = models.ForeignKey(Tienda, null=True, blank=True, on_delete=models.CASCADE)
     idVen = models.ForeignKey(Vendedor, null=True, blank=True, on_delete=models.CASCADE)
 
