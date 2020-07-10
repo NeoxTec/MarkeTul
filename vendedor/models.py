@@ -1,5 +1,5 @@
 from django.db import models
-from admin_dash.models import Tienda
+from admin_dash.models import Tienda,Producto
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -29,5 +29,9 @@ class Catalogo(models.Model):
     idVen = models.ForeignKey(Vendedor, null=True, blank=True, on_delete=models.CASCADE)
     idTien = models.ForeignKey(Tienda,null=True, blank=True, on_delete=models.CASCADE)
 
+class CatalogoProducto(models.Model):
+    idCatProd = models.AutoField(primary_key=True,auto_created=True)
+    idProducto = models.ForeignKey(Producto,null=True, blank=True, on_delete=models.CASCADE)
+    idCatalogo = models.ForeignKey(Catalogo,null=True, blank=True, on_delete=models.CASCADE)
 
 

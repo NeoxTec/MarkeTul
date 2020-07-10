@@ -27,6 +27,8 @@
                             <tr>
                                 {% if solicitud.status == 0 %}
                                     <td>Pendiente</td>
+                                {% elif solicitud.status == 1%}
+                                    <td>Aceptada</td>
                                 {% endif %}
                             </tr>
                         {% endfor %}
