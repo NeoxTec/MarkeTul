@@ -19,15 +19,19 @@ def admin_dash(request):
     conteo = Administrador.objects.filter(idUser_id=userid).count()
     conteo2 = Vendedor.objects.filter(idUser_id=userid).count()
     if (conteo!=1 and id_usuario.is_staff):
-        nadmin = Administrador(nombreAdmin=id_usuario.first_name,idUser_id=userid)
+        nadmin = Administrador(nombreAdmin=id_usuario.first_name,idUser_id=userid,correoAdmin=id_usuario.email)
         nadmin.save()
         ida = Administrador.objects.get(idUser_id=userid)
     elif (conteo2!=1 and not id_usuario.is_staff):
-        vendedor = Vendedor(nombreVend=id_usuario.first_name,idUser_id=userid)
+        vendedor = Vendedor(nombreVend=id_usuario.first_name,idUser_id=userid,correo=id_usuario.email)
         vendedor.save()
         ida = Vendedor.objects.get(idUser_id=userid)
     else:
-        ida= Administrador.objects.get(idUser_id=userid)#llama a admin1 
+        if (id_usuario.is_staff):
+            ida= Administrador.objects.get(idUser_id=userid)#llama a admin1 
+        elif(not id_usuario.is_staff):
+            ida = Vendedor.objects.get(idUser_id=userid)
+            ida.id = ida.idVend
         global idAdmin #toma variable global para cambiarla
         idAdmin = int(ida.id) #cambia el valor de la variable global para consultas posteriores
         #print(str(idAdmin)) #comprueba cambio
@@ -148,5 +152,17 @@ def admin_rechazo_solicitud(request):
 
 def config_admin(request):
     #print ("id del admin es: " +  str(idAdmin))
+    datos_admin = Administrador.objects.get(idUser_id=idAdmin)
+    return render(request, "admin_dash/config_admin.html",{'datos':datos_admin})
+
+def update_config(request):
+    nombre = request.POST['nombreAdmin'],
+    direccion = request.POST['direccionAdmin'],
+    telefono = request.POST['telefonoAdmin'],
+    correo = request.POST['correoAdmin']
+    telefono = int(str(telefono[0]))
+    # Objeto del modelo
+    config = Administrador.objects.filter(idUser_id = idAdmin).update(nombreAdmin=str(nombre[0]),direccionAdmin=str(direccion[0]),
+                                          telefonoAdmin=telefono,correoAdmin=str(correo[0]))
     datos_admin = Administrador.objects.get(id=idAdmin)
     return render(request, "admin_dash/config_admin.html",{'datos':datos_admin})

@@ -18,6 +18,7 @@ urlpatterns = [
     path('producto_eliminado/',admin_views.producto_eliminado, name="producto_eliminado"),
     path('admin_detalle_producto/<id>',admin_views.admin_detalle_producto, name="admin_detalle_producto"),
     path('config_admin/', admin_views.config_admin, name="config_admin"),
+    path('update_config/', admin_views.update_config, name="update_config"),
     path('vendedores/',admin_views.vendedores, name="vendedores"),
     path('nueva_tienda/',admin_views.admin_tiendas, name='nueva_tienda'),
 ]

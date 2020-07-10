@@ -8,6 +8,7 @@ class Administrador(models.Model):
     nombreAdmin = models.CharField(max_length=120)
     telefonoAdmin = models.CharField(max_length=12, null= True)
     direccionAdmin = models.CharField(max_length=200)
+    correoAdmin = models.CharField(max_length=200, null=True, blank=True,)
     idUser = models.ForeignKey(User,null=True, blank=True, on_delete=models.CASCADE)
 
 class Tienda(models.Model):

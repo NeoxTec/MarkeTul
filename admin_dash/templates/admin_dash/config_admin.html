@@ -14,34 +14,31 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Cuenta</h4>
-                <form>
+                <form action="{% url 'update_config' %}" method ="post">
+                {% csrf_token %}
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" required value="{{datos.nombreAdmin}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="tienda">Tienda</label>
-                        <input type="text" class="form-control" id="tienda" value="Tennis backs" required>
+                        <input type="text" class="form-control" id="nombre" name="nombreAdmin" required value="{{datos.nombreAdmin}}">
                     </div>
                     <div class="form-group">
                         <label for="direccion">Dirección</label>
-                        <input type="text" class="form-control" id="direccion" value="{{datos.direccionAdmin}}" required>
+                        <input type="text" class="form-control" id="direccion" name="direccionAdmin" value="{{datos.direccionAdmin}}" required>
                     </div>
                     <div class="form-group">
-                        <label for="contacto">Contacto</label>
-                        <input type="text" class="form-control" id="contacto" value="{{datos.telefonoAdmin}}" required>
+                        <label for="contacto">Teléfono</label>
+                        <input type="text" class="form-control" id="contacto" name="telefonoAdmin" value="{{datos.telefonoAdmin}}" required>
                     </div>
                     <div class="form-group">
                         <label for="correp">Correo Electrónico</label>
-                        <input type="text" class="form-control" id="correo" value="daniel@gmail.com" required>
+                        <input type="text" class="form-control" id="correo"  name ="correoAdmin" value="{{datos.correoAdmin}}" required>
                     </div>
                     <div class="form-group">
                         <label for="nc">Nueva Contraseña</label>
-                        <input type="password" class="form-control" id="nc" required>
+                        <input type="password" class="form-control" id="nc">
                     </div>
                     <div class="form-group">
                         <label for="cc">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" id="cc" required>
+                        <input type="password" class="form-control" id="cc">
                     </div>
                <div class="form-row align-items-center">
                    <div class="col-sm-3 my-1">
