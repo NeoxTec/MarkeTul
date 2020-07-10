@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.db.models import Q
 from admin_dash.models import Producto, Tienda, Administrador
 from django.contrib.auth.models import User
-from vendedor.models import Vendedor,SolicitudesVendedor
+from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo
 
 idAdmin = 0
 idUser = 0
@@ -153,6 +153,7 @@ def producto_eliminado(request):
     return render(request,"admin_dash/admin_productos.html",{'productos':listaP})
 
 def admin_solicitudes_vendedor(request):
+    print("ID_USER:" + str(idAdmin))
     tienda = Tienda.objects.get(idAdmin_id=idAdmin)
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
     return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes}) 
@@ -165,6 +166,14 @@ def cambiar_status_solicitud(request,idSolVen):
     cambio = 1
     sol = SolicitudesVendedor.objects.filter(idSolVen=idSolVen).update(status=cambio)
     tienda = Tienda.objects.get(idAdmin_id=idAdmin)
+
+    solicitud = SolicitudesVendedor.objects.get(idSolVen=idSolVen)
+    categoria = "Computo",
+    status_nuevo = 1
+    idVendedor = int(str(solicitud.idVen_id))
+
+    catalogo = Catalogo(categoria=str(categoria),status=status_nuevo,idVen_id=idVendedor).save()
+    
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
 
     return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes}) 

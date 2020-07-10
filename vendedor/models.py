@@ -28,3 +28,5 @@ class Catalogo(models.Model):
     status = models.BooleanField(null=True, default=0)
     idVen = models.ForeignKey(Vendedor, null=True, blank=True, on_delete=models.CASCADE)
 
+
+
