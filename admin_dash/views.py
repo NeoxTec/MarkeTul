@@ -142,6 +142,7 @@ def producto_eliminado(request):
     return render(request,"admin_dash/admin_productos.html",{'productos':listaP})
 
 def admin_solicitudes_vendedor(request):
+    
     return render(request, "admin_dash/admin_solicitudes_vendedor.html") 
 
 def admin_detalle_solicitud(request):

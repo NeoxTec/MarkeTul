@@ -25,8 +25,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Electronica y Computo MkTul</td>
-                                <td>Aceptada</td>
+                                <td>{{tiendas.nombreTi}}</td>
+                                {% if solicitudes.status == 0 %}
+                                    <td>Pendiente</td>
+                                {% endif %}
                             </tr>
                         </tbody>
                     </table>

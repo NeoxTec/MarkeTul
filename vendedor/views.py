@@ -44,7 +44,12 @@ def vendedor_nueva_solicitud(request, idTi):
     return render(request, "vendedor/vendedor_nueva_solicitud.html",{'datos':datos_vendedor,'tienda':tienda}) 
 
 def vendedor_solicitudes(request):
-    return render(request, "vendedor/vendedor_solicitudes.html") 
+    userid = request.user.id
+    id_usuario = User.objects.get(id=userid)
+    vendedor = Vendedor.objects.get(idUser_id=userid)
+    solicitudes = SolicitudesVendedor.objects.get(idVen_id=vendedor.idVend)
+    tiendas = Tienda.objects.get(idTi=solicitudes.idTi_id)
+    return render(request, "vendedor/vendedor_solicitudes.html",{'solicitudes':solicitudes,'tiendas':tiendas}) 
 
 def vendedor_ventas(request):
     return render(request, "vendedor/vendedor_ventas.html") 
