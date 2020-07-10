@@ -27,15 +27,22 @@
                                 <th>Nombre Administrador</th>
                                 <th>Dirección</th>
                                 <th>Contacto</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for listaT in tiendas %}
-                                <tr>                                                            
-                                    <td><a href="{% url 'catalogo_tienda' %}">{{ listaT.nombreTi }}</a></td>
-                                    <td>Jorge Gomez</td>
-                                    <td>Tulancingo, Centro 40, Hidalgo </td>
-                                    <td>7751931356</td>
+                                <tr>                                                          
+                                    <td><a href="/tienda_productos/{{listaT.idTi}}">{{ listaT.nombreTi }}</a></td>
+                                    <td>{{admin.nombreAdmin}}</td>
+                                    <td>{{admin.direccionAdmin}}</td>
+                                    <td>{{admin.telefonoAdmin}}</td>
+                                    <td>
+                                        <a href="{% url 'admin_detalle_tienda' %}">
+                                        <input type="button" value="Editar"class="btn btn-success mt-3 pr-3 pl-3"/>
+                                        </a>
+                                        <input type="hidden" value={{listaT.idTi}}/>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>

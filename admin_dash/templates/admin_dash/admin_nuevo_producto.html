@@ -9,70 +9,106 @@
 {% block content %}
 {% load static %}
 <div class="row">
-    <a href="{% url 'admin_productos' %}"><img src="{% static 'core/img/back.png'%}" style="width: 3em; margin-top: 3em;"/></a>
+    <a href="/tienda_productos/{{idt.idTi}}"><img src="{% static 'core/img/back.png'%}" style="width: 3em; margin-top: 3em;"/></a>
     <!-- basic form start -->
     <div class="col-12 mt-5">
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Nuevo Producto</h4>
-                <form>
+                <form action="{% url 'nuevo_registro' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="idTi_id" value="{{idt.idTi}}" required>
                     <div class="form-group">
                         <label for="producto">Producto</label>
-                        <input type="text" class="form-control" id="producto" required placeholder="Nombre Producto">
+                        <input type="text" class="form-control" name="nombreProd" required placeholder="Nombre Producto">
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Descripción</label>
-                        <input type="text" class="form-control" id="descripcion" placeholder="Descripción del Producto" required>
+                        <input type="text" class="form-control" name="descripcionProd" placeholder="Descripción del Producto" required>
                     </div>
                     <div class="form-group">
                         <label for="marca">Marca</label>
-                        <input type="text" class="form-control" id="marca" placeholder="Marca" required>
+                        <input type="text" class="form-control" name="marcaProd" placeholder="Marca" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Imagen</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="file" name="imagenProd">
+                            <label class="custom-file-label" for="file" data-browse="Elegir">Elegir imagen</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="medidas">Medidas</label>
+                        <input type="text" class="form-control" name="medidasProd" placeholder="Medidas del producto" required>
                     </div>
                     <div class="form-row align-items-center">
-                    <div class="col-sm-3 my-1">
-                        <label class="col-form-label">Categoría</label>
-                        <select class="form-control">
-                            <option>Selecciona una Categoría</option>
-                            <option value="Cómputo y tecnología">Tecnología</option>
-                            <option value="Mueblería">Muebles</option>
-                            <option value="Mujer">Mujer</option>
-                            <option value="Hombre">Hombre</option>
-                            <option value="Niños">Niñ@s</option>
-                            <option value="Mascota">Mascota</option>
-                            <option value="Libros">Libros</option>
-                            <option value="Electrodomésticos">Electrodomésticos</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-3 my-1">
-                        <label for="precio">Precio</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">$</div>
-                            </div>
-                            <input type="text" class="form-control" id="precio" placeholder="0.00" required>
+                        <div class="col-sm-3 my-1">
+                            <label class="col-form-label">Categoría</label>
+                            <select class="form-control" name="categoriaProd">
+                                <option>Selecciona una Categoría</option>
+                                <option value="Electrónica">Electrónica</option>
+                                <option value="Dispositivos">Dispositivos</option>
+                                <option value="Libros">Libros</option>
+                                <option value="Papelería">Papelería</option>
+                                <option value="Accesorios">Accesorios</option>
+                                <option value="Equipaje">Equipaje</option>
+                                <option value="Calzado infantil">Calzado infantil</option>
+                                <option value="Calzado dama">Calzado dama</option>
+                                <option value="Calzado caballero">Calzado caballero</option>
+                                <option value="Ropa bebés">Ropa bebés</option>
+                                <option value="Ropa infantil">Ropa infantil</option>
+                                <option value="Ropa dama">Ropa dama</option>
+                                <option value="Ropa caballero">Ropa caballero</option>
+                                <option value="Ropa unisex">Ropa unisex</option>
+                                <option value="Juguetes">Juguetes</option>
+                                <option value="Deportes">Deportes</option>
+                                <option value="Entretenimiento">Juguetes</option>
+                                <option value="Herramientas">Herramientas</option>
+                                <option value="Seguridad">Seguridad</option>
+                                <option value="Hogar">Hogar</option>
+                                <option value="Oficina">Oficina</option>
+                                <option value="Muebles">Muebles</option>
+                                <option value="Limpieza">Limpieza</option>
+                                <option value="Accesorio vehículos">Accesorio vehículos</option>
+                                <option value="Cosméticos">Cosméticos</option>
+                                <option value="Mascota">Mascota</option>
+                                <option value="Electrodomésticos">Electrodomésticos</option>
+                            </select>
                         </div>
-                    </div>  
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="medidas">Medidas</label>
-                    <input type="text" class="form-control" id="medidas" placeholder="Medidas del producto" required>
-                </div>
-               <div class="form-group">
-                    <label class="col-form-label">Existencias</label>
-                    <input type="text" class="form-control" id="existencias" placeholder="Inserte el número de productos existentes" required>
-               </div> 
-               <div class="form-row align-items-center">
-                   <div class="col-sm-3 my-1">
-                    <button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button>
+                        <div class="col-sm-3 my-1">
+                            <label for="precio">Precio</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">$</div>
+                                </div>
+                                <input type="dec" class="form-control" name="precioProd" placeholder="0.00" onkeyup="test(this)" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 m-y-1">
+                            <label class="col-form-label">Existencias</label>
+                            <input type="number" class="form-control" name="existenciasProd" placeholder="Inserte el número de productos existentes" required>
+                        </div>  
                     </div>
-                    <div class="col-sm-3 my-1">
-                        <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Guardar</button>
+                    <br>                
+                    <div class="form-row align-items-center">
+                       <div class="col-sm-3 my-1">
+                            <a href="/tienda_productos/{{idt.idTi}}">
+                            <button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button>
+                            </a>
+                        </div>
+                        <div class="col-sm-3 my-1">
+                            <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Guardar</button>
+                        </div>
                     </div>
-                </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
+
+<script>
+function test(e) {
+e.value=e.value.replace(/\,/g, '.')
+}
+</script>

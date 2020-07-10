@@ -23,6 +23,7 @@
                     <table id="dataTable3" class="text-center">
                         <thead class="text-capitalize">
                             <tr>
+                                <th><input type="hidden" value="id"/></th>
                                 <th>Producto</th>
                                 <th>Descripción</th>
                                 <th>Marca</th>
@@ -35,7 +36,8 @@
                         <tbody>
                             {% for listaP in productos %}
                             <tr>
-                                <td><a href="{% url 'admin_detalle_producto' %}">{{ listaP.nombreProd }}</a></td>
+                                <td><input type="hidden" value={{listaP.idProd}}/></td>
+                                <td><a href="/admin_detalle_producto/{{listaP.idProd}}">{{ listaP.nombreProd }}</a></td>
                                 <td>{{listaP.descripcionProd}}</td>
                                 <td>{{listaP.marcaProd}}</td>
                                 <td>{{listaP.categoriaProd}}</td>

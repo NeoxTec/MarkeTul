@@ -15,23 +15,26 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Nueva Tienda</h4>
-                <form>
+                <form action="{% url 'nueva_tienda' %}" method='post'>
+                {% csrf_token %}
                     <div class="form-group">
-                        <label for="tienda">Tienda</label>
-                        <input type="text" class="form-control" id="tienda" required placeholder="Nombre Tienda">
+                        <label for="tienda">Nombre de la tienda</label>
+                        <input type="text" class="form-control" name="nombreTi" required placeholder="Nombre de la tienda">
                     </div>
                     <div class="custom-file">
                         <label for="descripcion" class="custom-file-label">Elija Logo...</label>
-                        <input type="file" class="custom-file-input" id="logo" placeholder="Descripción del Producto" required>
+                        <input type="file" class="custom-file-input" name="logoTi" placeholder="Imagen" required>
                     </div>
-               <div class="form-row align-items-center">
-                   <div class="col-sm-3 my-1">
-                    <button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button>
+                   <div class="form-row align-items-center">
+                       <div class="col-sm-3 my-1">
+                            <a href="{% url 'admin_tiendas' %}">
+                            <button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button>
+                            </a>
+                        </div>
+                        <div class="col-sm-3 my-1">
+                            <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Guardar</button>
+                        </div>
                     </div>
-                    <div class="col-sm-3 my-1">
-                        <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Guardar</button>
-                    </div>
-                </div>
                 </form>
             </div>
         </div>
