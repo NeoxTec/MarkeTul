@@ -2,20 +2,36 @@ from django.shortcuts import render,redirect
 from django.db.models import Q
 from admin_dash.models import Producto, Tienda, Administrador
 from django.contrib.auth.models import User
+from vendedor.models import Vendedor
 
-idAd = 0
+idAdmin = 0
+idUser = 0
 idTienda = 0
 # Create your views here.
 """ Dashboard Administrador """
 
 def admin_dash(request):
     userid = request.user.id
-    id_usuario = User.objects.get(id=userid)#datos usuario
-    print(str(id_usuario.id))
-    ida= Administrador.objects.get(id=1)#llama a admin1 
-    global idAd #toma variable global para cambiarla
-    idAd = int(ida.id) #cambia el valor de la variable global para consultas posteriores
-    #print(str(idAdmin)) #comprueba cambio
+    global idUser
+    idUser = userid
+    id_usuario = User.objects.get(id=userid)
+    print(str(userid))
+    conteo = Administrador.objects.filter(idUser_id=userid).count()
+    conteo2 = Vendedor.objects.filter(idUser_id=userid).count()
+    if (conteo!=1 and id_usuario.is_staff):
+        nadmin = Administrador(nombreAdmin=id_usuario.first_name,idUser_id=userid)
+        nadmin.save()
+        ida = Administrador.objects.get(idUser_id=userid)
+    elif (conteo2!=1 and not id_usuario.is_staff):
+        vendedor = Vendedor(nombreVend=id_usuario.first_name,idUser_id=userid)
+        vendedor.save()
+        ida = Vendedor.objects.get(idUser_id=userid)
+    else:
+        ida= Administrador.objects.get(idUser_id=userid)#llama a admin1 
+        global idAdmin #toma variable global para cambiarla
+        idAdmin = int(ida.id) #cambia el valor de la variable global para consultas posteriores
+        #print(str(idAdmin)) #comprueba cambio
+    print("ID_USER:" + str(idAdmin))
     return render(request, "admin_dash/admin_dash.html",{'ida':ida})
 
 def vendedores(request):

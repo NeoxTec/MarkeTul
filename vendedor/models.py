@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Vendedor(models.Model):
     idVend = models.AutoField(primary_key=True, auto_created=True)
     nombreVend = models.CharField(max_length=200)
-    telefono = models.BigIntegerField()
+    telefono = models.BigIntegerField(null=True, blank=True)
     correo = models.CharField(max_length=200, null=True, blank=True,)
     idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 

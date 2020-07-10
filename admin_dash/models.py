@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Administrador(models.Model):
-    idAdmin = models.AutoField(primary_key=True)
+    #idAdmin = models.AutoField(primary_key=True)
     nombreAdmin = models.CharField(max_length=120)
     telefonoAdmin = models.CharField(max_length=12, null= True)
     direccionAdmin = models.CharField(max_length=200)
