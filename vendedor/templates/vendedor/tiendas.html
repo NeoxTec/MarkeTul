@@ -8,37 +8,27 @@
 
 {% block content %}
 {% load static %}
-<div class="row">
-    <!-- Dark table inicia -->
-    <div class="col-12 mt-5">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="header-title">Tiendas</h4>
-                <div class="data-tables datatable-dark">
-                    <table id="dataTable3" class="text-center">
-                        <thead class="text-capitalize">
-                            <tr>
-                                <th>Nombre de Tienda</th>
-                                <th>Nombre Administrador</th>
-                                <th>Dirección</th>
-                                <th>Contacto</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for listaT in tiendas %}
-                                <tr>                                                            
-                                    <td><a href="{% url 'catalogo_tienda'%}">{{ listaT.nombreTi }}</a></td>
-                                    <td>{{administrador.nombreAdmin}}</td>
-                                    <td>Tulancingo, Centro 40, Hidalgo </td>
-                                    <td>7751931356</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+<div class="row align-items-center">
+<div class="card-area">
+    <div class="row">
+        {% for listaT in tiendas %}
+            <div class="col-lg-7 col-md-8 mt-5">
+                <div class="card card-bordered">
+                    <img class="card-img-top img-fluid" src="{{listaT.logoTi.url}}" alt="">
+                    <div class="card-body">
+                        <h5 class="title">{{listaT.nombreTi}}</h5>
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-6 my-1">
+                                <a href="{% url 'catalogo_tienda' %}" class="btn btn-secondary"><i class="ti-gallery">  </i>Ver Productos</a>
+                            </div>
+                            <div class="col-sm-6 my-1">
+                                <a href="{% url 'vendedor_nueva_solicitud'%}" class="btn btn-info"><i class="ti-plus">  </i>Presentar Solicitud</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
-    <!-- Dark table finaliza -->
-    </div>
+</div>
 {% endblock %}

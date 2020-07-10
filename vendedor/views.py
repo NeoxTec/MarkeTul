@@ -19,8 +19,7 @@ def tiendas(request):
 
 def catalogos_vendedor(request):
     listaT = Tienda.objects.all()
-    administrador = Administrador.objects.get(id=listaT.idAdmin)
-    context = {'tiendas': listaT,'administrador':administrador}
+    context = {'tiendas': listaT}
     return render(request, "vendedor/catalogos_vendedor.html", context)
 
 def editar_catalogo(request):
