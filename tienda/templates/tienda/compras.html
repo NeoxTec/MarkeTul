@@ -29,7 +29,7 @@
      <hr>
      <ul class="list-group list-group-flush">
          <li class="list-group-item active">
-     <h5><a href="{% url 'compras' %}"><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5></a>
+     <h5><p href="{% url 'compras' %}"><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5></p>
    </li>
      <hr>
    <li class="list-group-item ">
@@ -45,7 +45,8 @@
    </li>
      <hr>
      <li class="list-group-item">
-     <h5><a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Cerrar Sesi&oacute;n</a></h5>
+      <li><h5><a href="{% url 'home' %}"><i class="ti-power-off"></i><span>Cerrar Sesión</span></a></h5></li>
+     <!--<h5><a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Cerrar Sesi&oacute;n</a></h5>-->
    </li>
  </ul>
  </nav>
@@ -68,23 +69,12 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">Huawei P20 Lite</th>
-          <td>Liverpool</td>
+          <th scope="row">Impresora Epson</th>
+          <td>Electronica y Computo MkTul</td>
           <td>1</td>
-          <td>$6,000.00</td>
+          <td>$3,600.00</td>
         </tr>
-        <tr>
-          <th scope="row">Perfume Giorgio Armani Acqua Di Gio for Women</th>
-          <td>Liverpool</td>
-          <td>1</td>
-          <td>$1,750.00</td>
-        </tr>
-        <tr>
-          <th scope="row">Tenis Nike Air Force</th>
-          <td>Liverpool</td>
-          <td>1</td>
-          <td>$3,099.00</td>
-        </tr>
+        
       </tbody>
     </table>
             </div>

@@ -41,7 +41,8 @@
        </li>
          <hr>
          <li class="list-group-item">
-         <h5><a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Cerrar Sesi&oacute;n</a></h5>
+          <li><a href="{% url 'home' %}"><i class="ti-power-off"></i><span>Cerrar Sesión</span></a></li>
+         <!--<h5><a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Cerrar Sesi&oacute;n</a></h5>-->
        </li>
       </ul>
       </nav>
@@ -89,9 +90,49 @@
         <input class="form-control" placeholder="A&ntilde;o" required>
     </div>
     </div>
-    <button  style="margin-left:25px" type="submit" class="btn btn-success btn-lg"><img src="{% static 'core/img/mastercard.png' %}"  width="30" height="30">Guardar</button>
-  <button style="margin-left: 25px" type="submit" class="btn btn-dark btn-lg"><img src="{% static 'core/img/payment.png' %}"  width="30" height="30">PayPal</button>
-    
+    <div class="container">
+    <br>
+    <button  style="margin-left:25px" type="submit" class="btn btn-success btn-lg" href="#ventana5" class="btn btn-success btn-lg" data-toggle="modal"><img src="{% static 'core/img/mastercard.png' %}"  width="30" height="30">Guardar</button>
+    <button style="margin-left: 25px" type="submit" class="btn btn-dark btn-lg" href="#ventana6" class="btn btn-success btn-lg" data-toggle="modal"><img src="{% static 'core/img/payment.png' %}"  width="30" height="30">PayPal</button></a>
+    <!-- GUARDAR -->
+        <div class="modal fade" id="ventana5">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                    <!-- CONTENIDO DE LA VENTANA EMERGENTE -->
+                    <div class="modal-body" align="center">
+                    <img src="{% static 'core/img/tick.png' %}" width="160" height="160" >
+                        <p></p>
+                        <p><h2>¡Se ha Guardado exitosamente!</h2></p>
+                     </div>
+                    <!-- FOOTER DE LA VENTANA EMERGENTE -->
+                    <div class="modal-footer" align="center">
+                        <button type="button" class="btn btn-ranger" data-dismiss="modal" >Aceptar</button>           
+                </div>
+            </div>       
+        </div> 
+        </div>
+        <div class="container">
+    <br>
+    <!-- PAYÁL -->
+    <div class="modal fade" id="ventana6">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                    <!-- CONTENIDO DE LA VENTANA EMERGENTE -->
+                    <div class="modal-body" align="center">
+                        <img src="{% static 'core/img/close.png' %}" width="160" height="160" >
+                        <p></p>
+                        <p><h4>Lo sentimos, hubo un error con tu pago.</h4></p>
+                     </div>
+                    <!-- FOOTER DE LA VENTANA EMERGENTE -->
+                    <div class="modal-footer" align="center">
+                        <button type="button" class="btn btn-ranger" data-dismiss="modal" >Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
   </div>
   </div>

@@ -1,0 +1,32 @@
+{% extends 'tienda/master_tienda.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+{% block content %}
+<body>
+ {% load static %}  
+ <div style="margin-top:30px;">
+    <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:50px;"></a>
+    <h5 style="margin-left:50px;">Continuar comprando</h5>
+ </div>
+ <h1><center>Carrito de Compras</center></h1>
+ <div></div>
+ <div style="margin-left: 480px" class="col-md-8">
+         <div class="card-body">
+     <h3 class="card-title">Cantidad de productos: 0</h3>
+ <h3>Total:</h3>
+<h4>$0.00</h4>
+ 
+ </div>
+         <p></p>
+ <a href="{% url 'proceso_pago' %}"><button style="width: 30rem;" type="submit" class="btn btn-success btn-lg">Pagar</button></a>
+
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
+   
+    </body>
+    {% endblock %}
+</html>
