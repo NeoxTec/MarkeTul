@@ -19,7 +19,7 @@ def tiendas(request):
 
 def catalogos_vendedor(request):
     listaC = Catalogo.objects.all()
-    context = {'catalogos': listaC}
+    context = {'catalogos': listaC} # Corregir
     return render(request, "vendedor/catalogos_vendedor.html", context)
 
 def editar_catalogo(request,idCatal):
