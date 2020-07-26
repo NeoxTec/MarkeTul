@@ -8,79 +8,102 @@
 {% block content %}
 <body>
 {% load static %}  
-<div style="margin-top:15px;">
-  <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:1000px;"></a>
-    <h5 style="margin-top:-25px; margin-left:1050px;">Continuar comprando</h5>
- </div>
-<h1><center>Compras</center></h1>
-<div class="izquierda" style="margin-top:-35px;"> 
+
+
     <!-- Barra lateral -->
-    <div class="fila" style="margin-left:10px;"  class="d-flex flex-row bd-highlight mb-3">
-      <div>
-        <aside class="sidebar-left">
-         <nav>
-     <div class="card" style="width: 15rem;" align="center">
-   <img src="{% static 'core/img/user.png' %}"  width="70" height="65">
-   <div class="card-body" align="center">
-     <h5 class="card-title">Isabella Zoey</h5>
-     <p class="card-text">isabella@gmail.com</p>
-     <p class="card-text">7751292878</p>
-   </div>
-     <hr>
-     <ul class="list-group list-group-flush">
-         <li class="list-group-item active">
-     <h5><p href="{% url 'compras' %}"><img src="{% static 'core/img/bag.png' %}"  width="25" height="25">Compras</h5></p>
-   </li>
-     <hr>
-   <li class="list-group-item ">
-     <h5><a href="{% url 'forma_pago' %}"><img src="{% static 'core/img/money.png' %}"  width="25" height="25">Forma de Pago</h5></a>
-   </li>
-     <hr>
-   <li class="list-group-item">
-     <h5><a href="{% url 'direccion_envio' %}"><img src="{% static 'core/img/home-run.png' %}"  width="20" height="20" >Direcci&oacute;n</h5></a>
-   </li>
-     <hr>
-   <li class="list-group-item">
-     <h5><a href="{% url 'configuracion_cuenta' %}" tabindex="-1" aria-disabled="true">Configuraci&oacute;n de Cuenta</a></h5></a>
-   </li>
-     <hr>
-     <li class="list-group-item">
-      <li><h5><a href="{% url 'home' %}"><i class="ti-power-off"></i><span>Cerrar Sesión</span></a></h5></li>
-     <!--<h5><a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Cerrar Sesi&oacute;n</a></h5>-->
-   </li>
- </ul>
- </nav>
- </aside>
- </div>
-     </div>
- </div>
+    <div class="fila" style="margin-left:10px; margin-top: 20px;" class="d-flex flex-row bd-highlight mb-3">
+      
 
-<div class="d-flex justify-content-center" style="margin-top:-650px">
-  
-<div>
-    <table class="table table-hover" style="margin-left:150px;" >
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Producto</th>
-          <th scope="col">Tienda</th>
-          <th scope="col">Cantidad</th>
-          <th scope="col">Precio</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Impresora Epson</th>
-          <td>Electronica y Computo MkTul</td>
-          <td>1</td>
-          <td>$3,600.00</td>
-        </tr>
-        
-      </tbody>
-    </table>
+      <aside class="sidebar-left">
+        <nav>
+          <div class="card" style="width: 20rem" align="center" >
+            <img src="{% static 'core/img/user2.png' %}" width="85" height="85">
+            <div class="card-body" align="center">
+              <h5 class="card-title">Isabella Zoey</h5>
+              <p class="card-text">isabella@gmail.com</p>
+              <p class="card-text">7751292878</p>
             </div>
-    </center>
 
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" style="height: 70px;">
+                <h5><a href="{% url 'compras' %}"><button type="submit" style="margin-left: 2px; width: 180px; "
+                      class="btn btn-light btn-lg"><img src="{% static 'core/img/bag.png' %}" width="30"
+                        height="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compras&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
+                </h5>
+              </li>
+              <li class="list-group-item" style="height: 70px;">
+                <h5><a href="{% url 'forma_pago' %}"><button type="submit" style="margin-left: 2px; width: 180px;"
+                      class="btn btn-dark btn-lg"><img src="{% static 'core/img/money.png' %}" width="30"
+                        height="30">&nbsp;&nbsp;&nbsp;Forma de Pago&nbsp;&nbsp;</button></a></h5>
+              </li>
+              <li class="list-group-item" style="height: 70px;">
+                <h5><a href="{% url 'direccion_envio' %}"><button type="submit"
+                      style="margin-left: 2px; width: 180px;" class="btn btn-dark btn-lg"><img
+                        src="{% static 'core/img/home-run.png' %}" width="30"
+                        height="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dirección&nbsp;&nbsp;&nbsp;&nbsp;</button></a></h5>
+              </li>
+              <li class="list-group-item">
+                <h5><a href="{% url 'configuracion_cuenta' %}"><button type="submit"
+                      style="margin-left: 2px; width: 180px;" class="btn btn-dark btn-lg"><img
+                        src="{% static 'core/img/confi.png' %}" width="30"
+                        height="30">&nbsp;Configuración&nbsp;&nbsp;</button></a></h5>
+              </li>
+              <li class="list-group-item">
+                <h5><a href="{% url 'home' %}"><button type="submit" style="margin-left: 2px; width: 180px;"
+                      class="btn btn-danger btn-lg"><img src="{% static 'core/img/cerrar.png' %}" width="30"
+                        height="30">&nbsp;Cerrar Sesion&nbsp;&nbsp;</button></a></h5>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
 </div>
+ <div class="d-flex justify-content-center" style="margin-top:-593px;"></div>
+ 
+  <div style="margin-top:15px;">
+    <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:1000px;"></a>
+      <h5 style="margin-top:-25px; margin-left:1050px;">Continuar comprando</h5>
+  </div>
+
+<div class="card" align="center" style="width:50rem; margin-left:360px">
+  <div class="card-body" align="center">
+    <h1>
+      <center>Compras</center>
+    </h1>
+    &nbsp;
+    <div>
+      <div class="d-flex justify-content-center">
+
+        <div style="width: 1000px;">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Tienda</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Impresora Epson</th>
+                <td>Electronica y Computo MkTul</td>
+                <td>1</td>
+                <td>$3,600.00</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
    
     </body>

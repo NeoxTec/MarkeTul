@@ -1,34 +1,46 @@
 from django.db import models
+from django.contrib.auth.models import User
+from admin_dash.models import Producto
+from vendedor.models import CatalogoProducto, Vendedor, Catalogo
 
 # Create your models here.
 
-class Compras(models.Model):
-    idCompra = models.BigIntegerField(primary_key=True, auto_created=True)
-    producto = models.CharField(max_length=100)
-    tienda = models.CharField(max_length=50)
-    cantidad = models.IntegerField()   
+class Consumidor(models.Model):
+    idConsumidor = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50)
+    correo = models.EmailField()
+    pw = models.CharField(max_length =15)
+    telefono = models.CharField(max_length=15)
+    idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
 class Forma_Pago(models.Model):
-    idForma_pago = models.BigIntegerField(primary_key=True, auto_created=True)
+    idForma_pago = models.AutoField(primary_key=True)
     nombre_propietario = models.CharField(max_length=50)
-    numero_tarjeta = models.IntegerField()
-    vencimiento_dia = models.DateField()
-    vencimiento_mes = models.DateField()
-    vencimiento_anio = models.DateField()
-class Cuenta(models.Model):
-    idCuenta = models.BigIntegerField(primary_key=True, auto_created=True)
-    nombre = models.CharField(max_length=50)
-    email = models.EmailField()
-    celular = models.CharField(max_length=10)
-    passwordNuevo = models.CharField(max_length =15)
-    passwordConfirmado = models.CharField(max_length =15)
+    numero_tarjeta = models.CharField(max_length=16)
+    fvencimiento = models.CharField(max_length=12)
+    idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
 class Direccion(models.Model):
-    idDireccion = models.BigIntegerField(primary_key=True, auto_created=True)
-    pais = models.CharField(max_length=30)
-    estado = models.CharField(max_length=30)
-    ciudad = models.TextField(max_length=30)
-    codigoPostal= models.CharField(max_length =5)
-    direccion = models.TextField(max_length =50)
-    idCuenta = models.ForeignKey(Cuenta, null=True, blank=True, on_delete=models.CASCADE)
+    idDireccion = models.AutoField(primary_key=True)
+    calle = models.CharField(max_length=30)
+    colonia = models.CharField(max_length=30)
+    codigoPostal= models.CharField(max_length =7)
+    numeroExterior= models.CharField(max_length =7)
+    numeroInterior= models.CharField(max_length =7)
+
+class Carrito(models.Model):
+    idCarrito = models.AutoField(primary_key=True)
+    cantidad = models.IntegerField()
+    subtotal = models.FloatField()
+    idProd = models.ForeignKey(Producto, null=True, blank=True, on_delete=models.CASCADE)
+    idCatProd = models.ForeignKey(CatalogoProducto, null=True, blank=True, on_delete=models.CASCADE)
+
+class Compras(models.Model):
+    idCompra = models.AutoField(primary_key=True)
+    producto = models.CharField(max_length=100)
+    tienda = models.CharField(max_length=50)
+    cantidad = models.IntegerField() 
+    idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    idCarrito = models.ForeignKey(Carrito, null=True, blank=True, on_delete=models.CASCADE)
+    idForma_pago = models.ForeignKey(Forma_Pago, null=True, blank=True, on_delete=models.CASCADE)
 

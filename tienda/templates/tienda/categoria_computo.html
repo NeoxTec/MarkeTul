@@ -1,57 +1,34 @@
 {% extends 'tienda/master_tienda.html' %}
 {% block title %}Computo{% endblock %}
+<!-- Aqui deberan mostrarse los catalogos_vendedores-->
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 </head>
 {% block content %}
 {% load static %}
-<h1><center>Computo</center></h1>
+<h1>
+    <center>Catalogo</center>
+</h1>
 <div style="margin-top:10px;">
-       <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:50px;"></a>
-      </div>  
-<table  >     
-<div class="container" id="categorias">
-    <table style="margin-left:150px;" class="container-image">
-            <h5 style="margin-left:170px;">Electronica y Computo MkTul</h5>
-        <tr align="center">        
-            <td>Samuel Regil</td>
-            <td>Daniel Vargas</td>
-            <td>Monserrat Ortega</td>
-        </tr>
-        <tr>
-            <td><a href="{% url 'catalogos' %}"><img src="{% static 'core/img/salesman.png' %}" alt="Image" width="250" height="150" ></a></td>
-            <td><img src="{% static 'core/img/salesman.png' %}" alt="Image" width="250" height="150"></td>
-            <td><img src="{% static 'core/img/salesman.png' %}" alt="Image" width="250" height="150" ></td>
-           
-        </tr>
-         <!--sin contenido
-        <tr align="center">
-            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20"  ></td>
-            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20"  ></td>
-            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20"  ></td>
-            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20"  ></td>
-        </tr>
-        <tr align="center">
-            <td>Nombre Vendedor</td>
-            <td>Nombre Vendedor</td>
-            <td>Nombre Vendedor</td>
-            <td>Nombre Vendedor</td>
-        </tr>
-        <tr>
-            <td><img src="{% static 'core/img/salesman.png' %}" alt="Image" width="250" height="150" ></td>
-            <td><img src="{% static 'core/img/salesman.png' %}" width="250" height="150" alt="Image" ></td>
-            <td><img src="{% static 'core/img/salesman.png' %}" alt="Image"  width="250" height="150" ></td>
-            <td><img src="{% static 'core/img/salesman.png' %}" alt="Image" width="250" height="150"></td>
-        </tr>
-        <tr align="center">
-            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
-            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
-            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
-            <td><img src="{% static 'core/img/mas.png' %}" alt="Image" width="30" height="20" ></td>
-        </tr>
-    -->
+    <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}" width="30" height="35"
+            style="margin-left:50px;"></a>
+</div>
+{% for listaCv in catalogos %}
+<div style="width: auto; float: left; margin-left: 30px;">
+<div class="container">
+    <div class="card-deck mt-12">  
+    <div class="card text-center "> 
+        <img src="{% static 'core/img/catalogo.png' %}" width="200" height="190">
+    <div class="card-body">
+        <h5 class="card-title">{{listaCv.categoria}}</h5>
+        <p><a href="{% url 'catalogos' listaCv.idCatal %}" class="btn btn-primary"><i class="ti-gallery"> </i>Ver
+                        Productos</a>
+    </div>   
     </div>
-</table>
- 
+    </div>
+    </div>
+</div> 
+
+{% endfor %}
 {% endblock %}
