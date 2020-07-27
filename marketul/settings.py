@@ -140,7 +140,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Auth redirects
-LOGIN_REDIRECT_URL = 'admin_dash'  # Cambiar a vendedor_dash
+LOGIN_REDIRECT_URL = 'categorias'  # Cambiar a vendedor_dash
 LOGOUT_REDIRECT_URL = 'home'
 
 # Media Files

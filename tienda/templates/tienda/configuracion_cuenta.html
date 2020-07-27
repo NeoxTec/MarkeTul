@@ -22,9 +22,9 @@
           <div class="card" style="width: 20rem" align="center">
             <img src="{% static 'core/img/user2.png' %}" width="85" height="85">
             <div class="card-body" align="center">
-              <h5 class="card-title">Isabella Zoey</h5>
-              <p class="card-text">isabella@gmail.com</p>
-              <p class="card-text">7751292878</p>
+              <h5 class="card-title">{{datos.nombre}}</h5>
+              <p class="card-text">{{datos.correo}}</p>
+              <p class="card-text">{{datos.telefono}}</p>
             </div>
 
             <ul class="list-group list-group-flush">
@@ -80,19 +80,19 @@
         <div class="col-md-12">
         <h4 class="card-title" align="left">Datos</h4>
         <hr>
-        <form>
+        <form action="{% url 'guardar_config_con' %}" method="post">{% csrf_token %}
           <div class="form-row" >
             <label for="inputEmail4">Nombre Completo</label>
-              <input align="center" style="width:53rem;" type="text" class="form-control" placeholder="Nombre Completo*">
+              <input align="center" style="width:53rem;" type="text" class="form-control" name="nombre" placeholder="Nombre Completo*" value={{datos.nombre}}>
           </div>
           <div class="form-row">
               <label for="inputEmail4">Correo Electr&oacute;nico</label>
-              <input align="center" style="width: 53rem;" type="email" class="form-control" id="inputEmail4" placeholder="Correo Electr&oacute;nico*">
+              <input align="center" style="width: 53rem;" type="email" class="form-control" id="inputEmail4" name="correo" placeholder="Correo Electr&oacute;nico*" value={{datos.correo}}>
           </div>
           <div class="form-row">
             <label for="inputEmail4">Celular</label>
             
-            <input align="center" style="width: 53rem;" type="text" class="form-control" id="inputEmail4" placeholder="Celular*">
+            <input align="center" style="width: 53rem;" type="text" class="form-control" id="inputEmail4" name="telefono" placeholder="Celular*" value={{datos.telefono}}>
           </div>
             <div class="form-row">
             <label for="inputEmail4">Nueva Contrase&ntilde;a</label>
@@ -122,7 +122,7 @@
                      </div>
                     <!-- FOOTER DE LA VENTANA EMERGENTE -->
                     <div class="modal-footer" align="center">
-                        <button type="button" class="btn btn-ranger" data-dismiss="modal" >Aceptar</button>           
+                        <button type="submit" class="btn btn-ranger" data-dismiss="modal" >Aceptar</button>           
                 </div>
 
             </form>

@@ -9,7 +9,7 @@ class Consumidor(models.Model):
     idConsumidor = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
     correo = models.EmailField()
-    pw = models.CharField(max_length =15)
+    pw = models.CharField(max_length =15, null=True)
     telefono = models.CharField(max_length=15)
     idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
@@ -17,16 +17,16 @@ class Forma_Pago(models.Model):
     idForma_pago = models.AutoField(primary_key=True)
     nombre_propietario = models.CharField(max_length=50)
     numero_tarjeta = models.CharField(max_length=16)
-    fvencimiento = models.CharField(max_length=12)
+    fvencimiento = models.CharField(max_length=12, null=True, blank=True,)
     idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
 class Direccion(models.Model):
     idDireccion = models.AutoField(primary_key=True)
-    calle = models.CharField(max_length=30)
-    colonia = models.CharField(max_length=30)
-    codigoPostal= models.CharField(max_length =7)
-    numeroExterior= models.CharField(max_length =7)
-    numeroInterior= models.CharField(max_length =7)
+    calle = models.CharField(max_length=30,null=True, blank=True,)
+    colonia = models.CharField(max_length=30,null=True, blank=True,)
+    codigoPostal= models.CharField(max_length =7,null=True, blank=True,)
+    numeroExterior= models.CharField(max_length =7, null=True, blank=True,)
+    numeroInterior= models.CharField(max_length =7, null=True, blank=True,)
 
 class Carrito(models.Model):
     idCarrito = models.AutoField(primary_key=True)

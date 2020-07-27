@@ -2,9 +2,25 @@ from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from admin_dash.models import Producto,Tienda,Administrador
 from vendedor.models import Vendedor,Catalogo, CatalogoProducto
+from tienda.models import Consumidor
+from django.contrib.auth.models import User
 # Create your views here.
 
+idCons = 0
+idUser = 0
 """Tienda"""
+
+def categorias(request):
+    userid = request.user.id
+    global idUser
+    idUser = userid
+    id_usuario = User.objects.get(id=userid)
+    print("USUARIO_ID: "+str(userid))
+    conteo = Consumidor.objects.filter(idUser_id=userid).count()
+    if (conteo != 1):
+        ncon = Consumidor (nombre=id_usuario.first_name,idUser_id=userid,correo=id_usuario.email)
+        ncon.save()
+    return render(request, "tienda/categorias.html")
 
 def compras(request):
     return render(request, "tienda/compras.html")
@@ -31,11 +47,28 @@ def detalle_producto(request):
     return render(request, "tienda/detalle_producto.html")
 
 def configuracion_cuenta(request):
-    return render(request, "tienda/configuracion_cuenta.html")
+    userid = request.user.id # Se obtiene el id
+    print("IDUSUARIO: "+str(userid))
+    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+    return render(request, "tienda/configuracion_cuenta.html", {'datos':datos_consumidor}) 
+
+def guardar_config_con(request):
+    userid = request.user.id
+    nombre = request.POST['nombre']
+    correo = request.POST['correo']
+    telefono = request.POST['telefono']
+    
+    configuracion = Consumidor.objects.filter(idUser_id = userid).update(nombre=str(nombre), telefono=int(str(telefono)), correo=str(correo))
+    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+    return render(request, "tienda/configuracion_cuenta.html", {'datos':datos_consumidor}) 
 
 def categoria_computo(request):
     listaCv = Catalogo.objects.all()
-    context = {'catalogos': listaCv}
+    vendedores = []
+    for catalogo in listaCv:
+        vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
+        vendedores.append(vendedor)       
+    context = {'catalogos': listaCv,'vendedores': vendedores}
     return render(request, "tienda/categoria_computo.html", context)
 
 def catalogos(request, idCatal):
@@ -46,9 +79,6 @@ def catalogos(request, idCatal):
         productos.append(pro)
     catalogo = Catalogo.objects.get(idCatal=idCatal)
     return render(request, "tienda/catalogos.html", {'productos':productos,'catalogo':catalogo})
-
-def categorias(request):
-    return render(request, "tienda/categorias.html")
 
 def post_direccion(request):
     calle = request.POST['calle'],
