@@ -15,7 +15,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Nuevo Producto</h4>
-                <form action="{% url 'nuevo_registro' %}" method="post">
+                <form action="{% url 'nuevo_registro' %}"  enctype="multipart/form-data" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="idTi_id" value="{{idt.idTi}}" required>
                     <div class="form-group">
@@ -87,9 +87,9 @@
                         <div class="col-sm-3 m-y-1">
                             <label class="col-form-label">Existencias</label>
                             <input type="number" class="form-control" name="existenciasProd" placeholder="Inserte el número de productos existentes" required>
-                        </div>  
+                        </div>
                     </div>
-                    <br>                
+                    <br>
                     <div class="form-row align-items-center">
                        <div class="col-sm-3 my-1">
                             <a href="/tienda_productos/{{idt.idTi}}">
