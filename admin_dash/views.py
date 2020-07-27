@@ -66,7 +66,7 @@ def admin_nueva_tienda(request):
     print(idAdmin)
     idad = idAdmin
     name = request.POST['nombreTi'],
-    image = request.POST['logoTi']
+    image = request.FILES['logoTi']
     idTienda = Tienda.objects.last()
     print("Ultima tienda registrada es: " + str(idTienda.idTi + 1))
 
@@ -77,18 +77,6 @@ def admin_nueva_tienda(request):
     fs.save(str(nati.name),nati) #almacena el archivo con su nombre original y tipo de archivo
 
     Tienda(idAdmin_id=idad, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi="tienda/"+ str(image[0])).save()
-
-    listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
-    admin = Administrador.objects.get(id=idAdmin)
-    return render(request, "admin_dash/admin_tiendas.html", {'tiendas': listaT, 'admin': admin})
-
-def nueva_tienda(request):
-    print("admin es:"+ str(idAdmin))
-    image = request.POST['logoTi']
-    name = request.POST['nombreTi']
-    print("archivo es: "+ str(image[0]) + " y la tienda se llama: "+ str(name[0]))
-    nueva = Tienda(nombreTi=str(name[0]),logoTi=str(image[0]),idAdmin_id=idAdmin)
-    nueva.save()
 
     listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
     admin = Administrador.objects.get(id=idAdmin)
