@@ -9,11 +9,11 @@
 {% block content %}
 {% load static %}
 <div class="row">
-    
+
         <button type="button" class="btn btn-success mt-4 pr-4 pl-4" data-toggle="modal" data-target="#openNew">
             <i class="ti-plus"> </i>Nueva Tienda
         </button>
-    
+
 </div>
 <div class="row">
     <!-- Dark table inicia -->
@@ -34,7 +34,7 @@
                         </thead>
                         <tbody>
                             {% for listaT in tiendas %}
-                                <tr>                                                          
+                                <tr>
                                     <td><a href="/tienda_productos/{{listaT.idTi}}">{{ listaT.nombreTi }}</a></td>
                                     <td>{{admin.nombreAdmin}}</td>
                                     <td>{{admin.direccionAdmin}}</td>
@@ -66,8 +66,8 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        
-        <form method="POST" action="{% url 'admin_nueva_tienda' %}">
+
+        <form method="POST"  enctype="multipart/form-data" action="{% url 'admin_nueva_tienda' %}">
             {% csrf_token %}
                 <div class="form-group">
                         <label for="tienda">Nombre de la tienda</label>

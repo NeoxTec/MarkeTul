@@ -3,6 +3,7 @@ from django.db.models import Q
 from admin_dash.models import Producto, Tienda, Administrador
 from django.contrib.auth.models import User
 from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo
+from django.core.files.storage import FileSystemStorage
 
 idAdmin = 0
 idUser = 0
@@ -28,7 +29,7 @@ def admin_dash(request):
         ida = Vendedor.objects.get(idUser_id=userid)
     else:
         if (id_usuario.is_staff):
-            ida= Administrador.objects.get(idUser_id=userid)#llama a admin1 
+            ida= Administrador.objects.get(idUser_id=userid)#llama a admin1
         elif(not id_usuario.is_staff):
             ida = Vendedor.objects.get(idUser_id=userid)
             ida.id = ida.idVend
@@ -68,7 +69,14 @@ def admin_nueva_tienda(request):
     image = request.POST['logoTi']
     idTienda = Tienda.objects.last()
     print("Ultima tienda registrada es: " + str(idTienda.idTi + 1))
-    Tienda(idAdmin_id=idad, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi="tienda/"+ str(image)).save()
+
+    #Almacenamiento de imagen
+    nati = request.FILES['logoTi'] #toma el documento que se sube
+    fs = FileSystemStorage(location='media/tienda') #indica ruta de almacenamiento
+    print("nombre: " + nati.name +" peso: " + str(nati.size) ) #verifica datos de archivo
+    fs.save(str(nati.name),nati) #almacena el archivo con su nombre original y tipo de archivo
+
+    Tienda(idAdmin_id=idad, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi="tienda/"+ str(image[0])).save()
 
     listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
     admin = Administrador.objects.get(id=idAdmin)
@@ -96,7 +104,7 @@ def admin_detalle_producto(request, id):
 
 def admin_nuevo_producto(request):
     idt = Tienda.objects.get(idTi=idTienda)
-    return render(request, "admin_dash/admin_nuevo_producto.html",{'idt':idt}) 
+    return render(request, "admin_dash/admin_nuevo_producto.html",{'idt':idt})
 
 def nuevo_registro(request):
     tienda = request.POST['idTi_id'],
@@ -104,17 +112,24 @@ def nuevo_registro(request):
     nombre= request.POST['nombreProd'],
     descripcion= request.POST['descripcionProd'],
     cat = request.POST['categoriaProd'],
-    image = request.POST['imagenProd'],
+    image = request.FILES['imagenProd'],
     marca = request.POST['marcaProd'],
     precio = request.POST['precioProd'],
     medidas = request.POST['medidasProd'],
     existencias = request.POST['existenciasProd'],
     existencias = int(str(existencias[0]))
+
+    #Almacenamiento de imagen
+    nami = request.FILES['imagenProd'] #toma el documento que se sube
+    fs = FileSystemStorage(location='media/productos') #indica ruta de almacenamiento
+    print("nombre: " + nami.name +" peso: " + str(nami.size) ) #verifica datos de archivo
+    fs.save(str(nami.name),nami) #almacena el archivo con su nombre original y tipo de archivo
+
     #crea objeto
     prod = Producto(nombreProd= str(nombre[0]), categoriaProd= str(cat[0]), imagenProd=str(image[0]),
-                    marcaProd=str(marca[0]), descripcionProd=str(descripcion[0]), precioProd=float(precio[0]), 
+                    marcaProd=str(marca[0]), descripcionProd=str(descripcion[0]), precioProd=float(precio[0]),
                     medidasProd=str(medidas[0]), existenciasProd= existencias, idTi_id=tienda)
-    
+
     #guarda objeto en la bd
     prod.save()
     #redirecciona a la pagina
@@ -156,11 +171,11 @@ def admin_solicitudes_vendedor(request):
     print("ID_USER:" + str(idAdmin))
     tienda = Tienda.objects.get(idAdmin_id=idAdmin)
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
-    return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes}) 
+    return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes})
 
 def admin_detalle_solicitud(request,idSolVen):
     solicitud = SolicitudesVendedor.objects.get(idSolVen=idSolVen)
-    return render(request, "admin_dash/admin_detalle_solicitud.html",{'solicitud':solicitud}) 
+    return render(request, "admin_dash/admin_detalle_solicitud.html",{'solicitud':solicitud})
 
 def cambiar_status_solicitud(request,idSolVen):
     cambio = 1
@@ -174,14 +189,14 @@ def cambiar_status_solicitud(request,idSolVen):
     idTienda = tienda.idTi
 
     catalogo = Catalogo(categoria=categoria,status=status_nuevo,idVen_id=idVendedor,idTien_id=idTienda).save()
-    
+
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
 
-    return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes}) 
+    return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes})
 
 
 def admin_rechazo_solicitud(request):
-    return render(request, "admin_dash/admin_rechazo_solicitud.html") 
+    return render(request, "admin_dash/admin_rechazo_solicitud.html")
 
 def config_admin(request):
     #print ("id del admin es: " +  str(idAdmin))
