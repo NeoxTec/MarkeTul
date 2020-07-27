@@ -76,7 +76,7 @@ def admin_nueva_tienda(request):
     print("nombre: " + nati.name +" peso: " + str(nati.size) ) #verifica datos de archivo
     fs.save(str(nati.name),nati) #almacena el archivo con su nombre original y tipo de archivo
 
-    Tienda(idAdmin_id=idad, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi=str(image[0])).save()
+    Tienda(idAdmin_id=idad, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi="tienda/"+ str(nati.name)).save()
 
     listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
     admin = Administrador.objects.get(id=idAdmin)
@@ -95,29 +95,29 @@ def admin_nuevo_producto(request):
     return render(request, "admin_dash/admin_nuevo_producto.html",{'idt':idt})
 
 def nuevo_registro(request):
-    tienda = request.POST['idTi_id'],
-    tienda = int(str(tienda[0]))
-    nombre= request.POST['nombreProd'],
+    imgsave = request.FILES['imagenProd'],
+    idTi = request.POST['idTi_id'],
+    tienda = int(str(idTi[0]))
+    nombre = request.POST['nombreProd'],
     descripcion= request.POST['descripcionProd'],
     cat = request.POST['categoriaProd'],
-    image = request.FILES['imagenProd'],
     marca = request.POST['marcaProd'],
     precio = request.POST['precioProd'],
     medidas = request.POST['medidasProd'],
     existencias = request.POST['existenciasProd'],
     existencias = int(str(existencias[0]))
-
+    
     #Almacenamiento de imagen
     nami = request.FILES['imagenProd'] #toma el documento que se sube
     fs = FileSystemStorage(location='media/productos') #indica ruta de almacenamiento
     print("nombre: " + nami.name +" peso: " + str(nami.size) ) #verifica datos de archivo
     fs.save(str(nami.name),nami) #almacena el archivo con su nombre original y tipo de archivo
-
+    
     #crea objeto
-    prod = Producto(nombreProd= str(nombre[0]), categoriaProd= str(cat[0]), imagenProd=str(image[0]),
-                    marcaProd=str(marca[0]), descripcionProd=str(descripcion[0]), precioProd=float(precio[0]),
+    prod = Producto(nombreProd= str(nombre[0]), categoriaProd= str(cat[0]), imagenProd="productos/"+str(imgsave[0]),
+                    marcaProd=str(marca[0]), descripcionProd=str(descripcion[0]), precioProd=float(precio[0]), 
                     medidasProd=str(medidas[0]), existenciasProd= existencias, idTi_id=tienda)
-
+    
     #guarda objeto en la bd
     prod.save()
     #redirecciona a la pagina
