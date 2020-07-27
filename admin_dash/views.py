@@ -76,7 +76,7 @@ def admin_nueva_tienda(request):
     print("nombre: " + nati.name +" peso: " + str(nati.size) ) #verifica datos de archivo
     fs.save(str(nati.name),nati) #almacena el archivo con su nombre original y tipo de archivo
 
-    Tienda(idAdmin_id=idad, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi="tienda/"+ str(image[0])).save()
+    Tienda(idAdmin_id=idad, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi=str(image[0])).save()
 
     listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
     admin = Administrador.objects.get(id=idAdmin)

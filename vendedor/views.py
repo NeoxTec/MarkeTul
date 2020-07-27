@@ -46,6 +46,8 @@ def catalogo_tienda(request,idTi,idCatal):
     listaP = Producto.objects.filter(idTi_id=idTi)
     context = {'productos': listaP,'idCatal':idCatal}
     idCatal = idCatal
+    for producto in listaP:
+        print(producto.imagenProd)
     return render(request, "vendedor/catalogo_tienda.html",context)
 
 def añadir_producto_catalogo(request,idProd,idCatal):
