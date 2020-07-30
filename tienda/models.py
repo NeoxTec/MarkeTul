@@ -27,6 +27,7 @@ class Direccion(models.Model):
     codigoPostal= models.CharField(max_length =7,null=True, blank=True,)
     numeroExterior= models.CharField(max_length =7, null=True, blank=True,)
     numeroInterior= models.CharField(max_length =7, null=True, blank=True,)
+    idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
 class Carrito(models.Model):
     idCarrito = models.AutoField(primary_key=True)

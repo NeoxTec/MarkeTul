@@ -19,11 +19,10 @@
       <aside class="sidebar-left">
       <nav>
      <div class="card" style="width: 15rem;" align="center">
-    <center></center><img src="{% static 'core/img/user2.png' %}"  width="85" height="80">
       <div class="card-body">
-        <h5 class="card-title">Samuel Regil</h5>
-        <p class="card-text">samregil@gmail.com</p>
-        <p class="card-text">7751239685</p>
+        <h5 class="card-title">{{vendedor.nombreVend}}</h5>
+        <p class="card-text">{{vendedor.correo}}</p>
+        <p class="card-text">{{vendedor.telefono}}</p>
         <h6>Acerca de m&iacute;</h6>
         <p class="card-text">Soy un joven energético y versátil, egresado de la carrera de Mercadotecnia con especialidad en Análisis de Ventas e Investigación de Mercados. Me gusta integrarme a los equipos de ventas en donde pueda ser de ayuda y al mismo tiempo aprender más sobre la industria farmacéutica.</p>
       <div class="ec-stars-wrapper">
@@ -47,32 +46,34 @@
  <div style="margin-top:-655px; margin-left:15rem;">
     <!-- PARTE UNO -->
     {% for producto in productos  %}
-    <div class="container" style="width:auto; float:left; margin-left:.2rem">
-    <div class="card-deck mt-3">   
-    <div class="card "  style="max-width:20.5rem; max-height:60rem;">
-        <img src="{{producto.imagenProd.url}}" width="140px" height="190px" class="card-img-top" alt="...">
-      <div class="card-body" >
-        <h4 class="card-title" align="center"><strong>{{producto.nombreProd}}</strong></h4>
-        <p class="card-text">
-      <div class="form-row align-items-center">
-        <div class="col-sm-13 my-0" >
-          <h5> Marca:{{producto.marcaProd}}</h5>   
-          <h5> Existencias: {{producto.existenciasProd}}</h5>
-          <h5>{{producto.descripcionProd}}</h5>
-          
-        </div>
-      </div>
-      </p>
-        <P>
-          <button type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button> 
-          <h6 style="margin-left:12.5rem; margin-top:-3rem;"><strong>$ {{producto.precioProd}}</strong></h6> 
-        </P>
-      </div>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
+        <form action="{% url 'añadir_producto_carrito' producto.idProd %}" method="post" > {% csrf_token %}
+            <div class="container" style="width:auto; float:left; margin-left:.2rem">
+              <div class="card-deck mt-3">   
+              <div class="card "  style="max-width:20.5rem; max-height:60rem;">
+                  <img src="{{producto.imagenProd.url}}" width="140px" height="190px" class="card-img-top" alt="...">
+                <div class="card-body" >
+                  <h4 class="card-title" align="center"><strong>{{producto.nombreProd}}</strong></h4>
+                  <p class="card-text">
+                <div class="form-row align-items-center">
+                  <div class="col-sm-13 my-0" >
+                    <h5> Marca:{{producto.marcaProd}}</h5>   
+                    <h5> Existencias: {{producto.existenciasProd}}</h5>
+                    <h5>{{producto.descripcionProd}}</h5>
+                    
+                  </div>
+                </div>
+                </p>
+                  <P>
+                    <button type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button> 
+                    <h6 style="margin-left:12.5rem; margin-top:-3rem;"><strong>$ {{producto.precioProd}}</strong></h6> 
+                  </P>
+                </div>
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+      </form>
   </nav>
     {% endfor %}
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>

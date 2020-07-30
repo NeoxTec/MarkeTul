@@ -17,10 +17,25 @@
  <div></div>
  <div style="margin-left: 480px" class="col-md-8">
          <div class="card-body">
-     <h3 class="card-title">Cantidad de productos: 0</h3>
+     <h3 class="card-title">Cantidad de productos: {{carrito.cantidad}}</h3>
  <h3>Total:</h3>
-<h4>$0.00</h4>
- 
+<h4>${{carrito.subtotal}}</h4>
+<br>
+<div class="card-area">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mt-5">
+            <div class="card card-bordered">
+                <img class="card-img-top img-fluid" src="{{producto.imagenProd.url}}" alt="image">
+                <div class="card-body">
+                    <h5 class="title">{{ producto.nombreProd }}</h5>
+                    <p class="card-text">Descripción del Producto <br>{{producto.descripcionProd}} <br> {{producto.medidasProd}}</p>
+                    <div class="form-row align-items-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
  </div>
          <p></p>
  <a href="{% url 'proceso_pago' %}"><button style="width: 30rem;" type="submit" class="btn btn-success btn-lg">Pagar</button></a>

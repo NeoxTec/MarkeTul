@@ -2,7 +2,7 @@ from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from admin_dash.models import Producto,Tienda,Administrador
 from vendedor.models import Vendedor,Catalogo, CatalogoProducto
-from tienda.models import Consumidor
+from tienda.models import Consumidor,Carrito,Direccion
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -35,13 +35,28 @@ def carrito_compras(request,idProd,idCatal):
     return render(request, "tienda/carrito_compras.html", {'productos':productos,'catalogo':catalogo})
 
 def añadir_producto_carrito(request,idProd):
-    catalogo_producto = CatalogoProducto(idProducto_id=idProd).save()
-    listaC = Catalogo.objects.all()
-    context = {'catalogos': listaC}
-    return render(request, "vendedor/catalogos_vendedor.html", context)
+    catalogo_producto = CatalogoProducto.objects.get(idProducto_id=idProd)
+    producto = Producto.objects.get(idProd=idProd)
+    subtotal = float(producto.precioProd)
+    conteo = Carrito.objects.all().count()
+    idCatProd = int(catalogo_producto.idCatProd)
+
+    if (conteo != 1):
+        carrito = Carrito(cantidad=1,subtotal=subtotal,idCatProd_id=idCatProd,idProd_id=idProd).save()
+    elif (conteo >= 1):
+        carrito = Carrito.objects.get(idCatProd_id=idCatProd)
+        idcarrito = carrito.idCarrito
+        añadir = Carrito(cantidad=1,subtotal=subtotal,idCatProd_id=idCatProd,idProd_id=idProd).save().filter(idCarrito=idcarrito)
+    return render(request, "tienda/categorias.html")
 
 def carrito(request):
-    return render(request, "tienda/carrito.html")
+    carritos = Carrito.objects.all()
+    for producto in carritos:
+        prod = Producto.objects.get(idProd=producto.idProd_id)
+    print(producto.idProd_id)
+    carrito = Carrito.objects.get(idProd_id=producto.idProd_id)
+    context = {'producto':prod, 'carrito':carrito}
+    return render(request, "tienda/carrito.html",context)
 
 def detalle_producto(request):
     return render(request, "tienda/detalle_producto.html")
@@ -78,26 +93,27 @@ def catalogos(request, idCatal):
         pro = Producto.objects.get(idProd=producto.idProducto_id)
         productos.append(pro)
     catalogo = Catalogo.objects.get(idCatal=idCatal)
-    return render(request, "tienda/catalogos.html", {'productos':productos,'catalogo':catalogo})
-
-def post_direccion(request):
-    calle = request.POST['calle'],
-    colonia = request.POST['colonia'],
-    codigoPostal = request.POST['codigoPostal'],
-    numExterior = request.POST['numeroExterior'],
-    numInterior = request.POST['numeroInterior']
-    #crea objeto
-    dire = Direccion(calle = str(calle[0]), colonia= str(colonia[0]),
-                    codigoPostal=str(codigoPostal[0]), numeroExterior=str(numExterior[0]),  
-                    numeroInterior=str(numInterior[0]))
-    
-    #guarda objeto en la bd
-    dire.save()
-    #redirecciona a la pagina
-    return render(request,"tienda/direccion_envio.html")
+    vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
+    return render(request, "tienda/catalogos.html", {'productos':productos,'catalogo':catalogo,'vendedor':vendedor})
 
 def direccion_envio(request):
-    return render(request, "tienda/direccion_envio.html")
+    userid = request.user.id # Se obtiene el id
+    print("IDUSUARIO: "+str(userid))
+    datos_consumidor = Direccion.objects.get(idUser_id=userid)
+    return render(request, "tienda/direccion_envio.html", {'datos':datos_consumidor}) 
+   
+def guardar_direccion(request):
+    userid = request.user.id
+    codigoPostal= request.POST['codigoPostal']
+    calle = request.POST['calle']
+    colonia = request.POST['colonia']
+    numeroExterior = request.POST['numeroExterior']
+    numeroInterior = request.POST['numeroInterior']
+    
+    direccion = Direccion.objects.filter(idUser_id = userid).update(codigoPostal=str(codigoPostal), calle=str(calle), colonia=str(colonia), 
+    numeroExterior=str(numeroExterior),numeroInterior=str(numeroInterior))
+    datos_consumidor = Direccion.objects.get(idUser_id=userid)
+    return render(request, "tienda/direccion_envio.html", {'datos':datos_consumidor})
 
 def post_forma_pago(request):
     nombre_propietario = request.POST['nombre_propietario'],
