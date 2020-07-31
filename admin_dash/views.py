@@ -178,8 +178,7 @@ def admin_solicitudes_vendedor(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     print("ID_USER:" + str(idAdmin))
-    tienda = Tienda.objects.get(idAdmin_id=idAdmin)
-    solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
+    solicitudes = SolicitudesVendedor.objects.filter(noadmin=idAdmin).values('idSolVen','nombreV','correoV','direccionV','edadVen','status','idTi_id','idTi_id__nombreTi')#consulta de campos con inner join idTi__nombreTi es de la tabla de tiendas
     return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes,'tipo':tipo})
 
 def admin_detalle_solicitud(request,idSolVen):
@@ -193,17 +192,17 @@ def cambiar_status_solicitud(request,idSolVen):
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     cambio = 1
     sol = SolicitudesVendedor.objects.filter(idSolVen=idSolVen).update(status=cambio)
-    tienda = Tienda.objects.get(idAdmin_id=idAdmin)
-
+    
+    #datos creacion catalogo
     solicitud = SolicitudesVendedor.objects.get(idSolVen=idSolVen)
     categoria = "Computo",
     status_nuevo = 1
     idVendedor = int(str(solicitud.idVen_id))
-    idTienda = tienda.idTi
-
+    idTienda = solicitud.idTi_id
+    #creacion catalogo
     catalogo = Catalogo(categoria=categoria,status=status_nuevo,idVen_id=idVendedor,idTien_id=idTienda).save()
-
-    solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
+    #regresar a lista
+    solicitudes = SolicitudesVendedor.objects.filter(noadmin=idAdmin).values('idSolVen','nombreV','correoV','direccionV','edadVen','status','idTi_id','idTi_id__nombreTi')
 
     return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes,'tipo':tipo})
 

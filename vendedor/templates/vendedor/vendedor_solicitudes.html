@@ -19,16 +19,21 @@
                     <table id="dataTable3" class="text-center">
                         <thead class="text-capitalize">
                             <tr>
+                                <th>Tienda</th>
                                 <th>Estatus</th>
+                                <th>Estado catalogo</th>
                             </tr>
                         </thead>
                         <tbody>
                         {% for solicitud in solicitudes  %}
                             <tr>
+                                <th>{{solicitud.idTi_id__nombreTi}}</th>
                                 {% if solicitud.status == 0 %}
                                     <td>Pendiente</td>
+                                    <th>No hay catalogo</td>
                                 {% elif solicitud.status == 1%}
                                     <td>Aceptada</td>
+                                    <td>Catalogo creado</button></td>
                                 {% endif %}
                             </tr>
                         {% endfor %}
@@ -40,4 +45,46 @@
     </div>
     <!-- Dark table finaliza -->
     </div>
+
+
+<div id="openNew" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title">Crear Catalogo</h4><br>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        <form method="POST" action="{%url 'nuevo_catalogo'%}">
+            {% csrf_token %}
+                <p>{{solicitud.idTi_id}}</p>
+                <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select class="form-control" name="categoria">
+                                <option>Selecciona una Categoría</option>
+                                <option value="Computo">Electrónica y computo</option>
+                                <option value="Muebles">Muebles</option>
+                                <option value="Niños">Niños</option>
+                                <option value="Hombre">Hombre</option>
+                                <option value="Mujer">Mujer</option>
+                                <option value="Electrodomésticos">Electrodomésticos</option>
+                                <option value="Libros">Libros</option>
+                                <option value="Mascotas">Mascotas</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" value={{solicitud.}}>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Crear</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+        </form>
+      </div>
+    </div>
+   </div>
+</div>
 {% endblock %}

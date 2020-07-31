@@ -20,6 +20,7 @@ class SolicitudesVendedor(models.Model):
     direccionV = models.CharField(max_length=200, null=True)
     status = models.SmallIntegerField(default=0)
     idTi = models.ForeignKey(Tienda, null=True, blank=True, on_delete=models.CASCADE)
+    noadmin = models.IntegerField(null=True)
     idVen = models.ForeignKey(Vendedor, null=True, blank=True, on_delete=models.CASCADE)
 
 class Catalogo(models.Model):
