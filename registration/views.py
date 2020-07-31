@@ -1,15 +1,17 @@
 from .forms import UserCreationFormWithEmail
-from django.views.generic import CreateView
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django import forms
 from django.contrib import messages
 from .models import Usuario_Tipo
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from marketul import urls
+
 
 
 # Create your views here.
-def registro(request):
+def registerPage(request):
     form = UserCreationFormWithEmail()
 
     form.fields['username'].widget = forms.TextInput(attrs={'class':'form-control mb-2', 'placeholder':'Nombre de Usuario'})
@@ -36,23 +38,23 @@ def registro(request):
 
     return render(request,'registration/signup.html',context)
 
-def login(request):
-
+def loginPage(request):
+    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
+        print("USUARIO: "+ username)
+        user = authenticate(request, username=username, password = password)
 
         if user is not None:
-            pagina = ''
-            login(request, username)
-            usuario = User.objects.get(username=username)
-            tipo = Usuario_Tipo.objects.get(idUser_id=usuario.id)
-            if tipo.idTipo_User_id == 1 and tipo.idTipo_User_id == 2:
-                pagina = 'admin_dash'
-            elif tipo = Usuario_Tipo.idTipo_User_id == 3:
-                pagina = 'configuracion_cuenta'
-            return redirect(pagina)
+            login(request,user)
+            return redirect('admin_dash')
+        else:
+            messages.info(request,"Usuario o contraseña incorrectos, prueba de nuevo.")
+            context = {}
+            return render(request, 'registration/login.html',context)
+
     context = {}
-    return render(request,'registration/signup.html',context)
+    return render(request, 'registration/login.html',context)
+

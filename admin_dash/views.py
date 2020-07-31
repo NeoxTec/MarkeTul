@@ -17,34 +17,37 @@ def admin_dash(request):
     global idUser
     idUser = userid
     id_usuario = User.objects.get(id=userid)
-    print(str(userid))
+    print("ID:" + str(userid))
     conteo = Administrador.objects.filter(idUser_id=userid).count()
     conteo2 = Vendedor.objects.filter(idUser_id=userid).count()
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
-    if (conteo!=1 and tipo.idTipo_User_id):
+    print("TIPO_USUARIO: " + str(tipo.idTipo_User_id))
+    if (conteo!=1 and tipo.idTipo_User_id == 1):
         nadmin = Administrador(nombreAdmin=id_usuario.first_name,idUser_id=userid,correoAdmin=id_usuario.email)
         nadmin.save()
         ida = Administrador.objects.get(idUser_id=userid)
-    elif (conteo2!=1 and not id_usuario.is_staff):
+    elif (conteo2!=1 and tipo.idTipo_User_id == 2):
         vendedor = Vendedor(nombreVend=id_usuario.first_name,idUser_id=userid,correo=id_usuario.email)
         vendedor.save()
         ida = Vendedor.objects.get(idUser_id=userid)
     else:
-        if (id_usuario.is_staff):
+        if (tipo.idTipo_User_id == 1):
             ida= Administrador.objects.get(idUser_id=userid)#llama a admin1
-        elif(not id_usuario.is_staff):
+        elif(tipo.idTipo_User_id == 2):
             ida = Vendedor.objects.get(idUser_id=userid)
             ida.id = ida.idVend
         global idAdmin #toma variable global para cambiarla
         idAdmin = int(ida.id) #cambia el valor de la variable global para consultas posteriores
         #print(str(idAdmin)) #comprueba cambio
     print("ID_USER:" + str(idAdmin))
-    return render(request, "admin_dash/admin_dash.html",{'ida':ida})
+    return render(request, "admin_dash/admin_dash.html",{'ida':ida,'tipo':tipo})
 
 def vendedores(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     tienda = Tienda.objects.get(idAdmin_id=idAdmin)
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
-    return render(request, "admin_dash/vendedores.html",{'solicitudes':solicitudes})
+    return render(request, "admin_dash/vendedores.html",{'solicitudes':solicitudes,'tipo':tipo})
 
 def admin_productos(request):
     listaP = Producto.objects.all()
@@ -60,11 +63,15 @@ def admin_productos_tienda(request,id):
 
 def admin_tiendas(request):
     print(idAdmin)
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
     admin = Administrador.objects.get(id=idAdmin)
-    return render(request, "admin_dash/admin_tiendas.html",{'tiendas':listaT,'admin':admin})
+    return render(request, "admin_dash/admin_tiendas.html",{'tiendas':listaT,'admin':admin,'tipo':tipo})
 
 def admin_nueva_tienda(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     print(idAdmin)
     idad = idAdmin
     name = request.POST['nombreTi'],
@@ -82,21 +89,27 @@ def admin_nueva_tienda(request):
 
     listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
     admin = Administrador.objects.get(id=idAdmin)
-    return render(request, "admin_dash/admin_tiendas.html", {'tiendas': listaT, 'admin': admin})
+    return render(request, "admin_dash/admin_tiendas.html", {'tiendas': listaT, 'admin': admin,'tipo':tipo})
 
 
 def admin_detalle_tienda(request):
     return render(request, "admin_dash/admin_detalle_tienda.html")
 
 def admin_detalle_producto(request, id):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     prod = Producto.objects.get(idProd=id)
-    return render(request, "admin_dash/admin_detalle_producto.html",{'prod':prod})
+    return render(request, "admin_dash/admin_detalle_producto.html",{'prod':prod,'tipo':tipo})
 
 def admin_nuevo_producto(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     idt = Tienda.objects.get(idTi=idTienda)
-    return render(request, "admin_dash/admin_nuevo_producto.html",{'idt':idt})
+    return render(request, "admin_dash/admin_nuevo_producto.html",{'idt':idt,'tipo':tipo})
 
 def nuevo_registro(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     imgsave = request.FILES['imagenProd'],
     idTi = request.POST['idTi_id'],
     tienda = int(str(idTi[0]))
@@ -125,9 +138,11 @@ def nuevo_registro(request):
     #redirecciona a la pagina
     listaP = Producto.objects.filter(Q(idTi_id=tienda)&Q(estado=1))
     print(tienda)
-    return render(request, "admin_dash/admin_productos.html",{'productos':listaP})
+    return render(request, "admin_dash/admin_productos.html",{'productos':listaP,'tipo':tipo})
 
 def actualizacion_producto(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     id = request.POST['idProd'],
     nombre = request.POST['nombreProd'],
     descripcion = request.POST['descripcionProd'],
@@ -146,28 +161,36 @@ def actualizacion_producto(request):
     listaP = Producto.objects.filter(Q(idTi_id=idTienda) & Q(estado=1))
     print(idTienda)
     #redirecciona a la pagina
-    return render(request, "admin_dash/admin_productos.html",{'productos':listaP})
+    return render(request, "admin_dash/admin_productos.html",{'productos':listaP,'tipo':tipo})
 
 def producto_eliminado(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     idp= request.POST['idProd']
     cambio = 0
     pr = Producto.objects.filter( idProd=idp ).update(estado=cambio)
 
     listaP = Producto.objects.filter(Q(idTi_id=idTienda) & Q(estado=1))
     print ("dato= "+ str(id))
-    return render(request,"admin_dash/admin_productos.html",{'productos':listaP})
+    return render(request,"admin_dash/admin_productos.html",{'productos':listaP,'tipo':tipo})
 
 def admin_solicitudes_vendedor(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     print("ID_USER:" + str(idAdmin))
     tienda = Tienda.objects.get(idAdmin_id=idAdmin)
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
-    return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes})
+    return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes,'tipo':tipo})
 
 def admin_detalle_solicitud(request,idSolVen):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     solicitud = SolicitudesVendedor.objects.get(idSolVen=idSolVen)
-    return render(request, "admin_dash/admin_detalle_solicitud.html",{'solicitud':solicitud})
+    return render(request, "admin_dash/admin_detalle_solicitud.html",{'solicitud':solicitud,'tipo':tipo})
 
 def cambiar_status_solicitud(request,idSolVen):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     cambio = 1
     sol = SolicitudesVendedor.objects.filter(idSolVen=idSolVen).update(status=cambio)
     tienda = Tienda.objects.get(idAdmin_id=idAdmin)
@@ -182,18 +205,22 @@ def cambiar_status_solicitud(request,idSolVen):
 
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
 
-    return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes})
+    return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes,'tipo':tipo})
 
 
 def admin_rechazo_solicitud(request):
     return render(request, "admin_dash/admin_rechazo_solicitud.html")
 
 def config_admin(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     #print ("id del admin es: " +  str(idAdmin))
     datos_admin = Administrador.objects.get(idUser_id=idAdmin)
-    return render(request, "admin_dash/config_admin.html",{'datos':datos_admin})
+    return render(request, "admin_dash/config_admin.html",{'datos':datos_admin,'tipo':tipo})
 
 def update_config(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     nombre = request.POST['nombreAdmin'],
     direccion = request.POST['direccionAdmin'],
     telefono = request.POST['telefonoAdmin'],
@@ -203,4 +230,4 @@ def update_config(request):
     config = Administrador.objects.filter(idUser_id = idAdmin).update(nombreAdmin=str(nombre[0]),direccionAdmin=str(direccion[0]),
                                           telefonoAdmin=telefono,correoAdmin=str(correo))
     datos_admin = Administrador.objects.get(id=idAdmin)
-    return render(request, "admin_dash/config_admin.html",{'datos':datos_admin})
+    return render(request, "admin_dash/config_admin.html",{'datos':datos_admin,'tipo':tipo})

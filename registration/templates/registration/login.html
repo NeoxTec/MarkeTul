@@ -11,11 +11,8 @@
 <div class="row">
   <form class="form-registro" method="POST">{% csrf_token %}
         <h1>Ingresar</h1>
-        {% if form.non_field_errors %}
-        <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
-      {% endif %} 
       {% for  message in messages %}
-        <p id="message" style"color:green">{{message}}</p>
+        <p id="message">{{message}}</p>
       {% endfor %}
       <label>
         <p class="label-txt">USUARIO</p>
@@ -26,7 +23,7 @@
       </label>
       <label>
         <p class="label-txt">CONTRASEÑA</p>
-        <input type="password" class="input" name="password"id="id_password" >
+        <input type="password" class="input" name="password" id="id_password" >
         <div class="line-box">
           <div class="line"></div>
         </div>

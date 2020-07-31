@@ -1,7 +1,7 @@
 {% extends 'admin_dash/master_dashboard.html' %}
 
 {% block titulo_pag %}
-{% if user.is_staff%}
+{% if tipo.idTipo_User_id == 1%}
     Administrador de Tienda
 {% else %}
     Vendedor
