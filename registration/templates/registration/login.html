@@ -9,11 +9,14 @@
 {% block content %}
 {% load static %}
 <div class="row">
-  <form class="form-registro" method="post">{% csrf_token %}
+  <form class="form-registro" method="POST">{% csrf_token %}
         <h1>Ingresar</h1>
         {% if form.non_field_errors %}
         <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
       {% endif %} 
+      {% for  message in messages %}
+        <p id="message" style"color:green">{{message}}</p>
+      {% endfor %}
       <label>
         <p class="label-txt">USUARIO</p>
         <input type="text" class="input" name="username" id="id_username">

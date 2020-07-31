@@ -4,6 +4,7 @@ from admin_dash.models import Producto, Tienda, Administrador
 from django.contrib.auth.models import User
 from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo
 from django.core.files.storage import FileSystemStorage
+from registration.models import Usuario_Tipo
 
 idAdmin = 0
 idUser = 0
@@ -19,7 +20,8 @@ def admin_dash(request):
     print(str(userid))
     conteo = Administrador.objects.filter(idUser_id=userid).count()
     conteo2 = Vendedor.objects.filter(idUser_id=userid).count()
-    if (conteo!=1 and id_usuario.is_staff):
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    if (conteo!=1 and tipo.idTipo_User_id):
         nadmin = Administrador(nombreAdmin=id_usuario.first_name,idUser_id=userid,correoAdmin=id_usuario.email)
         nadmin.save()
         ida = Administrador.objects.get(idUser_id=userid)
