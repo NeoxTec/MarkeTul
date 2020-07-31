@@ -48,6 +48,7 @@ def loginPage(request):
         user = authenticate(request, username=username, password = password)
 
         if user is not None:
+            usuario = 
             login(request,user)
             return redirect('admin_dash')
         else:
