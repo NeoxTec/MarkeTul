@@ -67,7 +67,7 @@ def vendedor_solicitudes(request):
     userid = request.user.id
     id_usuario = User.objects.get(id=userid)
     vendedor = Vendedor.objects.get(idUser_id=userid)
-    solicitudes = SolicitudesVendedor.objects.filter(idVen_id=vendedor.idVend)
+    solicitudes = SolicitudesVendedor.objects.filter(idVen_id=vendedor.idVend).values('idTi_id','status','idTi_id__nombreTi','idSolVen')
     return render(request, "vendedor/vendedor_solicitudes.html",{'solicitudes':solicitudes}) 
 
 def vendedor_ventas(request):
