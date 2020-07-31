@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')9!j)yc7nlg^u)0ssx$)*zuc_le6d)+3wk*owo+j5k7f1!izkf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -79,14 +79,7 @@ WSGI_APPLICATION = 'marketul.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-"""if DEBUG == True:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-else:"""
+if DEBUG == True:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -97,6 +90,18 @@ DATABASES = {
         'PORT': '3306'
     }
 }
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'h65ksvtz8rvmidwp',
+        'USER': 'ey2rqe48vwm9aa8n',
+        'PASSWORD': 'raaafqejtk6vw6kh',
+        'HOST': 'ctgplw90pifdso61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        'PORT': '3306'
+    }
+}
+
 
 
 
