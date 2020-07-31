@@ -105,7 +105,7 @@ def enviar_solicitud(request,idTi):
     motivo = request.POST['motivos'],
 
     sol = SolicitudesVendedor(nombreV=str(nombre[0]), direccionV=direccion, correoV = correo,
-                edadVen=edad, genero=str(genero[0]), motivos=str(motivo), idTi_id=tienda.idTi, idVen_id=vendedor.idVend).save()
+                edadVen=edad, genero=str(genero[0]), motivos=str(motivo), idTi_id=tienda.idTi, idVen_id=vendedor.idVend, noadmin= tienda.idAdmin_id).save()
 
     return render(request, "vendedor/vendedor_solicitudes.html")
 

@@ -18,7 +18,7 @@
                 <div class="data-tables datatable-dark">
                     <table id="dataTable3" class="text-center">
                         <thead class="text-capitalize">
-                            <tr>
+                            <tr><th>Tienda</th>
                                 <th>Nombre</th>
                                 <th>Correo Electrónico</th>
                                 <th>Dirección</th>
@@ -29,6 +29,7 @@
                         <tbody>
                             {% for solicitud in solicitudes%}
                             <tr>
+                                <td>{{solicitud.idTi_id__nombreTi}}</td>
                                 <td><a href="{% url 'admin_detalle_solicitud' solicitud.idSolVen %}">{{solicitud.nombreV}}</a></td>
                                 <td>{{solicitud.correoV}}</td>
                                 <td>{{solicitud.direccionV}}</td>
