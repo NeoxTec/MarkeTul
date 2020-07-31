@@ -1,0 +1,1 @@
+web: guicorn marketul.wsgi --log-file -
