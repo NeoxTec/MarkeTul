@@ -62,11 +62,13 @@ def admin_productos(request):
 
 @login_required(login_url='login')
 def admin_productos_tienda(request,id):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     listaP = Producto.objects.filter(Q(idTi_id=id)&Q(estado=1))
     global idTienda
     idTienda = id
     print(idTienda)
-    return render(request, "admin_dash/admin_productos.html", {'productos': listaP})
+    return render(request, "admin_dash/admin_productos.html", {'productos': listaP,'tipo':tipo})
 
 @login_required(login_url='login')
 def admin_tiendas(request):
