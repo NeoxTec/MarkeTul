@@ -48,9 +48,13 @@ def loginPage(request):
         user = authenticate(request, username=username, password = password)
 
         if user is not None:
-            usuario = 
-            login(request,user)
-            return redirect('admin_dash')
+            tipo = Usuario_Tipo.objects.get(idUser_id=user.id)
+            if tipo.idTipo_User_id == 1 or tipo.idTipo_User_id == 2:
+                login(request,user)
+                return redirect('admin_dash')
+            elif tipo.idTipo_User_id == 3:
+                login(request,user)
+                return redirect('categorias')
         else:
             messages.info(request,"Usuario o contraseña incorrectos, prueba de nuevo.")
             context = {}

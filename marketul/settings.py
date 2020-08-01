@@ -80,15 +80,15 @@ WSGI_APPLICATION = 'marketul.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 if DEBUG == True:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mktul',
-        'USER': 'market',
-        'PASSWORD': 'mark1234',
-        'HOST': 'localhost',
-        'PORT': '3306'
-    }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'mktul',
+            'USER': 'market',
+            'PASSWORD': 'mark1234',
+            'HOST': 'localhost',
+             'PORT': '3306'
+         }
 }
 else:
     DATABASES = {
