@@ -13,8 +13,10 @@ class VendorHomeView(TemplateView):
     template_name = "vendedor/vendedor_dash.html"
 
 def tiendas(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     listaT = Tienda.objects.all()
-    context = {'tiendas': listaT}
+    context = {'tiendas': listaT,'tipo':tipo}
     return render(request, "vendedor/tiendas.html", context)
 
 def catalogos_vendedor(request):
