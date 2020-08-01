@@ -19,14 +19,15 @@ from web import views as web_views
 from django.conf import settings
 
 urlpatterns = [
+    
+    # Paths de vendedor
+    path('', include('web.urls')),
+    
     # Paths de admin_dash
     path('', include('admin_dash.urls')),
 
     # Paths de vendedor
     path('', include('vendedor.urls')),
-
-    # Paths de vendedor
-    path('', include('web.urls')),
     
     # Paths de Tienda
     path('', include('tienda.urls')),
