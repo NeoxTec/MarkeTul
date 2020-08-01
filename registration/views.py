@@ -32,6 +32,7 @@ def registerPage(request):
             correo = form.cleaned_data.get('email')
             usuario = User.objects.get(email=correo)
             Usuario_Tipo(idUser_id=usuario.id,idTipo_User_id=tipo).save()
+            print("EMAIL:" + str(usuario))
             return redirect('login')
 
     context = {'form':form}
