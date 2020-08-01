@@ -16,12 +16,11 @@
 
       <aside class="sidebar-left">
         <nav>
-          <div class="card" style="width: 20rem" align="center" >
-            <img src="{% static 'core/img/user2.png' %}" width="85" height="85">
+          <div class="card" style="width: 20rem;margin-top:20px" align="center" >
             <div class="card-body" align="center">
-              <h5 class="card-title">Isabella Zoey</h5>
-              <p class="card-text">isabella@gmail.com</p>
-              <p class="card-text">7751292878</p>
+              <h5 class="card-title">{{datos.nombre}}</h5>
+              <p class="card-text">{{datos.correo}}</p>
+              <p class="card-text">{{datos.telefono}}</p>
             </div>
 
             <ul class="list-group list-group-flush">
@@ -39,17 +38,17 @@
               <li class="list-group-item" style="height: 70px;">
                 <h5><a href="{% url 'direccion_envio' %}"><button type="submit"
                       style="margin-left: 2px; width: 180px;" class="btn btn-dark btn-lg"><img
-                        src="{% static 'core/img/home-run.png' %}" width="30"
+                        src="{% static 'core/img/home-run.jpeg' %}" width="30"
                         height="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dirección&nbsp;&nbsp;&nbsp;&nbsp;</button></a></h5>
               </li>
               <li class="list-group-item">
                 <h5><a href="{% url 'configuracion_cuenta' %}"><button type="submit"
                       style="margin-left: 2px; width: 180px;" class="btn btn-dark btn-lg"><img
-                        src="{% static 'core/img/confi.png' %}" width="30"
+                        src="{% static 'core/img/confi.jpeg' %}" width="30"
                         height="30">&nbsp;Configuración&nbsp;&nbsp;</button></a></h5>
               </li>
               <li class="list-group-item">
-                <h5><a href="{% url 'home' %}"><button type="submit" style="margin-left: 2px; width: 180px;"
+                <h5><a href="{% url 'logout' %}"><button type="submit" style="margin-left: 2px; width: 180px;"
                       class="btn btn-danger btn-lg"><img src="{% static 'core/img/cerrar.png' %}" width="30"
                         height="30">&nbsp;Cerrar Sesion&nbsp;&nbsp;</button></a></h5>
               </li>
@@ -58,7 +57,7 @@
         </nav>
       </aside>
 </div>
- <div class="d-flex justify-content-center" style="margin-top:-593px;"></div>
+ <div class="d-flex justify-content-center" style="margin-top:-420px;"></div>
  
   <div style="margin-top:15px;">
     <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:1000px;"></a>

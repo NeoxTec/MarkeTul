@@ -4,12 +4,16 @@ from admin_dash.models import Producto,Tienda,Administrador
 from vendedor.models import Vendedor,Catalogo, CatalogoProducto
 from tienda.models import Consumidor,Carrito,Direccion
 from django.contrib.auth.models import User
+from registration.views import login,loginPage
+
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 idCons = 0
 idUser = 0
 """Tienda"""
 
+@login_required(login_url='login')
 def categorias(request):
     userid = request.user.id
     global idUser
@@ -22,9 +26,7 @@ def categorias(request):
         ncon.save()
     return render(request, "tienda/categorias.html")
 
-def compras(request):
-    return render(request, "tienda/compras.html")
-
+@login_required(login_url='login')
 def carrito_compras(request,idProd,idCatal):
     listaP = CatalogoProducto.objects.filter(idCatalogo_id=idCatal)
     productos = []
@@ -34,6 +36,7 @@ def carrito_compras(request,idProd,idCatal):
     catalogo = Catalogo.objects.get(idCatal=idCatal)
     return render(request, "tienda/carrito_compras.html", {'productos':productos,'catalogo':catalogo})
 
+@login_required(login_url='login')
 def añadir_producto_carrito(request,idProd):
     catalogo_producto = CatalogoProducto.objects.get(idProducto_id=idProd)
     producto = Producto.objects.get(idProd=idProd)
@@ -49,6 +52,7 @@ def añadir_producto_carrito(request,idProd):
         añadir = Carrito(cantidad=1,subtotal=subtotal,idCatProd_id=idCatProd,idProd_id=idProd).save().filter(idCarrito=idcarrito)
     return render(request, "tienda/categorias.html")
 
+@login_required(login_url='login')
 def carrito(request):
     carritos = Carrito.objects.all()
     for producto in carritos:
@@ -58,15 +62,24 @@ def carrito(request):
     context = {'producto':prod, 'carrito':carrito}
     return render(request, "tienda/carrito.html",context)
 
+@login_required(login_url='login')
 def detalle_producto(request):
     return render(request, "tienda/detalle_producto.html")
 
+@login_required(login_url='login')
+def compras(request):
+    userid = request.user.id
+    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+    return render(request, "tienda/compras.html",{'datos':datos_consumidor})
+
+@login_required(login_url='login')
 def configuracion_cuenta(request):
     userid = request.user.id # Se obtiene el id
     print("IDUSUARIO: "+str(userid))
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
     return render(request, "tienda/configuracion_cuenta.html", {'datos':datos_consumidor}) 
 
+@login_required(login_url='login')
 def guardar_config_con(request):
     userid = request.user.id
     nombre = request.POST['nombre']
@@ -96,12 +109,15 @@ def catalogos(request, idCatal):
     vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
     return render(request, "tienda/catalogos.html", {'productos':productos,'catalogo':catalogo,'vendedor':vendedor})
 
+@login_required(login_url='login')
 def direccion_envio(request):
     userid = request.user.id # Se obtiene el id
     print("IDUSUARIO: "+str(userid))
-    datos_consumidor = Direccion.objects.get(idUser_id=userid)
-    return render(request, "tienda/direccion_envio.html", {'datos':datos_consumidor}) 
-   
+    direccion = Direccion.objects.get(idUser_id=userid)
+    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+    return render(request, "tienda/direccion_envio.html", {'datos':datos_consumidor,'direccion':direccion}) 
+
+@login_required(login_url='login')
 def guardar_direccion(request):
     userid = request.user.id
     codigoPostal= request.POST['codigoPostal']
@@ -112,9 +128,12 @@ def guardar_direccion(request):
     
     direccion = Direccion.objects.filter(idUser_id = userid).update(codigoPostal=str(codigoPostal), calle=str(calle), colonia=str(colonia), 
     numeroExterior=str(numeroExterior),numeroInterior=str(numeroInterior))
-    datos_consumidor = Direccion.objects.get(idUser_id=userid)
-    return render(request, "tienda/direccion_envio.html", {'datos':datos_consumidor})
+    
+    direccion = Direccion.objects.get(idUser_id=userid)
+    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+    return render(request, "tienda/direccion_envio.html", {'datos':datos_consumidor,'direccion':direccion})
 
+@login_required(login_url='login')
 def post_forma_pago(request):
     nombre_propietario = request.POST['nombre_propietario'],
     numero_tarjeta = request.POST['numero_tarjeta'],
@@ -126,13 +145,18 @@ def post_forma_pago(request):
     #guarda objeto en bd
     pago.save()
     #redirecciona a la pagina
-    return render(request,"tienda/forma_pago.html")
+    userid = request.user.id
+    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+    return render(request,"tienda/forma_pago.html", {'datos':datos_consumidor})
     
 def direccion_envio1(request):
     return render(request, "tienda/direccion_envio1.html")
 
+@login_required(login_url='login')
 def forma_pago(request):
-    return render(request, "tienda/forma_pago.html")
+    userid = request.user.id
+    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+    return render(request, "tienda/forma_pago.html", {'datos':datos_consumidor})
 
 def proceso_pago(request):
     return render(request, "tienda/proceso_pago.html")

@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo
 from django.core.files.storage import FileSystemStorage
 from registration.models import Usuario_Tipo
+from registration.views import login,loginPage
+
+from django.contrib.auth.decorators import login_required
 
 idAdmin = 0
 idUser = 0
@@ -12,6 +15,7 @@ idTienda = 0
 # Create your views here.
 """ Dashboard Administrador """
 
+@login_required(login_url='login')
 def admin_dash(request):
     userid = request.user.id
     global idUser
@@ -42,6 +46,7 @@ def admin_dash(request):
     print("ID_USER:" + str(idAdmin))
     return render(request, "admin_dash/admin_dash.html",{'ida':ida,'tipo':tipo})
 
+@login_required(login_url='login')
 def vendedores(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
@@ -49,11 +54,13 @@ def vendedores(request):
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
     return render(request, "admin_dash/vendedores.html",{'solicitudes':solicitudes,'tipo':tipo})
 
+@login_required(login_url='login')
 def admin_productos(request):
     listaP = Producto.objects.all()
     print (listaP)
     return render(request, "admin_dash/admin_productos.html", {'productos': listaP})
 
+@login_required(login_url='login')
 def admin_productos_tienda(request,id):
     listaP = Producto.objects.filter(Q(idTi_id=id)&Q(estado=1))
     global idTienda
@@ -61,6 +68,7 @@ def admin_productos_tienda(request,id):
     print(idTienda)
     return render(request, "admin_dash/admin_productos.html", {'productos': listaP})
 
+@login_required(login_url='login')
 def admin_tiendas(request):
     print(idAdmin)
     userid = request.user.id
@@ -69,6 +77,7 @@ def admin_tiendas(request):
     admin = Administrador.objects.get(id=idAdmin)
     return render(request, "admin_dash/admin_tiendas.html",{'tiendas':listaT,'admin':admin,'tipo':tipo})
 
+@login_required(login_url='login')
 def admin_nueva_tienda(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
@@ -95,18 +104,21 @@ def admin_nueva_tienda(request):
 def admin_detalle_tienda(request):
     return render(request, "admin_dash/admin_detalle_tienda.html")
 
+@login_required(login_url='login')
 def admin_detalle_producto(request, id):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     prod = Producto.objects.get(idProd=id)
     return render(request, "admin_dash/admin_detalle_producto.html",{'prod':prod,'tipo':tipo})
 
+@login_required(login_url='login')
 def admin_nuevo_producto(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     idt = Tienda.objects.get(idTi=idTienda)
     return render(request, "admin_dash/admin_nuevo_producto.html",{'idt':idt,'tipo':tipo})
 
+@login_required(login_url='login')
 def nuevo_registro(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
@@ -140,6 +152,7 @@ def nuevo_registro(request):
     print(tienda)
     return render(request, "admin_dash/admin_productos.html",{'productos':listaP,'tipo':tipo})
 
+@login_required(login_url='login')
 def actualizacion_producto(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
@@ -163,6 +176,7 @@ def actualizacion_producto(request):
     #redirecciona a la pagina
     return render(request, "admin_dash/admin_productos.html",{'productos':listaP,'tipo':tipo})
 
+@login_required(login_url='login')
 def producto_eliminado(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
@@ -174,6 +188,7 @@ def producto_eliminado(request):
     print ("dato= "+ str(id))
     return render(request,"admin_dash/admin_productos.html",{'productos':listaP,'tipo':tipo})
 
+@login_required(login_url='login')
 def admin_solicitudes_vendedor(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
@@ -181,12 +196,14 @@ def admin_solicitudes_vendedor(request):
     solicitudes = SolicitudesVendedor.objects.filter(noadmin=idAdmin).values('idSolVen','nombreV','correoV','direccionV','edadVen','status','idTi_id','idTi_id__nombreTi')#consulta de campos con inner join idTi__nombreTi es de la tabla de tiendas
     return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes,'tipo':tipo})
 
+@login_required(login_url='login')
 def admin_detalle_solicitud(request,idSolVen):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     solicitud = SolicitudesVendedor.objects.get(idSolVen=idSolVen)
     return render(request, "admin_dash/admin_detalle_solicitud.html",{'solicitud':solicitud,'tipo':tipo})
 
+@login_required(login_url='login')
 def cambiar_status_solicitud(request,idSolVen):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
@@ -206,10 +223,11 @@ def cambiar_status_solicitud(request,idSolVen):
 
     return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes,'tipo':tipo})
 
-
+@login_required(login_url='login')
 def admin_rechazo_solicitud(request):
     return render(request, "admin_dash/admin_rechazo_solicitud.html")
 
+@login_required(login_url='login')
 def config_admin(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
@@ -217,6 +235,7 @@ def config_admin(request):
     datos_admin = Administrador.objects.get(idUser_id=idAdmin)
     return render(request, "admin_dash/config_admin.html",{'datos':datos_admin,'tipo':tipo})
 
+@login_required(login_url='login')
 def update_config(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)

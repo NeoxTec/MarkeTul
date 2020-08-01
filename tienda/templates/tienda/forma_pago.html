@@ -13,23 +13,22 @@
  
   <div class="izquierda">
     <!-- Barra lateral -->
-    <div class="fila" style="margin-left:10px; margin-top: 20px;" class="d-flex flex-row bd-highlight mb-3" >
+    <div class="fila" style="margin-left:10px; margin-top: 0px;" class="d-flex flex-row bd-highlight mb-3" >
       
         <aside class="sidebar-left">
           <nav>
-            <div class="card" style="width: 20rem" align="center" >
-              <img src="{% static 'core/img/user2.png' %}" width="85" height="85">
+            <div class="card" style="width: 20rem; margin-top:20px" align="center" >
               <div class="card-body" align="center">
-                <h5 class="card-title">Emily</h5>
-                <p class="card-text">emily@gmail.com</p>
-                <p class="card-text">7757510152</p>
+              <h5 class="card-title">{{datos.nombre}}</h5>
+              <p class="card-text">{{datos.correo}}</p>
+              <p class="card-text">{{datos.telefono}}</p>
               </div>
 
               <ul class="list-group list-group-flush">
                 <li class="list-group-item" style="height: 70px;">
                   <h5><a href="{% url 'compras' %}"><button type="submit" style="margin-left: 2px; width: 180px; "
                         class="btn btn-dark btn-lg"><img src="{% static 'core/img/bag.png' %}" width="30"
-                          height="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compras&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
+                        height="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compras&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
                   </h5>
                 </li>
                 <li class="list-group-item" style="height: 70px;">
@@ -62,7 +61,7 @@
   </div>
 
 
-  <div class="d-flex justify-content-center" style="margin-top:-593px; "></div>
+  <div class="d-flex justify-content-center" style="margin-top:-450px; "></div>
     <div class="card" align="center" style="width:50rem; margin-left:360px">
       <div>
         <div class="col-md-12">

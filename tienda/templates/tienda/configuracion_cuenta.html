@@ -19,8 +19,7 @@
 
       <aside class="sidebar-left">
         <nav>
-          <div class="card" style="width: 20rem" align="center">
-            <img src="{% static 'core/img/user2.png' %}" width="85" height="85">
+          <div class="card" style="width: 20rem; margin-top:20px" align="center">
             <div class="card-body" align="center">
               <h5 class="card-title">{{datos.nombre}}</h5>
               <p class="card-text">{{datos.correo}}</p>
@@ -51,7 +50,7 @@
                         height="30">&nbsp;Configuración&nbsp;&nbsp;</button></a></h5>
               </li>
               <li class="list-group-item">
-                <h5><a href="{% url 'home' %}"><button type="submit" style="margin-left: 2px; width: 180px;"
+                <h5><a href="{% url 'logout' %}"><button type="submit" style="margin-left: 2px; width: 180px;"
                       class="btn btn-danger btn-lg"><img src="{% static 'core/img/cerrar.jpeg' %}" width="30"
                         height="30">&nbsp;Cerrar Sesion&nbsp;&nbsp;</button></a></h5>
               </li>
@@ -63,7 +62,7 @@
   </div>
 
 
-  <div class="d-flex justify-content-center" style="margin-top:-593px;"></div>
+  <div class="d-flex justify-content-center" style="margin-top:-450px;"></div>
 
   <div style="margin-top:15px;">
     <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}" width="30" height="35"
