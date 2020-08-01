@@ -17,8 +17,10 @@ class Forma_Pago(models.Model):
     idForma_pago = models.AutoField(primary_key=True)
     nombre_propietario = models.CharField(max_length=50)
     numero_tarjeta = models.CharField(max_length=16)
-    fvencimiento = models.CharField(max_length=12, null=True, blank=True,)
+    fvencimiento = models.CharField(max_length=12, null=True, blank=True)
     idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+
+# Añadir forma de pago en efectivo y Paypal
 
 class Direccion(models.Model):
     idDireccion = models.AutoField(primary_key=True)
@@ -29,19 +31,23 @@ class Direccion(models.Model):
     numeroInterior= models.CharField(max_length =7, null=True, blank=True,)
     idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
+# Añadir tabla visual de las direcciones
+
 class Carrito(models.Model):
     idCarrito = models.AutoField(primary_key=True)
-    cantidad = models.IntegerField()
-    subtotal = models.FloatField()
-    idProd = models.ForeignKey(Producto, null=True, blank=True, on_delete=models.CASCADE)
-    idCatProd = models.ForeignKey(CatalogoProducto, null=True, blank=True, on_delete=models.CASCADE)
+    cantidad = models.IntegerField(null=True, blank=True)
+    subtotal = models.FloatField(null=True, blank=True)
+    idCons = models.ForeignKey(Consumidor, null=True, blank=True,on_delete=models.CASCADE)
 
+class CarritoProducto(models.Model):
+    idCarProd = models.AutoField(primary_key=True,auto_created=True)
+    idProducto = models.ForeignKey(Producto,null=True, blank=True, on_delete=models.CASCADE)
+    idCatalogo = models.ForeignKey(Catalogo,null=True, blank=True, on_delete=models.CASCADE)
+    idCarrito = models.ForeignKey(Carrito, null=True, blank=True, on_delete=models.CASCADE)
+    
 class Compras(models.Model):
     idCompra = models.AutoField(primary_key=True)
-    producto = models.CharField(max_length=100)
-    tienda = models.CharField(max_length=50)
     cantidad = models.IntegerField() 
-    idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    idCons = models.ForeignKey(Consumidor, null=True, blank=True,on_delete=models.CASCADE)
     idCarrito = models.ForeignKey(Carrito, null=True, blank=True, on_delete=models.CASCADE)
     idForma_pago = models.ForeignKey(Forma_Pago, null=True, blank=True, on_delete=models.CASCADE)
-

@@ -68,7 +68,7 @@ def admin_productos_tienda(request,id):
     global idTienda
     idTienda = id
     print(idTienda)
-    return render(request, "admin_dash/admin_productos.html", {'productos': listaP,'tipo':tipo})
+    return render(request, "admin_dash/admin_productos.html", {'productos': listaP,'tipo':tipo  })
 
 @login_required(login_url='login')
 def admin_tiendas(request):
