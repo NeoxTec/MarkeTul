@@ -60,7 +60,7 @@
     </div>
   </div>
 
-
+  <form action="{% url 'post_forma_pago' %}" method="post"> {% csrf_token %}
   <div class="d-flex justify-content-center" style="margin-top:-450px; "></div>
     <div class="card" align="center" style="width:50rem; margin-left:360px">
       <div>
@@ -84,27 +84,24 @@
             <div class="form-group row">
               <label for="inputPassword" class="col-form-label" required>Nombre de la Tarjeta</label>
               <div class="col-sm-8">
-                <input class="form-control" placeholder="Nombre del propietario*" required>
+                <input class="form-control" placeholder="Nombre del propietario*" required name="nombre_propietario" value="">
               </div>
             </div>
 
             <div class="form-group row">
               <label for="inputPassword" class=" col-form-label" required>N&uacute;mero de la Tarjeta</label>
               <div class="col-sm-8">
-                <input class="form-control" placeholder="0000 0000 0000 0000*" required>
+                <input class="form-control" placeholder="0000 0000 0000 0000*" required name="numero_tarjeta">
               </div>
             </div>
 
             <div class="form-group row">
               <label for="inputPassword" class=" col-form-label" required>Fecha Vencimiento &nbsp;&nbsp; </label>
-              <div class="col-sm-2">
-                <input class="form-control" placeholder="D&iacute;a" required>
+              <div class="col-sm-3">
+                <input class="form-control" placeholder="Mes" required name="mes">
               </div>
               <div class="col-sm-3">
-                <input class="form-control" placeholder="Mes" required>
-              </div>
-              <div class="col-sm-3">
-                <input class="form-control" placeholder="A&ntilde;o" required>
+                <input class="form-control" placeholder="A&ntilde;o" required name="anio">
               </div>
             </div>
 
@@ -113,6 +110,7 @@
               <button style="margin-left:25px" type="submit" class="btn btn-success btn-lg" href="#ventana5"
                 class="btn btn-success btn-lg" data-toggle="modal"><img src="{% static 'core/img/mastercard.png' %}"
                   width="30" height="30">&nbsp;&nbsp;&nbsp;Guardar</button>
+              </form>
               <button style="margin-left: 25px" type="submit" class="btn btn-dark btn-lg" href="#ventana6"
                 class="btn btn-success btn-lg" data-toggle="modal"><img src="{% static 'core/img/payment.png' %}"
                   width="30" height="30">&nbsp;&nbsp;&nbsp;PayPal</button></a>
@@ -148,7 +146,6 @@
               <div class="modal-body" align="center">
                 <img src="{% static 'core/img/close.png' %}" width="160" height="160" >
                 <p></p>
-                <p><h4>{{}}</h4></p>
               </div>
               <!-- FOOTER DE LA VENTANA EMERGENTE -->
               <div class="modal-footer" align="center">

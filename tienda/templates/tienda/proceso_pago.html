@@ -25,7 +25,7 @@
         </tr>
       </thead>
       <tbody>
-      <form action="{% url 'compras' %}" method="post" > {% csrf_token %}
+      <form action="{% url 'pago_exitoso' %}" method="post" > {% csrf_token %}
       {% for producto in productos %}
         <tr>
           <th scope="row"><img  src="{{producto.imagenProd.url}}" width="160" height="160"/></th>
@@ -37,10 +37,10 @@
       </tbody>
     </table>
     <h4>Total a pagar</h4>
-    <h2 class="card-title">$ {{carrito.subtotal}}</h2>
-    </form>
+    <h2 class="card-title" name="total">$ {{carrito.subtotal}}</h2>
             </div>
     <button style="margin-left:50px; width: 80rem;"  type="submit" class="btn btn-success btn-lg">Pagar</button>
+    </form>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
     </body>
     {% endblock %}

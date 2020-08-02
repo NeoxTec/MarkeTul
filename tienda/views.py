@@ -92,13 +92,33 @@ def proceso_pago(request):
     return render(request, "tienda/proceso_pago.html",context)
 
 @login_required(login_url='login')
-def compra(request):
+def pago_exitoso(request):
     userid = request.user.id
+    cons = Consumidor.objects.get(idUser_id=userid) 
+    carrito = Carrito.objects.get(idCons_id=cons.idConsumidor)
+    conteo = Forma_Pago.objects.filter(idUser_id=userid).count()
+    forma = Forma_Pago.objects.get(idUser_id=userid)
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
-    
-    messages.success(request, '¡Felicidades! Tu compra ha sido exitosa.')
-    context = {'datos':datos_consumidor}
-    return render(request,"tienda/compras.html",context)
+    total = int(carrito.subtotal)
+    if (conteo != 1):
+        messages.warning(request, 'Error en el pago')
+        return render ("tienda/carrito.html",{'carrito':carrito})
+    else:
+        compras = Compras(idForma_pago_id=forma.idForma_pago,idCons_id=datos_consumidor.idConsumidor,total=total).save()
+        compra = Compras.objects.get(total=total)
+        listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito)
+        for producto in listaC:
+            prod = Producto.objects.get(idProd=producto.idProducto_id)
+            comprado = ProductoComprado(idCompra_id=compra.idCompra,idProducto_id=prod.idProd).save()
+            quitar = CarritoProducto.objects.filter(idProducto_id=prod.idProd).delete()
+        conteo = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito).count()
+        if (conteo != 1):
+            actualizar = Carrito.objects.filter(idCons_id=cons.idConsumidor).update(cantidad=0,subtotal=0.0)
+        messages.success(request, '¡Felicidades! Tu compra ha sido exitosa.')
+
+    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+    compras = Compras.objects.filter(idCons_id=datos_consumidor.idConsumidor)
+    return render(request,"tienda/compras.html",{'datos':datos_consumidor,'compras':compras})
 
 @login_required(login_url='login')
 def detalle_producto(request):
@@ -108,7 +128,8 @@ def detalle_producto(request):
 def compras(request):
     userid = request.user.id
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
-    return render(request, "tienda/compras.html",{'datos':datos_consumidor})
+    compras = Compras.objects.filter(idCons_id=datos_consumidor.idConsumidor)
+    return render(request, "tienda/compras.html",{'datos':datos_consumidor,'compras':compras})
 
 @login_required(login_url='login')
 def configuracion_cuenta(request):
@@ -175,11 +196,11 @@ def guardar_direccion(request):
 def post_forma_pago(request):
     nombre_propietario = request.POST['nombre_propietario'],
     numero_tarjeta = request.POST['numero_tarjeta'],
-    fvencimiento = request.POST['fvencimiento']
+    mes = request.POST['mes']
+    anio = request.POST['anio']
     #crea objeto
     pago = Forma_Pago(nombre_propietario = str(nombre_propietario[0]), numero_tarjeta = str(numero_tarjeta[0]), 
-    fvencimiento = str(fvencimiento[0]))
-
+    fvencimiento = (str(mes)+"/"+str(anio)))
     #guarda objeto en bd
     pago.save()
     #redirecciona a la pagina
@@ -199,6 +220,5 @@ def forma_pago(request):
 def pago_error(request):
     return render(request, "tienda/pago_error.html")
 
-def pago_exitoso(request):
-    return render(request, "tienda/pago_exitoso.html")
+
 

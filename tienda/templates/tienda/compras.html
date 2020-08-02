@@ -9,7 +9,6 @@
 <body>
 {% load static %}  
 
-
     <!-- Barra lateral -->
     <div class="fila" style="margin-left:10px; margin-top: 20px;" class="d-flex flex-row bd-highlight mb-3">
       
@@ -69,6 +68,9 @@
     <h1>
       <center>Compras</center>
     </h1>
+    {% for  message in messages %}
+        <p id="message"><h4>{{message}}</h4></p>
+    {% endfor %}
     &nbsp;
     <div>
       <div class="d-flex justify-content-center">
@@ -77,20 +79,17 @@
           <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">Producto</th>
-                <th scope="col">Tienda</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Precio</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Total</th>
               </tr>
             </thead>
             <tbody>
+            {% for compra in compras %}
               <tr>
-                <th scope="row">Impresora Epson</th>
-                <td>Electronica y Computo MkTul</td>
-                <td>1</td>
-                <td>$3,600.00</td>
+                <th scope="row">{{compra.fecha}}</th>
+                <td>${{compra.total}}</td>
               </tr>
-
+             {% endfor %} 
             </tbody>
           </table>
         </div>
@@ -101,27 +100,7 @@
   </div>
 </div>
 
-    <!-- PAYÁL -->
-    {% for  message in messages %}
-        <p id="message">{{message}}</p>
-    <div class="modal fade" id="ventana2">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    
-                    <!-- CONTENIDO DE LA VENTANA EMERGENTE -->
-                    <div class="modal-body" align="center">
-                        <img src="{% static 'core/img/tick.png' %}" width="160" height="160" >
-                        <p></p>
-                        <p><h4>{{message}}</h4></p>
-                     </div>
-                    <!-- FOOTER DE LA VENTANA EMERGENTE -->
-                    <div class="modal-footer" align="center">
-                        <button type="button" class="btn btn-ranger" data-dismiss="modal" >Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>

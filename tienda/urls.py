@@ -18,6 +18,7 @@ urlpatterns = [
     path('guardar_direccion/',tienda_views.guardar_direccion, name="guardar_direccion"),
     path('direccion_envio1/',tienda_views.direccion_envio1, name="direccion_envio1"),
     path('forma_pago/',tienda_views.forma_pago, name="forma_pago"),
+    path('post_forma_pago/',tienda_views.post_forma_pago, name="post_forma_pago"),
     path('proceso_pago/',tienda_views.proceso_pago, name="proceso_pago"),
     path('pago_error/',tienda_views.pago_error, name="pago_error"),
     path('pago_exitoso/',tienda_views.pago_exitoso, name="pago_exitoso"),
