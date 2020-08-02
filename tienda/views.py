@@ -196,13 +196,14 @@ def guardar_direccion(request):
 
 @login_required(login_url='login')
 def post_forma_pago(request):
+    userid = request.user.id
     nombre_propietario = request.POST['nombre_propietario'],
     numero_tarjeta = request.POST['numero_tarjeta'],
     mes = request.POST['mes']
     anio = request.POST['anio']
     #crea objeto
     pago = Forma_Pago(nombre_propietario = str(nombre_propietario[0]), numero_tarjeta = str(numero_tarjeta[0]), 
-    fvencimiento = (str(mes)+"/"+str(anio)))
+    fvencimiento = (str(mes)+"/"+str(anio)), idUser_id=userid)
     #guarda objeto en bd
     pago.save()
     #redirecciona a la pagina
