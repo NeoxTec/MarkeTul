@@ -2,9 +2,11 @@ from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from admin_dash.models import Producto,Tienda,Administrador
 from vendedor.models import Vendedor,Catalogo, CatalogoProducto
-from tienda.models import Consumidor,Carrito,Direccion,CarritoProducto
+from tienda.models import Consumidor,Carrito,Direccion,CarritoProducto, Compras, ProductoComprado, Forma_Pago
 from django.contrib.auth.models import User
 from registration.views import login,loginPage
+
+from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -77,8 +79,30 @@ def carrito(request):
     return render(request, "tienda/carrito.html",context)
 
 @login_required(login_url='login')
+def proceso_pago(request):
+    userid = request.user.id
+    cons = Consumidor.objects.get(idUser_id=userid) 
+    carrito = Carrito.objects.get(idCons_id=cons.idConsumidor)
+    listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito)
+    productos = []
+    for producto in listaC:
+        prod = Producto.objects.get(idProd=producto.idProducto_id)
+        productos.append(prod)
+    context = {'productos':productos, 'carrito':carrito}
+    return render(request, "tienda/proceso_pago.html",context)
+
+@login_required(login_url='login')
+def compra(request):
+    userid = request.user.id
+    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+    
+    messages.success(request, '¡Felicidades! Tu compra ha sido exitosa.')
+    context = {'datos':datos_consumidor}
+    return render(request,"tienda/compras.html",context)
+
+@login_required(login_url='login')
 def detalle_producto(request):
-    return render(request, "tienda/detalle_producto.html")
+    return render(request, "tienda/detalle_producto.html",context)
 
 @login_required(login_url='login')
 def compras(request):
@@ -171,9 +195,6 @@ def forma_pago(request):
     userid = request.user.id
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
     return render(request, "tienda/forma_pago.html", {'datos':datos_consumidor})
-
-def proceso_pago(request):
-    return render(request, "tienda/proceso_pago.html")
 
 def pago_error(request):
     return render(request, "tienda/pago_error.html")

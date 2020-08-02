@@ -101,9 +101,30 @@
   </div>
 </div>
 
+    <!-- PAYÁL -->
+    {% for  message in messages %}
+        <p id="message">{{message}}</p>
+    <div class="modal fade" id="ventana2">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                    <!-- CONTENIDO DE LA VENTANA EMERGENTE -->
+                    <div class="modal-body" align="center">
+                        <img src="{% static 'core/img/tick.png' %}" width="160" height="160" >
+                        <p></p>
+                        <p><h4>{{message}}</h4></p>
+                     </div>
+                    <!-- FOOTER DE LA VENTANA EMERGENTE -->
+                    <div class="modal-footer" align="center">
+                        <button type="button" class="btn btn-ranger" data-dismiss="modal" >Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
    
     </body>
     {% endblock %}

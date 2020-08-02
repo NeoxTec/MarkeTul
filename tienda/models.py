@@ -47,7 +47,12 @@ class CarritoProducto(models.Model):
     
 class Compras(models.Model):
     idCompra = models.AutoField(primary_key=True)
-    cantidad = models.IntegerField() 
+    total = models.IntegerField(null=True,blank=True) 
+    fecha = models.DateTimeField(auto_now_add=True,null=True,blank=True)
     idCons = models.ForeignKey(Consumidor, null=True, blank=True,on_delete=models.CASCADE)
-    idCarrito = models.ForeignKey(Carrito, null=True, blank=True, on_delete=models.CASCADE)
     idForma_pago = models.ForeignKey(Forma_Pago, null=True, blank=True, on_delete=models.CASCADE)
+
+class ProductoComprado(models.Model):
+    idProCom = models.AutoField(primary_key=True)
+    idCompra = models.ForeignKey(Compras, null=True,blank=True, on_delete=models.CASCADE)
+    idProducto = models.ForeignKey(Producto,null=True, blank=True, on_delete=models.CASCADE)

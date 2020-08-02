@@ -9,7 +9,7 @@
 {% load static %} 
 <body>
 <div style="margin-top:30px;">
-  <img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:50px;">
+  <a href="{% url 'carrito' %}"><img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:50px;"></a>
 </div>   
 <h1><center>Proceso de Pago</center></h1>  
     <p></p>
@@ -19,31 +19,28 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">Producto</th>
-          <th scope="col">Descripci&oacute;n</th>
+          <th scope="col">Nombre</th>
           <th scope="col">Cantidad</th>
           <th scope="col">Precio</th>
         </tr>
       </thead>
       <tbody>
+      <form action="{% url 'compras' %}" method="post" > {% csrf_token %}
+      {% for producto in productos %}
         <tr>
-          <th scope="row"><img src="{% static 'core/img/perfume.jpg' %}" width="160" height="160"/></th>
-          <td>Perfume Giorgio Armani Acqua Di Gio para mujer.100ml</td>
+          <th scope="row"><img  src="{{producto.imagenProd.url}}" width="160" height="160"/></th>
+          <td>{{producto.nombreProd}}</td>
           <td>1</td>
-          <td>$1,750.00</td>
+          <td>${{producto.precioProd}}</td>
         </tr>
-        <tr>
-          <th scope="row"><a href="{% url 'detalleproducto' %}"><img src="{% static 'core/img/nike.png' %}"  width="160" height="160"/></th>
-          <td>Tenis Nike Air Force 1 Shadow para mujer</td>
-          <td>1</td>
-          <td>$2,299.00</td></a>
-        </tr>
+      {% endfor %}
       </tbody>
     </table>
-
     <h4>Total a pagar</h4>
-    <h2 class="card-title">$4,049.00</h2>
+    <h2 class="card-title">$ {{carrito.subtotal}}</h2>
+    </form>
             </div>
-    <button style="margin-left:50px;" type="submit" class="btn btn-success btn-lg">Pagar</button>
+    <button style="margin-left:50px; width: 80rem;"  type="submit" class="btn btn-success btn-lg">Pagar</button>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
     </body>
     {% endblock %}
