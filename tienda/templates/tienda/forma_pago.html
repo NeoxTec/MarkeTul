@@ -65,8 +65,9 @@
     <div class="card" align="center" style="width:50rem; margin-left:360px">
       <div>
         <div class="col-md-12">
-          <div class="card-body"  >
+          <div class="card-body">
             <h1>Forma de Pago </h1>
+            {% for message in messages %}<p id="message"><h4>{{message}}</h4></p>{% endfor %}
             <h4 class="card-title" align="left">M&eacute;todos de Pago</h4>
             <hr>
             <div class="form-check form-check-inline">

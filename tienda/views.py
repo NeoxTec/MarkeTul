@@ -101,6 +101,9 @@ def pago_exitoso(request):
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
     total = int(carrito.subtotal)
     if (conteo != 1):
+        userid = request.user.id
+        cons = Consumidor.objects.get(idUser_id=userid) 
+        carrito = Carrito.objects.get(idCons_id=cons.idConsumidor)
         messages.warning(request, 'Error en el pago')
         return render ("tienda/carrito.html",{'carrito':carrito})
     else:
