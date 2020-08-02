@@ -101,11 +101,10 @@ def pago_exitoso(request):
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
     total = int(carrito.subtotal)
     if (conteo != 1):
-        userid = request.user.id
-        cons = Consumidor.objects.get(idUser_id=userid) 
-        carrito = Carrito.objects.get(idCons_id=cons.idConsumidor)
         messages.warning(request, 'Error en el pago')
-        return render ("tienda/carrito.html",{'carrito':carrito})
+        userid = request.user.id
+        datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+        return render(request, "tienda/forma_pago.html", {'datos':datos_consumidor})
     else:
         compras = Compras(idForma_pago_id=forma.idForma_pago,idCons_id=datos_consumidor.idConsumidor,total=total).save()
         compra = Compras.objects.get(total=total)
