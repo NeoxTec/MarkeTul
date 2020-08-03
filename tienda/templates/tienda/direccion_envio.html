@@ -79,7 +79,7 @@
                     <div class="form-group col-md-12">
                         <div class="form-group col-md-12">
                             <label for="inputAddress2">C&oacute;digo postal</label>
-                            <input type="number" class="form-control" id="inputAddress2" min="5" name="codigoPostal" {% if {{direccion.codigoPostal}} == " " %} placeholder=" Código postal" {% else %} value={{direccion.codigoPostal}} {{% endif %}}>
+                            <input type="number" class="form-control" id="inputAddress2" min="5" name="codigoPostal" {% if {{direccion.codigoPostal}} == " " %} placeholder=" Código postal" {% else %} value={{direccion.codigoPostal}} {% endif %}>
                           </div>
                       <label for="inputAddress">Calle</label>
                       <input type="text" class="form-control" id="inputAddress" name="calle"  {% if {{direccion.calle}} == " " %} placeholder="Calle" {% else %} value={{direccion.calle}}{% endif %} >
