@@ -234,7 +234,7 @@ def config_admin(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     #print ("id del admin es: " +  str(idAdmin))
-    datos_admin = Administrador.objects.get(idUser_id=idAdmin)
+    datos_admin = Administrador.objects.get(idUser_id=userid)
     print("ID_USUARIO: ", str(userid)) 
     print ("ID_ADMIN: " + str(idAdmin))
     return render(request, "admin_dash/config_admin.html",{'datos':datos_admin,'tipo':tipo})
