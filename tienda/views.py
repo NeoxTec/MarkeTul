@@ -175,9 +175,14 @@ def catalogos(request, idCatal):
 def direccion_envio(request):
     userid = request.user.id # Se obtiene el id
     print("IDUSUARIO: "+str(userid))
-    direccion = Direccion.objects.get(idUser_id=userid)
+    conteo = Direccion.objects.filter(idUser_id=userid).count()
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
-    return render(request, "tienda/direccion_envio.html", {'datos':datos_consumidor,'direccion':direccion}) 
+    if (conteo != 1):
+        context = {'datos':datos_consumidor}
+    else:
+        direccion = Direccion.objects.get(idUser_id=userid)
+        context = {'datos':datos_consumidor,'direccion':direccion}
+    return render(request, "tienda/direccion_envio.html", context) 
 
 @login_required(login_url='login')
 def guardar_direccion(request):
