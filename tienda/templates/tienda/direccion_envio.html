@@ -79,24 +79,24 @@
                     <div class="form-group col-md-12">
                         <div class="form-group col-md-12">
                             <label for="inputAddress2">C&oacute;digo postal</label>
-                            <input type="number" class="form-control" id="inputAddress2" min="5" name="codigoPostal" {% if {{direccion.codigoPostal}} == " " %} placeholder=" Código postal" {% else %} value={{direccion.codigoPostal}} {% endif %}>
+                            <input type="number" class="form-control" id="inputAddress2" min="5" name="codigoPostal" {% if direccion.codigoPostal == " " %} placeholder=" Código postal" {% else %} value={{direccion.codigoPostal}} {% endif %}>
                           </div>
                       <label for="inputAddress">Calle</label>
-                      <input type="text" class="form-control" id="inputAddress" name="calle"  {% if {{direccion.calle}} == " " %} placeholder="Calle" {% else %} value={{direccion.calle}}{% endif %} >
+                      <input type="text" class="form-control" id="inputAddress" name="calle"  {% if direccion.calle == " " %} placeholder="Calle" {% else %} value={{direccion.calle}}{% endif %} >
                     </div>
                     <div class="form-group col-md-12">
                       <label for="inputAddress">Colonia</label>
-                      <input type="text" class="form-control" id="inputAddress" name="colonia" {% if {{direccion.colonia}} == " " %}placeholder="colonia" {% endif %}  value={{direccion.colonia}}>
+                      <input type="text" class="form-control" id="inputAddress" name="colonia" {% if direccion.colonia == " " %}placeholder="Colonia" {% endif %}  value={{direccion.colonia}}>
                     </div>
                 
                     <div class="form-row">
                       <div class="form-group col-md-12">
                       <label for="inputCity">Numero exterior</label>
-                      <input type="number" class="form-control" id="inputCity" name="numeroExterior"  {% if {{direccion.numeroExterior}} == " " %}placeholder="Número Exterior" {% else %} value={{direccion.numeroExterior}}{% endif %}  >
+                      <input type="number" class="form-control" id="inputCity" name="numeroExterior"  {% if direccion.numeroExterior == " " %}placeholder="Número Exterior" {% else %} value={{direccion.numeroExterior}}{% endif %}  >
                       </div>
                       <div class="form-group col-md-12">
                         <label for="inputCity">Numero interior</label>
-                        <input type="number" class="form-control" id="inputCity" name="numeroInterior" {% if {{direccion.numeroInterior}} == " " %}placeholder="Número Interior" {% endif %} value={{direccion.numeroInterior}}>
+                        <input type="number" class="form-control" id="inputCity" name="numeroInterior" {% if direccion.numeroInterior == " " %}placeholder="Número Interior" {% endif %} value={{direccion.numeroInterior}}>
                         </div>
                     </div>
                       
