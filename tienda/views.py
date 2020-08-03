@@ -107,11 +107,12 @@ def pago_exitoso(request):
         return render(request, "tienda/forma_pago.html", {'datos':datos_consumidor})
     else:
         compras = Compras(idForma_pago_id=forma.idForma_pago,idCons_id=datos_consumidor.idConsumidor,total=total).save()
-        compra = Compras.objects.get(total=total)
+        ultima_compra = Compras.objects.last()
+        compra_nueva = Compras.objects.get(idCompra=ultima_compra.idCompra)
         listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito)
         for producto in listaC:
             prod = Producto.objects.get(idProd=producto.idProducto_id)
-            comprado = ProductoComprado(idCompra_id=compra.idCompra,idProducto_id=prod.idProd).save()
+            comprado = ProductoComprado(idCompra_id=compra_nueva.idCompra,idProducto_id=prod.idProd).save()
             quitar = CarritoProducto.objects.filter(idProducto_id=prod.idProd).delete()
         conteo = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito).count()
         if (conteo != 1):
