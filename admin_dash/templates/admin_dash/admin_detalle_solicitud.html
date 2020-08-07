@@ -43,12 +43,14 @@
                 <textarea class="form-control" id="motivo" rows="3" disabled>{{solicitud.motivos}}</textarea>
                </div> 
                <div class="form-row align-items-center">
+                {% if solicitud.status == 0 %}
                     <div class="col-sm-3 my-1">
                         <a href="#"><button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Aceptar</button></a>
                     </div>
                     <div class="col-sm-3 my-1">
                         <a href="{% url 'admin_rechazo_solicitud' solicitud.idSolVen%}"><button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Rechazar</button></a>
                     </div>
+                {% endif %}
                 </form>
                 </div>
             </div>

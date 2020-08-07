@@ -39,7 +39,7 @@
                                 {% elif solicitud.status == 1 %}
                                     <td>Aceptada</td>
                                 {% elif solicitud.status == 2 %}
-                                    <td>Rechazada</td>
+                                    <td><a href="{% url 'admin_rechazo_solicitud' solicitud.idSolVen %}">Rechazada</a></td>
                                 {% endif %}
                             </tr>
                             {% endfor %}

@@ -18,16 +18,22 @@
                 <form action="{% url 'admin_rechazo_solicitud' solicitud.idSolVen%}" method="post">{% csrf_token %}
                <div class="form-group">
                 <label for="motivo">Descripción</label>
-                <textarea class="form-control" id="motivo" name="motivo" rows="3"></textarea>
-               </div> 
-               <div class="form-row align-items-center">
-                   <div class="col-sm-3 my-1">
-                    <a href="{% url 'admin_detalle_solicitud' solicitud.idSolVen %}"><button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button></a>
-                    </div>
+                {% if solicitud.status == 2 %}
+                    <textarea class="form-control" id="motivo" name="motivo" rows="3" Disabled>{{rechazo.motivo}}</textarea>
+                {% else %}
+                    <textarea class="form-control" id="motivo" name="motivo" rows="3"></textarea>
+                {% endif %}
+               </div>
+               {% if solicitud.status == 0 %} 
+                <div class="form-row align-items-center">
                     <div class="col-sm-3 my-1">
-                        <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Enviar</button>
+                        <a href="{% url 'admin_detalle_solicitud' solicitud.idSolVen %}"><button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button></a>
+                        </div>
+                        <div class="col-sm-3 my-1">
+                            <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Enviar</button>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
                 </form>
             </div>
         </div>

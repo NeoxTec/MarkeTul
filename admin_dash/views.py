@@ -210,11 +210,13 @@ def admin_rechazo_solicitud(request,idSolVen):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     solicitud = SolicitudesVendedor.objects.get(idSolVen=idSolVen)
+    rechazo = RechazoSolicitud.objects.get(idSolicitud_id=idSolVen)
+    print(rechazo.motivo)
     #rechazo de solicitud
     if request.method == 'POST':
         motivo = request.POST['motivo']
-        solicitud = idSolVen
-        rechazo = RechazoSolicitud(motivo=str(motivo[0]),idSolicitud_id=solicitud).save()
+        solicitud_id = idSolVen
+        rechazo = RechazoSolicitud(motivo=str(motivo),idSolicitud_id=solicitud_id).save()
 
         #se actualiza el estatus de la solicitud
         cambio = 2
@@ -222,9 +224,10 @@ def admin_rechazo_solicitud(request,idSolVen):
 
         #Se regresa a las solocitudes
         solicitudes = SolicitudesVendedor.objects.filter(noadmin=idAdmin).values('idSolVen','nombreV','correoV','direccionV','edadVen','status','idTi_id','idTi_id__nombreTi')#consulta de campos con inner join idTi__nombreTi es de la tabla de tiendas
-        return render(request, "admin_dash/admin_detalle_solicitud.html",{'solicitud':solicitud,'tipo':tipo})
+        return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes,'tipo':tipo})
+    
 
-    return render(request, "admin_dash/admin_rechazo_solicitud.html",{'solicitud':solicitud,'tipo':tipo})
+    return render(request, "admin_dash/admin_rechazo_solicitud.html",{'solicitud':solicitud,'tipo':tipo,'rechazo':rechazo})
 
 @login_required(login_url='login')
 def cambiar_status_solicitud(request,idSolVen):
