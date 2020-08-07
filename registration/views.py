@@ -12,6 +12,7 @@ from marketul import urls
 
 # Create your views here.
 def registerPage(request):
+    
     form = UserCreationFormWithEmail()
 
     form.fields['username'].widget = forms.TextInput(attrs={'class':'form-control mb-2', 'placeholder':'Nombre de Usuario'})

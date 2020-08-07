@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.db.models import Q
 from admin_dash.models import Producto, Tienda, Administrador
 from django.contrib.auth.models import User
-from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo
+from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo,RechazoSolicitud
 from django.core.files.storage import FileSystemStorage
 from registration.models import Usuario_Tipo
 from registration.views import login,loginPage
@@ -206,6 +206,27 @@ def admin_detalle_solicitud(request,idSolVen):
     return render(request, "admin_dash/admin_detalle_solicitud.html",{'solicitud':solicitud,'tipo':tipo})
 
 @login_required(login_url='login')
+def admin_rechazo_solicitud(request,idSolVen):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    solicitud = SolicitudesVendedor.objects.get(idSolVen=idSolVen)
+    #rechazo de solicitud
+    if request.method == 'POST':
+        motivo = request.POST['motivo']
+        solicitud = idSolVen
+        rechazo = RechazoSolicitud(motivo=str(motivo[0]),idSolicitud_id=solicitud).save()
+
+        #se actualiza el estatus de la solicitud
+        cambio = 2
+        sol = SolicitudesVendedor.objects.filter(idSolVen=idSolVen).update(status=cambio)
+
+        #Se regresa a las solocitudes
+        solicitudes = SolicitudesVendedor.objects.filter(noadmin=idAdmin).values('idSolVen','nombreV','correoV','direccionV','edadVen','status','idTi_id','idTi_id__nombreTi')#consulta de campos con inner join idTi__nombreTi es de la tabla de tiendas
+        return render(request, "admin_dash/admin_detalle_solicitud.html",{'solicitud':solicitud,'tipo':tipo})
+
+    return render(request, "admin_dash/admin_rechazo_solicitud.html",{'solicitud':solicitud,'tipo':tipo})
+
+@login_required(login_url='login')
 def cambiar_status_solicitud(request,idSolVen):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
@@ -214,7 +235,7 @@ def cambiar_status_solicitud(request,idSolVen):
     
     #datos creacion catalogo
     solicitud = SolicitudesVendedor.objects.get(idSolVen=idSolVen)
-    categoria = "Computo",
+    categoria = 'Computo',
     status_nuevo = 1
     idVendedor = int(str(solicitud.idVen_id))
     idTienda = solicitud.idTi_id
@@ -224,10 +245,6 @@ def cambiar_status_solicitud(request,idSolVen):
     solicitudes = SolicitudesVendedor.objects.filter(noadmin=idAdmin).values('idSolVen','nombreV','correoV','direccionV','edadVen','status','idTi_id','idTi_id__nombreTi')
 
     return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes,'tipo':tipo})
-
-@login_required(login_url='login')
-def admin_rechazo_solicitud(request):
-    return render(request, "admin_dash/admin_rechazo_solicitud.html")
 
 @login_required(login_url='login')
 def config_admin(request):

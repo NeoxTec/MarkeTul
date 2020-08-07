@@ -38,6 +38,8 @@
                                     <td>Pendiente</td>
                                 {% elif solicitud.status == 1 %}
                                     <td>Aceptada</td>
+                                {% elif solicitud.status == 2 %}
+                                    <td>Rechazada</td>
                                 {% endif %}
                             </tr>
                             {% endfor %}

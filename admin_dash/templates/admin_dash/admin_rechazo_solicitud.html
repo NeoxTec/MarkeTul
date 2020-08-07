@@ -15,17 +15,17 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Motivo de Rechazo</h4>
-                <form>
+                <form action="{% url 'admin_rechazo_solicitud' solicitud.idSolVen%}" method="post">{% csrf_token %}
                <div class="form-group">
                 <label for="motivo">Descripción</label>
-                <textarea class="form-control" id="motivo" rows="3"></textarea>
+                <textarea class="form-control" id="motivo" name="motivo" rows="3"></textarea>
                </div> 
                <div class="form-row align-items-center">
                    <div class="col-sm-3 my-1">
-                    <a href="{% url 'admin_detalle_solicitud' %}"><button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button></a>
+                    <a href="{% url 'admin_detalle_solicitud' solicitud.idSolVen %}"><button type="button" class="btn btn-danger mt-4 pr-4 pl-4">Cancelar</button></a>
                     </div>
                     <div class="col-sm-3 my-1">
-                        <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Aceptar</button>
+                        <button type="submit" class="btn btn-success mt-4 pr-4 pl-4">Enviar</button>
                     </div>
                 </div>
                 </form>

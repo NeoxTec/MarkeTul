@@ -18,19 +18,19 @@
                 {% csrf_token %}
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombreAdmin" required value="{{datos.nombreAdmin}}">
+                        <input type="text" class="form-control" id="nombre" name="nombreAdmin" placeholder="Nombre Completo" required value="{{datos.nombreAdmin}}">
                     </div>
                     <div class="form-group">
                         <label for="direccion">Dirección</label>
-                        <input type="text" class="form-control" id="direccion" name="direccionAdmin" value="{{datos.direccionAdmin}}" required>
+                        <input type="text" class="form-control" id="direccion" placeholder="Dirección del admin" name="direccionAdmin" value="{{datos.direccionAdmin}}" required>
                     </div>
                     <div class="form-group">
                         <label for="contacto">Teléfono</label>
-                        <input type="text" class="form-control" id="contacto" name="telefonoAdmin" value="{{datos.telefonoAdmin}}" required>
+                        <input type="text" class="form-control" id="contacto" placeholder="Telefóno del admin" name="telefonoAdmin" value="{{datos.telefonoAdmin}}" required>
                     </div>
                     <div class="form-group">
                         <label for="correo">Correo Electrónico</label>
-                        <input type="text" class="form-control" id="correo"  name ="correoAdmin" value="{{datos.correoAdmin}}" required>
+                        <input type="text" class="form-control" id="correo"  name ="correoAdmin" placeholder="Correo" value="{{datos.correoAdmin}}" required>
                     </div>
                     <div class="form-group">
                         <label for="nc">Nueva Contraseña</label>

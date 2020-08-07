@@ -23,6 +23,11 @@ class SolicitudesVendedor(models.Model):
     noadmin = models.IntegerField(null=True)
     idVen = models.ForeignKey(Vendedor, null=True, blank=True, on_delete=models.CASCADE)
 
+class RechazoSolicitud(models.Model):
+    idRechazo = models.AutoField(primary_key=True)
+    idSolicitud = models.ForeignKey(SolicitudesVendedor, null=True, blank=True, on_delete=models.CASCADE)
+    motivo = models.TextField() 
+
 class Catalogo(models.Model):
     idCatal = models.AutoField(primary_key=True,auto_created=True)
     categoria = models.CharField(max_length=200)
@@ -34,5 +39,4 @@ class CatalogoProducto(models.Model):
     idCatProd = models.AutoField(primary_key=True,auto_created=True)
     idProducto = models.ForeignKey(Producto,null=True, blank=True, on_delete=models.CASCADE)
     idCatalogo = models.ForeignKey(Catalogo,null=True, blank=True, on_delete=models.CASCADE)
-
 
