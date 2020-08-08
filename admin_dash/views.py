@@ -194,9 +194,15 @@ def producto_eliminado(request):
 def admin_productos_eliminados(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
-
     listaP = Producto.objects.filter(Q(idTi_id=idTienda) & Q(estado=0))
     return render(request,"admin_dash/admin_productos_eliminados.html",{'productos':listaP,'tipo':tipo})
+
+@login_required(login_url='login')
+def admin_detalle_producto_eliminado(request,id):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    prod = Producto.objects.get(idProd=id)
+    return render(request, "admin_dash/admin_detalle_producto.html",{'prod':prod,'tipo':tipo})
 
 @login_required(login_url='login')
 def admin_solicitudes_vendedor(request):

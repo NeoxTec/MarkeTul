@@ -19,6 +19,7 @@ urlpatterns = [
     path('actualizacion_producto/', admin_views.actualizacion_producto, name="actualizacion_producto"),  # post de update product
     path('producto_eliminado/',admin_views.producto_eliminado, name="producto_eliminado"),
     path('admin_detalle_producto/<id>',admin_views.admin_detalle_producto, name="admin_detalle_producto"),
+    path('admin_detalle_producto_eliminado/<id>',admin_views.admin_detalle_producto_eliminado, name="admin_detalle_producto_eliminado"),
     path('config_admin/', admin_views.config_admin, name="config_admin"),
     path('update_config/', admin_views.update_config, name="update_config"),
     path('vendedores/',admin_views.vendedores, name="vendedores"),

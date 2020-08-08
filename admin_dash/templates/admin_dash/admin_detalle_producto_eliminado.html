@@ -1,0 +1,145 @@
+{% extends 'admin_dash/master_dashboard.html' %}
+
+{% block titulo_pag %}Administrador de Tienda{% endblock %}
+
+{% block pagina %}Catálogo Productos{% endblock %}
+
+{% block sub_pagina %}Detalle Producto{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+    <a href="/admin_productos_eliminados/{{prod.idTi_id}}"><img src="{% static 'core/img/back.png'%}" style="width: 3em; margin-top: 3em;"/></a>
+    <!-- basic form start -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Detalle Producto</h4>
+                <form method="POST" action= "{% url 'actualizacion_producto' %}">
+                {% csrf_token %}
+                <p><input type="hidden" name="idProd" value= "{{prod.idProd}}"></p>
+                    <div class="form-group">
+                        <label for="producto">Producto</label>
+                        <input type="text" class="form-control" name="nombreProd" value= "{{prod.nombreProd}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" class="form-control" name="descripcionProd" value = "{{ prod.descripcionProd }}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="marca">Marca</label>
+                        <input type="text" class="form-control" name="marcaProd" value="{{prod.marcaProd}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="medidas">Medidas</label>
+                        <input type="text" class="form-control" name="medidasProd" value="{{prod.medidasProd}}" disabled>
+                    </div>
+                    <div class="form-row align-items-center">
+                    <div class="col-sm-4 my-2">
+                        <label class="col-form-label">Categoria</label>
+                        <select class="form-control" name="categoriaProd" disabled>
+                            <option value="{{prod.categoriaProd}}">{{prod.categoriaProd}}</option>
+                            <option>Selecciona una Categoría</option>
+                            <option value="Electrónica">Electrónica</option>
+                            <option value="Dispositivos">Dispositivos</option>
+                            <option value="Libros">Libros</option>
+                            <option value="Papelería">Papelería</option>
+                            <option value="Accesorios">Accesorios</option>
+                            <option value="Equipaje">Equipaje</option>
+                            <option value="Calzado infantil">Calzado infantil</option>
+                            <option value="Calzado dama">Calzado dama</option>
+                            <option value="Calzado caballero">Calzado caballero</option>
+                            <option value="Ropa bebés">Ropa bebés</option>
+                            <option value="Ropa infantil">Ropa infantil</option>
+                            <option value="Ropa dama">Ropa dama</option>
+                            <option value="Ropa caballero">Ropa caballero</option>
+                            <option value="Ropa unisex">Ropa unisex</option>
+                            <option value="Juguetes">Juguetes</option>
+                            <option value="Deportes">Deportes</option>
+                            <option value="Entretenimiento">Juguetes</option>
+                            <option value="Herramientas">Herramientas</option>
+                            <option value="Seguridad">Seguridad</option>
+                            <option value="Hogar">Hogar</option>
+                            <option value="Oficina">Oficina</option>
+                            <option value="Muebles">Muebles</option>
+                            <option value="Limpieza">Limpieza</option>
+                            <option value="Accesorio vehículos">Accesorio vehículos</option>
+                            <option value="Cosméticos">Cosméticos</option>
+                            <option value="Mascota">Mascota</option>
+                            <option value="Electrodomésticos">Electrodomésticos</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 my-1">
+                        <label for="precio">Precio</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">$</div>
+                            </div>
+                            <input type="text" class="form-control" name="precioProd" value="{{prod.precioProd}}" onkeyup="test(this)" onclick="test(this)" disabled>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-1">
+                        <label class="col-form-label">Existencias</label>
+                        <div class="input-form-group">
+                            <input type="number" class="form-control" name="existenciasProd" value="{{prod.existenciasProd}}" disabled>
+                        </div> 
+                    </div>  
+                </div>
+                <br>
+                
+               
+               <div class="form-row align-items-center">
+                   <div class="col-sm-3 my-1">
+                    <button type="button" class="btn btn-danger mt-4 pr-4 pl-4" data-toggle="modal" data-target="#abrirModal">Eliminar</button>
+                    </div>
+                    <!--div class="col-sm-3 my-1">
+                        <button type="button" class="btn btn-primary mt-4 pr-4 pl-4">Editar</button>
+                    </div-->
+                    <div class="col-sm-3 my-1">
+                        <button type="submit" class="btn btn-info mt-4 pr-4 pl-4">Restaurar</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button-->
+
+<!-- Modal -->
+<div id="abrirModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4 class="modal-title">Confirmación</h4>
+        <form method="POST" action="{% url 'producto_eliminado' %}">
+            {% csrf_token %}
+            <input type="hidden" name="idProd" value="{{prod.idProd}}">
+            <br>
+            <p>¿Desea eliminar por completo el producto " {{prod.nombreProd}} " de la tienda?</p>
+            <br>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                <button type="submit" class="btn btn-danger">Si</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+function test(e) {
+e.value=e.value.replace(/\,/g, '.')
+}
+</script>
+    <!-- basic form end -->
+{% endblock %}
