@@ -1,0 +1,57 @@
+{% extends 'admin_dash/master_dashboard.html' %}
+
+{% block titulo_pag %}Administrador de Tienda{% endblock %}
+
+{% block pagina %}Catálogo Productos{% endblock %}
+
+{% block sub_pagina %}Inicio{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+    <div class="col-sm-3 my-1">
+        <a href="/admin_tiendas/"><img src="{% static 'core/img/back.png'%}" style="width: 3em; margin-top: 2em;"/></a>
+    </div>
+</div>
+<div class="row">
+    <!-- Dark table inicia -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Productos</h4>
+                <div class="data-tables datatable-dark">
+                    <table id="dataTable3" class="text-center">
+                        <thead class="text-capitalize">
+                            <tr>
+                                <th><input type="hidden" value="id"/></th>
+                                <th>Producto</th>
+                                <th>Descripción</th>
+                                <th>Marca</th>
+                                <th>Categoría</th>
+                                <th>Medidas</th>
+                                <th>Precio</th>
+                                <th>Cantidad existente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for listaP in productos %}
+                            <tr>
+                                <td><input type="hidden" value={{listaP.idProd}}/></td>
+                                <td><a href="/admin_detalle_producto/{{listaP.idProd}}">{{ listaP.nombreProd }}</a></td>
+                                <td>{{listaP.descripcionProd}}</td>
+                                <td>{{listaP.marcaProd}}</td>
+                                <td>{{listaP.categoriaProd}}</td>
+                                <td>{{listaP.medidasProd}}</td>
+                                <td><i class="ti-money"></i> {{listaP.precioProd}}</td>
+                                <td><i class="ti-archive"></i> {{listaP.existenciasProd}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dark table finaliza -->
+    </div>
+{% endblock %}

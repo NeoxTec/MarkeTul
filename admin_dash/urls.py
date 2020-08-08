@@ -12,6 +12,7 @@ urlpatterns = [
      path('admin_nueva_tienda/', admin_views.admin_nueva_tienda, name="admin_nueva_tienda"),
     path('admin_detalle_tienda/', admin_views.admin_detalle_tienda, name="admin_detalle_tienda"),
     path('admin_productos/',admin_views.admin_productos, name="admin_productos"),
+    path('admin_productos_eliminados/',admin_views.admin_productos_eliminados, name="admin_productos_eliminados"),
     path('tienda_productos/<id>', admin_views.admin_productos_tienda, name="admin_productos_tienda"),
     path('admin_nuevo_producto/',admin_views.admin_nuevo_producto, name="admin_nuevo_producto"),
     path('nuevos_registro/', admin_views.nuevo_registro, name="nuevo_registro"),#post de agregar producto
