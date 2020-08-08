@@ -202,7 +202,7 @@ def admin_detalle_producto_eliminado(request,id):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     prod = Producto.objects.get(idProd=id)
-    return render(request, "admin_dash/admin_detalle_producto.html",{'prod':prod,'tipo':tipo})
+    return render(request, "admin_dash/admin_detalle_producto_eliminado.html",{'prod':prod,'tipo':tipo})
 
 @login_required(login_url='login')
 def admin_solicitudes_vendedor(request):
