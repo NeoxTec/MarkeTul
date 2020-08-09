@@ -6,6 +6,7 @@ from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo,RechazoSolicit
 from django.core.files.storage import FileSystemStorage
 from registration.models import Usuario_Tipo
 from registration.views import login,loginPage
+from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 
@@ -300,13 +301,24 @@ def config_admin(request):
 def update_config(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    usuario = User.objects.get(id=userid)
     nombre = request.POST['nombreAdmin'],
     direccion = request.POST['direccionAdmin'],
     telefono = request.POST['telefonoAdmin'],
     correo = request.POST['correoAdmin']
+    nc = request.POST['nc']
+    cc = request.POST['cc']
     telefono = int(str(telefono[0]))
     # Objeto del modelo
-    config = Administrador.objects.filter(idUser_id = idAdmin).update(nombreAdmin=str(nombre[0]),direccionAdmin=str(direccion[0]),
+    config = Administrador.objects.filter(idUser_id = userid).update(nombreAdmin=str(nombre[0]),direccionAdmin=str(direccion[0]),
                                           telefonoAdmin=telefono,correoAdmin=str(correo))
+    if nc and nc == cc:
+        usuario.set_password(nc)
+        usuario.save()
+        messages.info(request,"Contraseña cambiada correctamente")
+    else:
+        messages.info(request,"Contraseñas no coinciden")
+
     datos_admin = Administrador.objects.get(id=idAdmin)
+    print("ID_ADMIN:" + str(idAdmin))
     return render(request, "admin_dash/config_admin.html",{'datos':datos_admin,'tipo':tipo})

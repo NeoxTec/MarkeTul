@@ -14,6 +14,9 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Cuenta</h4>
+                    {% for  message in messages %}
+                    <p id="message">{{message}}</p>
+                    {% endfor %}
                 <form action="{% url 'update_config' %}" method ="post">
                 {% csrf_token %}
                     <div class="form-group">
@@ -34,11 +37,11 @@
                     </div>
                     <div class="form-group">
                         <label for="nc">Nueva Contraseña</label>
-                        <input type="password" class="form-control" id="nc">
+                        <input type="password" class="form-control" id="nc" name="nc">
                     </div>
                     <div class="form-group">
                         <label for="cc">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" id="cc">
+                        <input type="password" class="form-control" id="cc" name="cc">
                     </div>
                <div class="form-row align-items-center">
                    <div class="col-sm-3 my-1">
