@@ -191,6 +191,29 @@ def producto_eliminado(request):
     return render(request,"admin_dash/admin_productos.html",{'productos':listaP,'tipo':tipo})
 
 @login_required(login_url='login')
+def eliminar_producto(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    idp= request.POST['idProd']
+    
+    pr = Producto.objects.filter( idProd=idp ).delete()
+
+    listaP = Producto.objects.filter(Q(idTi_id=idTienda) & Q(estado=0))
+    return render(request,"admin_dash/admin_productos_eliminados.html",{'productos':listaP,'tipo':tipo})
+
+@login_required(login_url='login')
+def reactivar_producto(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    idp= request.POST['idProd']
+    cambio = 1
+    pr = Producto.objects.filter( idProd=idp ).update(estado=cambio)
+
+    listaP = Producto.objects.filter(Q(idTi_id=idTienda) & Q(estado=1))
+    print ("dato= "+ str(id))
+    return render(request,"admin_dash/admin_productos.html",{'productos':listaP,'tipo':tipo})
+
+@login_required(login_url='login')
 def admin_productos_eliminados(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)

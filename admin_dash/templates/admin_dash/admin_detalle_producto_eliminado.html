@@ -15,7 +15,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Detalle Producto</h4>
-                <form method="POST" action= "{% url 'actualizacion_producto' %}">
+                <form method="POST" action= "{% url 'reactivar_producto' %}">
                 {% csrf_token %}
                 <p><input type="hidden" name="idProd" value= "{{prod.idProd}}"></p>
                     <div class="form-group">
@@ -120,7 +120,7 @@
       </div>
       <div class="modal-body">
         <h4 class="modal-title">Confirmación</h4>
-        <form method="POST" action="{% url 'producto_eliminado' %}">
+        <form method="POST" action="{% url 'eliminar_producto' %}">
             {% csrf_token %}
             <input type="hidden" name="idProd" value="{{prod.idProd}}">
             <br>
