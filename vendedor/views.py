@@ -2,7 +2,7 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from admin_dash.models import Producto,Tienda,Administrador
-from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo, CatalogoProducto
+from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo, CatalogoProducto,Ventas_vendedor
 from registration.models import Usuario_Tipo
 
 from django.contrib import messages
@@ -159,9 +159,12 @@ def vendedor_ventas(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     vendedor = Vendedor.objects.get(idUser_id=userid)
-    catalogo = Catalogo.objects.filter()
-
-    return render(request, "vendedor/vendedor_ventas.html") 
+    catalogos = Catalogo.objects.filter(idVen_id=vendedor.idVend)
+    ventas = []
+    for catalogo in catalogos:
+        venta = Ventas_vendedor.objects.filter(idCatalogo_id=catalogo.idCatal)
+        ventas.append(venta)
+    return render(request, "vendedor/vendedor_ventas.html",{'tipo':tipo,'ganancias':ganancias,'ventas':ventas}) 
 
 @login_required(login_url='login')
 def config_vendedor(request):

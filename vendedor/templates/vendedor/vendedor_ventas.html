@@ -29,7 +29,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>                                                            
+                            <tr>
+                            {% for venta in ventas %}
+                                <td>{{venta.idCatalogo_id}}<td>
+                            {% endfor %}                                                            
                             </tr>
                         </tbody>
                     </table>
