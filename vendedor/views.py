@@ -5,6 +5,8 @@ from admin_dash.models import Producto,Tienda,Administrador
 from vendedor.models import Vendedor,SolicitudesVendedor,Catalogo, CatalogoProducto
 from registration.models import Usuario_Tipo
 
+from django.contrib import messages
+
 from registration.views import login,loginPage
 
 from django.contrib.auth.decorators import login_required
@@ -117,12 +119,21 @@ def config_vendedor(request):
 def guardar_config(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
-    id_usuario = User.objects.get(id=userid)
+    usuario = User.objects.get(id=userid)
     nombre = request.POST['nombreVend'],
     telefono = request.POST['telefono'],
     correo = request.POST['correo']
     telefono = int(str(telefono[0]))
+    nc = request.POST['nc']
+    cc = request.POST['cc']
     configuracion = Vendedor.objects.filter(idUser_id = userid).update(nombreVend=str(nombre[0]), telefono=telefono, correo=str(correo))
+
+    if nc and nc == cc:
+        usuario.set_password(nc)
+        usuario.save()
+        messages.info(request,"Contraseña cambiada correctamente")
+    elif nc and nc != cc:
+        messages.info(request,"Contraseñas no coinciden")
 
     datos_vendedor = Vendedor.objects.get(idUser_id=userid)
     return render(request, "vendedor/config_vendedor.html", {'datos':datos_vendedor,'tipo':tipo}) 

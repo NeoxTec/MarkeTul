@@ -16,6 +16,7 @@
                 <h4 class="header-title">Cuenta</h4>
                     {% for  message in messages %}
                     <p id="message">{{message}}</p>
+                    <br>
                     {% endfor %}
                 <form action="{% url 'update_config' %}" method ="post">
                 {% csrf_token %}
