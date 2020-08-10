@@ -2,7 +2,7 @@
 
 {% block titulo_pag %}Vendedor{% endblock %}
 
-{% block pagina %}Electronica y Computo MkTul{% endblock %}
+{% block pagina %}{{tienda.nombreTi}}{% endblock %}
 
 {% block sub_pagina %}Edición de Catálogo{% endblock %}
 
@@ -17,6 +17,10 @@
 
     <div class="col-sm-3 my-1">
         <a href="{% url 'catalogo_tienda' catalogo.idTien_id  catalogo.idCatal %}" class="btn btn-warning">Añadir Productos</a>
+    </div>
+
+    <div class="col-sm-3 my-1">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalCat">Modificar categoría</button>
     </div>
 </div> 
 <div class="card-area">
@@ -43,4 +47,49 @@
     {% endfor %}
     </div>
 </div>
+
+<!-- Modal -->
+<div id="ModalCat" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4 class="modal-title">Cambiar Categoería</h4>
+        <form method="POST" action="{% url 'cambio_categoria' %}">
+            {% csrf_token %}
+            <input type="hidden" name="idCat" value="{{catalogo.idCatal}}">
+            <label class="col-form-label">Categoria</label>
+                <select class="form-control" name="categoriaCat">
+                    <option value="{{catalogo.categoria}}">{{catalogo.categoria}}</option>
+                    <option>Selecciona una Categoría</option>
+                    <option value="Computo">Computo</option>
+                    <option value="Muebles">Muebles</option>
+                    <option value="Niños">Niños</option>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                    <option value="Electrodomesticos">Electrodomesticos</option>
+                    <option value="Libros">Libros</option>
+                    <option value="Mascotas">Mascotas</option>
+                </select>
+                <br>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+function test(e) {
+e.value=e.value.replace(/\,/g, '.')
+}
+</script>
+    <!-- basic form end -->
+
 {% endblock %}

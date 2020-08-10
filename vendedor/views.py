@@ -51,7 +51,8 @@ def editar_catalogo(request,idCatal):
         pro = Producto.objects.get(idProd=producto.idProducto_id)
         productos.append(pro)
     catalogo = Catalogo.objects.get(idCatal=idCatal)
-    return render(request, "vendedor/editar_catalogo.html",{'productos':productos,'catalogo':catalogo,'tipo':tipo})
+    tienda = Tienda.objects.get(idTi=catalogo.idTien_id)
+    return render(request, "vendedor/editar_catalogo.html",{'productos':productos,'catalogo':catalogo,'tipo':tipo,'tienda':tienda})
 
 @login_required(login_url='login')
 def catalogo_tienda_sn(request,idTi):
@@ -92,6 +93,22 @@ def añadir_producto_catalogo(request,idProd,idCatal):
         tiendas.append(tienda)
     context = {'catalogos': listaC,'tipo':tipo,'tiendas':tiendas}
     return render(request, "vendedor/catalogos_vendedor.html", context)
+
+@login_required(login_url='login')
+def cambio_categoria(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    idc= request.POST['idCat']
+    categoria = request.POST['categoriaCat']
+    catalogo = Catalogo.objects.filter( idCatal=idc ).update(categoria=str(categoria))
+
+    listaP = CatalogoProducto.objects.filter(idCatalogo_id=idc)
+    productos = []
+    for producto in listaP:
+        pro = Producto.objects.get(idProd=producto.idProducto_id)
+        productos.append(pro)
+    catalogo = Catalogo.objects.get(idCatal=idc)
+    return render(request, "vendedor/editar_catalogo.html",{'productos':productos,'catalogo':catalogo,'tipo':tipo})
 
 @login_required(login_url='login')
 def vendedor_nueva_solicitud(request, idTi):
