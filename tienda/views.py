@@ -53,14 +53,17 @@ def añadir_producto_carrito(request,idProd):
     cantidad = request.POST['cantidad']
     cantidad = int(cantidad)
     agregado = CarritoProducto.objects.filter(idProducto_id=idProd).count()
+    print("AGREGADO: "+str(agregado))
     print("ID_CONS:" + str(cons.idConsumidor))
+    print("CANTIDAD: " +str(cantidad))
     conteo = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito).count()
     if (conteo != 1):
         carrito_producto = CarritoProducto (idCarrito_id=carrito.idCarrito,idCatalogo_id=idCatProd.idCatal,idProducto_id=idProd,cantidad=cantidad).save()
     else:
-        if agregado == 1:
-            prod_ag = CarritoProducto.objects.get(idProducto_id=idProd)
+        if agregado:
+            prod_ag = CarritoProducto.objects.get(dProducto_id=idProd)
             cantidad_nueva = prod_ag.cantidad + cantidad
+            print("CANTIDAD_NUEVA:"+str(cantidad_nueva))
             actualizar = CarritoProducto.objects.filter(idProducto_id=idProd).update(cantidad=cantidad_nueva)
         else:
             carrito_producto = CarritoProducto (idCarrito_id=carrito.idCarrito,idCatalogo_id=idCatProd.idCatal,idProducto_id=idProd,cantidad=cantidad).save()
@@ -69,7 +72,6 @@ def añadir_producto_carrito(request,idProd):
     productos = []
     subtotal = 0.0
     cantidad = 0
-    print("CANTIDAD: " + str(cantidad))
     for producto in listaC:
         prod = Producto.objects.get(idProd=producto.idProducto_id)
         cantidad = cantidad + producto.cantidad
@@ -110,16 +112,32 @@ def carrito(request):
     context = {'productos':productos, 'carrito':carro, 'listaC':listaC}
     return render(request, "tienda/carrito.html",context)
 
-def eliminar_producto_carrito(request):
+def eliminar_producto_carrito(request,idProd,idCarrito):
     userid = request.user.id
+    cantidad = request.POST['cantidad']
+    cantidad = int(cantidad)
+    cantidad_nueva = 0
+    producto_eliminar = CarritoProducto.objects.get(idProducto_id=idProd)
+    print("CARRITO:" + str(idCarrito))
+    print("PRODUCTO: "+ str(idProd))
+
+    if cantidad != producto_eliminar.cantidad:
+
+        cantidad_nueva = (producto_eliminar.cantidad - cantidad)
+        print("CANTIDAD_NUEVA: "+ str(cantidad_nueva))
+
+        eliminar = CarritoProducto.objects.filter(idProducto_id=idProd,idCarrito_id=idCarrito).update(cantidad=cantidad_nueva)
+
+    elif cantidad == producto_eliminar.cantidad:
+        
+        eliminar = CarritoProducto.objects.filter(idProducto_id=idProd,idCarrito_id=idCarrito).delete()
+
     cons = Consumidor.objects.get(idUser_id=userid) 
     carrito = Carrito.objects.get(idCons_id=cons.idConsumidor)
-    listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito) 
-
+    listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito)
     productos = []
     subtotal = 0.0
     cantidad = 0
-    print("CANTIDAD: " + str(cantidad))
     for producto in listaC:
         prod = Producto.objects.get(idProd=producto.idProducto_id)
         cantidad = cantidad + producto.cantidad
@@ -127,7 +145,6 @@ def eliminar_producto_carrito(request):
             subtotal= subtotal + (float(prod.precioProd)*producto.cantidad)
         else:
             subtotal = subtotal + float(prod.precioProd)
-        
         productos.append(prod)
     print("SUBTOTAL: " + str(subtotal))
     actualizacion = Carrito.objects.filter(idCons_id=cons.idConsumidor).update(cantidad=cantidad,subtotal=subtotal)

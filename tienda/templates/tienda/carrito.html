@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-
+{% block title %}
+Carrito Compras
+{% endblock %}
 {% block content %}
 <body>
  {% load static %}  
@@ -32,18 +34,44 @@
                     <h5 class="title">{{producto.nombreProd }}</h5>
                     <p class="card-text"><strong>Descripción del Producto</strong> <br>{{producto.descripcionProd}} <br> {{producto.medidasProd}}</p>
                     <div class="form-row align-items-center">
-                     <p class="card-text"><strong>Cantidad: </strong>
-                    {% for prod in listaC %}
-                        {% if prod.idProducto_id == producto.idProd %}
-                            {{prod.cantidad}}
-                        {% endif %}
-                    {% endfor %}</p><br>
-                    </div>
-                    <!--<div class="form-row align-items-center">
-                        <div class="col-sm-6 my-1">
-                                <button type="button" style="width:25em" class="btn btn-danger" data-toggle="modal" data-target="#Eliminar_producto">Eliminar</a>
+                     <p class="card-text"><strong>Cantidad: </strong></p>
+                    <form method="POST" action="{% url 'eliminar_producto_carrito' producto.idProd carrito.idCarrito %}">{% csrf_token %}
+                        <select class="form-control" name="cantidad">
+                        <option>Seleccione Cantidad a eliminar</option>
+                            {% for prod in listaC %}
+                                {% if prod.idProducto_id == producto.idProd %}
+                                    {% if prod.cantidad == 1 %}
+                                        <option value="1" selected>1</option>
+                                    {% elif prod.cantidad == 2 %}
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    {% elif prod.cantidad == 3 %}
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    {% elif  prod.cantidad == 4 %}
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    {% elif prod.cantidad == 5%}
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </select>
                         </div>
-                    </div>-->
+                        <br>
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-6 my-1">
+                                <button type="submit" style="width:25em" class="btn btn-danger">Eliminar
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
