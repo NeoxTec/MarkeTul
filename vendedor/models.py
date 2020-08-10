@@ -41,3 +41,9 @@ class CatalogoProducto(models.Model):
     idProducto = models.ForeignKey(Producto,null=True, blank=True, on_delete=models.CASCADE)
     idCatalogo = models.ForeignKey(Catalogo,null=True, blank=True, on_delete=models.CASCADE)
 
+class Ventas_vendedor(models.Model):
+    idVenta = models.AutoField(primary_key=True,auto_created=True)
+    idCatalogo = models.ForeignKey(Catalogo, null=True, blank=True, on_delete=models.CASCADE)
+    idProducto = models.ForeignKey(Producto, null=True, blank=True, on_delete=models.CASCADE)
+    cantidad = models.IntegerField(null=True, blank=True)
+    venta = models.FloatField(null=True, blank=True)

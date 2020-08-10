@@ -59,9 +59,19 @@
                     <h5> Marca:{{producto.marcaProd}}</h5>   
                     <h5> Existencias: {{producto.existenciasProd}}</h5>
                     <h5>{{producto.descripcionProd}}</h5>
-                    
                   </div>
                 </div>
+            <div class="form-row align-items-center">
+                    <label class="col-form-label">Cantidad</label>
+                    <select class="form-control" name="cantidad">
+                             <option>Seleccione Cantidad (máx 5)</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                    </select>
+            </div>
                 </p>
                   <P>
                     <button type="submit" class="btn btn-success btn-sm"><img src="{% static 'core/img/smart-cart.png' %}" width="25" height="25">A&ntilde;adir al Carrito</button> 

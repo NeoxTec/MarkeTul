@@ -46,6 +46,7 @@ class CarritoProducto(models.Model):
     idProducto = models.ForeignKey(Producto,null=True, blank=True, on_delete=models.CASCADE)
     idCatalogo = models.ForeignKey(Catalogo,null=True, blank=True, on_delete=models.CASCADE)
     idCarrito = models.ForeignKey(Carrito, null=True, blank=True, on_delete=models.CASCADE)
+    cantidad = models.SmallIntegerField(null=True, blank=True)
     
 class Compras(models.Model):
     idCompra = models.AutoField(primary_key=True)
