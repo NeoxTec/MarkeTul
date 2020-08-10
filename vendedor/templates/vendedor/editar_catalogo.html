@@ -23,6 +23,11 @@
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalCat">Modificar categoría</button>
     </div>
 </div> 
+    {% for  message in messages %}
+        <br>
+        <p id="message"><h3>{{message}}</h3></p>
+        <br>
+    {% endfor %}
 <div class="card-area">
     <div class="row">
     {% for producto in productos  %}
@@ -36,17 +41,46 @@
                                 <h3>$ {{producto.precioProd}}</h3>
                             </div>
                         </div>
-                        <!--<div class="form-row align-items-center">
+                        <div class="form-row align-items-center">
                             <div class="col-sm-6 my-1">
-                                    <button type="submit" class="btn btn-danger"><i class="ti-close"> </i>Eliminar del catálogo</a>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Eliminar_producto"> <i class="ti-close"> </i>Eliminar del catálogo</a>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
             </div>
+        <!-- Modal -->
+                <div id="Eliminar_producto" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-title">Confirmación</h4>
+                        <form method="POST" action="{% url 'eliminar_producto_catalogo' producto.idProd catalogo.idCatal %}">
+                            {% csrf_token %}
+                            <!--<input type="hidden" name="idProd" value="{{producto.idProd}}">-->
+                            <br>
+                            <p>¿Desea eliminar el producto <strong>{{producto.nombreProd}}</strong> del catálogo?</p>
+                            <br>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                                <button type="submit" class="btn btn-danger">Si</button>
+                        </form>
+                    </div>
+                    </div>
+
+                </div>
+                </div>
     {% endfor %}
     </div>
 </div>
+
+
+
+
+
 
 <!-- Modal -->
 <div id="ModalCat" class="modal fade" role="dialog">
@@ -80,10 +114,8 @@
         </form>
       </div>
     </div>
-
   </div>
 </div>
-
 
 <script>
 function test(e) {

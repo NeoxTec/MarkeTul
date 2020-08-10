@@ -276,7 +276,7 @@ def cambiar_status_solicitud(request,idSolVen):
     
     #datos creacion catalogo
     solicitud = SolicitudesVendedor.objects.get(idSolVen=idSolVen)
-    categoria = 'Computo',
+    categoria = "Computo",
     status_nuevo = 1
     idVendedor = int(str(solicitud.idVen_id))
     idTienda = solicitud.idTi_id

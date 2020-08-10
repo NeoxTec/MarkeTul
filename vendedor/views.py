@@ -84,15 +84,41 @@ def añadir_producto_catalogo(request,idProd,idCatal):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     vendedor = Vendedor.objects.get(idUser_id=userid)
-    catalogo_producto = CatalogoProducto(idCatalogo_id=idCatal,idProducto_id=idProd).save()
-    listaC = Catalogo.objects.filter(idVen_id=vendedor.idVend)
-    tiendas = []
-    for catalogo in listaC:
-        tienda = Tienda.objects.get(idTi=catalogo.idTien_id)
-        print(str(tienda.logoTi))
-        tiendas.append(tienda)
-    context = {'catalogos': listaC,'tipo':tipo,'tiendas':tiendas}
-    return render(request, "vendedor/catalogos_vendedor.html", context)
+
+    conteo = CatalogoProducto.objects.filter(idProducto_id=idProd).count()
+    if conteo != 1:
+        catalogo_producto = CatalogoProducto(idCatalogo_id=idCatal,idProducto_id=idProd).save()
+    else:
+        messages.error(request,"El producto ya ha sido añadido anteriormente")
+
+    listaP = CatalogoProducto.objects.filter(idCatalogo_id=idCatal)
+    productos = []
+    for producto in listaP:
+        pro = Producto.objects.get(idProd=producto.idProducto_id)
+        productos.append(pro)
+    catalogo = Catalogo.objects.get(idCatal=idCatal)
+    tienda = Tienda.objects.get(idTi=catalogo.idTien_id)
+    return render(request, "vendedor/editar_catalogo.html",{'productos':productos,'catalogo':catalogo,'tipo':tipo,'tienda':tienda})
+
+@login_required(login_url='login')
+def eliminar_producto_catalogo(request,idProd,idCatal):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    vendedor = Vendedor.objects.get(idUser_id=userid)
+    catalogo_producto = CatalogoProducto.objects.get(idProducto_id=idProd)
+    id_catalogo_producto = catalogo_producto.idCatProd
+
+    producto_eliminar = CatalogoProducto.objects.filter(idCatProd=id_catalogo_producto).delete()
+
+    listaP = CatalogoProducto.objects.filter(idCatalogo_id=idCatal)
+    productos = []
+    for producto in listaP:
+        pro = Producto.objects.get(idProd=producto.idProducto_id)
+        productos.append(pro)
+
+    catalogo = Catalogo.objects.get(idCatal=idCatal)
+    tienda = Tienda.objects.get(idTi=catalogo.idTien_id)
+    return render(request, "vendedor/editar_catalogo.html",{'productos':productos,'catalogo':catalogo,'tipo':tipo,'tienda':tienda})
 
 @login_required(login_url='login')
 def cambio_categoria(request):
@@ -160,9 +186,9 @@ def guardar_config(request):
     if nc and nc == cc:
         usuario.set_password(nc)
         usuario.save()
-        messages.info(request,"Contraseña cambiada correctamente")
+        messages.success(request,"Contraseña cambiada correctamente")
     elif nc and nc != cc:
-        messages.info(request,"Contraseñas no coinciden")
+        messages.error(request,"Contraseñas no coinciden")
 
     datos_vendedor = Vendedor.objects.get(idUser_id=userid)
     return render(request, "vendedor/config_vendedor.html", {'datos':datos_vendedor,'tipo':tipo}) 
