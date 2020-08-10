@@ -17,11 +17,13 @@
 <div class="card-area">
     <div class="row">
         {% for listaC in catalogos %}
-            <div class="col-lg-7 col-md-8 mt-5">
+            <div class="col-lg-7 col-md-8 mt-1">
                 <div class="card card-bordered">
-                {% if listaC.categoria == 'Computo' %}
-                    <img class="card-img-top img-fluid" src="{% static 'core/img/computo.jpeg' %}" alt="">
-                {% endif %}
+                {% for tienda in tiendas  %}
+                    {% if listaC.idTien_id == tienda.idTi %}
+                        <img class="card-img-top img-fluid" src="{{tienda.logoTi.url}}" alt="image">
+                    {% endif %}
+                {% endfor %}
                     <div class="card-body">
                         <h5 class="title">Catálogo: {{listaC.idCatal}}</h5>
                         <div class="form-row align-items-center">

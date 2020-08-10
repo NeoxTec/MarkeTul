@@ -33,7 +33,12 @@ def catalogos_vendedor(request):
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     vendedor = Vendedor.objects.get(idUser_id=userid)
     listaC = Catalogo.objects.filter(idVen_id=vendedor.idVend)
-    context = {'catalogos': listaC,'tipo':tipo} # Corregir
+    tiendas = []
+    for catalogo in listaC:
+        tienda = Tienda.objects.get(idTi=catalogo.idTien_id)
+        print(str(tienda.logoTi))
+        tiendas.append(tienda)
+    context = {'catalogos': listaC,'tipo':tipo,'tiendas':tiendas} # Corregir
     return render(request, "vendedor/catalogos_vendedor.html", context)
 
 @login_required(login_url='login')
@@ -77,9 +82,15 @@ def catalogo_tienda(request,idTi,idCatal):
 def añadir_producto_catalogo(request,idProd,idCatal):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    vendedor = Vendedor.objects.get(idUser_id=userid)
     catalogo_producto = CatalogoProducto(idCatalogo_id=idCatal,idProducto_id=idProd).save()
-    listaC = Catalogo.objects.all()
-    context = {'catalogos': listaC,'tipo':tipo}
+    listaC = Catalogo.objects.filter(idVen_id=vendedor.idVend)
+    tiendas = []
+    for catalogo in listaC:
+        tienda = Tienda.objects.get(idTi=catalogo.idTien_id)
+        print(str(tienda.logoTi))
+        tiendas.append(tienda)
+    context = {'catalogos': listaC,'tipo':tipo,'tiendas':tiendas}
     return render(request, "vendedor/catalogos_vendedor.html", context)
 
 @login_required(login_url='login')

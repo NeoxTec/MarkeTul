@@ -24,17 +24,19 @@
     {% for producto in productos  %}
             <div class="col-lg-4 col-md-6 mt-5">
                 <div class="card card-bordered">
-                    <img class="card-img-top img-fluid" src="{% static 'core/img/Impresora1.png' %}" alt="image">
+                    <img class="card-img-top img-fluid" src="{{producto.imagenProd.url}}" alt="image">
                     <div class="card-body">
                         <h5 class="title">{{producto.nombreProd}}</h5>
-                        <p class="card-text">
-                        <br>
-                        </p>
                         <div class="form-row align-items-center">
                             <div class="col-sm-6 my-1">
                                 <h3>$ {{producto.precioProd}}</h3>
                             </div>
                         </div>
+                        <!--<div class="form-row align-items-center">
+                            <div class="col-sm-6 my-1">
+                                    <button type="submit" class="btn btn-danger"><i class="ti-close"> </i>Eliminar del catálogo</a>
+                            </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
