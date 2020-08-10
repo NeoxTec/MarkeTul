@@ -1,0 +1,39 @@
+{% extends 'tienda/master_tienda.html' %}
+{% block title %}Libros{% endblock %}
+<!-- Aqui deberan mostrarse los catalogos_vendedores-->
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</head>
+{% block content %}
+{% load static %}
+<h1>
+    <center>Catalogo</center>
+</h1>
+<div style="margin-top:10px;">
+    <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}" width="30" height="35"
+            style="margin-left:50px;"></a>
+</div>
+{% for listaCv in catalogos %}
+{% if listaCv.status == 1  %}
+<div style="width: auto; float: left; margin-left: 30px;">
+<div class="container">
+    <div class="card-deck mt-12">  
+    <div class="card text-center "> 
+        <img src="{% static 'core/img/salesman.png' %}" width="200" height="190">
+    <div class="card-body">
+    {% for vendedor in vendedores %}
+        {% if vendedor.idVend == listaCv.idVen_id %}
+            <h5 class="card-title">{{vendedor.nombreVend}}</h5>
+        {% endif %}
+    {% endfor %}
+    <p><a href="{% url 'catalogos' listaCv.idCatal %}" class="btn btn-primary"><i class="ti-gallery"> </i>Ver
+    Productos</a>
+    </div>   
+    </div>
+    </div>
+    </div>
+</div>
+{% endif %} 
+{% endfor %}
+{% endblock %}

@@ -228,13 +228,76 @@ def guardar_config_con(request):
     return render(request, "tienda/configuracion_cuenta.html", {'datos':datos_consumidor}) 
 
 def categoria_computo(request):
-    listaCv = Catalogo.objects.all()
+    listaCv = Catalogo.objects.filter(categoria="Computo")
     vendedores = []
     for catalogo in listaCv:
         vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
         vendedores.append(vendedor)       
     context = {'catalogos': listaCv,'vendedores': vendedores}
     return render(request, "tienda/categoria_computo.html", context)
+
+def categoria_niño(request):
+    listaCv = Catalogo.objects.filter(categoria="Niños")
+    vendedores = []
+    for catalogo in listaCv:
+        vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
+        vendedores.append(vendedor)       
+    context = {'catalogos': listaCv,'vendedores': vendedores}
+    return render(request, "tienda/categoria_niño.html", context)
+
+def categoria_hombre(request):
+    listaCv = Catalogo.objects.filter(categoria="Hombre")
+    vendedores = []
+    for catalogo in listaCv:
+        vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
+        vendedores.append(vendedor)       
+    context = {'catalogos': listaCv,'vendedores': vendedores}
+    return render(request, "tienda/categoria_hombre.html", context)
+
+def categoria_mujer(request):
+    listaCv = Catalogo.objects.filter(categoria="Mujer")
+    vendedores = []
+    for catalogo in listaCv:
+        vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
+        vendedores.append(vendedor)       
+    context = {'catalogos': listaCv,'vendedores': vendedores}
+    return render(request, "tienda/categoria_mujer.html", context)
+
+def categoria_libros(request):
+    listaCv = Catalogo.objects.filter(categoria="Libros")
+    vendedores = []
+    for catalogo in listaCv:
+        vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
+        vendedores.append(vendedor)       
+    context = {'catalogos': listaCv,'vendedores': vendedores}
+    return render(request, "tienda/categoria_libros.html", context)
+
+def categoria_mascotas(request):
+    listaCv = Catalogo.objects.filter(categoria="Mascotas")
+    vendedores = []
+    for catalogo in listaCv:
+        vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
+        vendedores.append(vendedor)       
+    context = {'catalogos': listaCv,'vendedores': vendedores}
+    return render(request, "tienda/categoria_mascotas.html", context)
+
+def categoria_muebles(request):
+    listaCv = Catalogo.objects.filter(categoria="Muebles")
+    vendedores = []
+    for catalogo in listaCv:
+        vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
+        vendedores.append(vendedor)       
+    context = {'catalogos': listaCv,'vendedores': vendedores}
+    return render(request, "tienda/categoria_muebles.html", context)
+
+def categoria_electrodomesticos(request):
+    listaCv = Catalogo.objects.filter(categoria="Electrodomesticos")
+    vendedores = []
+    for catalogo in listaCv:
+        vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
+        vendedores.append(vendedor)       
+    context = {'catalogos': listaCv,'vendedores': vendedores}
+    return render(request, "tienda/categoria_electrodomesticos.html", context)
 
 def catalogos(request, idCatal):
     listaP = CatalogoProducto.objects.filter(idCatalogo_id=idCatal)
