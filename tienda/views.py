@@ -144,11 +144,21 @@ def configuracion_cuenta(request):
 @login_required(login_url='login')
 def guardar_config_con(request):
     userid = request.user.id
+    usuario = User.objects.get(id=userid)
     nombre = request.POST['nombre']
     correo = request.POST['correo']
     telefono = request.POST['telefono']
-    
+    nc = request.POST['nc']
+    cc = request.POST['cc']
     configuracion = Consumidor.objects.filter(idUser_id = userid).update(nombre=str(nombre), telefono=int(str(telefono)), correo=str(correo))
+
+    if nc and nc == cc:
+        usuario.set_password(nc)
+        usuario.save()
+        messages.success(request,"Contraseña cambiada correctamente")
+    elif nc and nc != cc:
+        messages.error(request,"Contraseñas no coinciden")
+
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
     return render(request, "tienda/configuracion_cuenta.html", {'datos':datos_consumidor}) 
 

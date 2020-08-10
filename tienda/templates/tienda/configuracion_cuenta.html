@@ -76,6 +76,9 @@
       <h1>
         <center>Configuración de Cuenta</center>
       </h1>
+      {% for  message in messages %}
+          <p id="message"><h3>{{message}}</h3></p>
+      {% endfor %}
       <div class="card-body">
         <div class="col-md-12">
         <h4 class="card-title" align="left">Datos</h4>
@@ -97,12 +100,12 @@
             <div class="form-row">
             <label for="inputEmail4">Nueva Contrase&ntilde;a</label>
             
-            <input align="center" style="width: 53rem;" type="password" class="form-control" id="inputEmail4" placeholder="Nueva Contrase&ntilde;a*">
+            <input align="center" style="width: 53rem;" type="password" class="form-control" id="inputEmail4" placeholder="Nueva Contrase&ntilde;a*" name="nc">
           </div>
           <div class="form-row">
               <label for="inputEmail4">Confirmar contrase&ntilde;a</label>
               <input align="center" style="width: 53rem;" type="password" class="form-control" id="inputEmail4"
-                  placeholder="Confirmar Contrase&ntilde;a*">
+                  placeholder="Confirmar Contrase&ntilde;a*" name="cc">
           </div>
           <div class="form-row">
             <p>&nbsp;</p>
