@@ -24,16 +24,17 @@
                         <thead class="text-capitalize">
                             <tr>
                                 <th>Catálogo</th>
+                                <th>
                                 <th>Ganancia</th>
-                                <th>Fecha</th>
                             </tr>
                         </thead>
                         <tbody>
+                        {% for venta in ventas %}
                             <tr>
-                            {% for venta in ventas %}
                                 <td>{{venta.idCatalogo_id}}<td>
-                            {% endfor %}                                                            
+                                <td>$ {{venta.venta}}                                                          
                             </tr>
+                        {% endfor %}  
                         </tbody>
                     </table>
                 </div>

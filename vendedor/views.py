@@ -162,9 +162,10 @@ def vendedor_ventas(request):
     catalogos = Catalogo.objects.filter(idVen_id=vendedor.idVend)
     ventas = []
     for catalogo in catalogos:
-        venta = Ventas_vendedor.objects.filter(idCatalogo_id=catalogo.idCatal)
-        ventas.append(venta)
-    return render(request, "vendedor/vendedor_ventas.html",{'tipo':tipo,'ganancias':ganancias,'ventas':ventas}) 
+        ventas_g = Ventas_vendedor.objects.filter(idCatalogo_id=catalogo.idCatal)
+        for venta in ventas_g:
+            ventas.append(venta)
+    return render(request, "vendedor/vendedor_ventas.html",{'tipo':tipo,'ventas':ventas}) 
 
 @login_required(login_url='login')
 def config_vendedor(request):
