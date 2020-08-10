@@ -150,14 +150,17 @@ def vendedor_nueva_solicitud(request, idTi):
 def vendedor_solicitudes(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
-    userid = request.user.id
-    id_usuario = User.objects.get(id=userid)
     vendedor = Vendedor.objects.get(idUser_id=userid)
     solicitudes = SolicitudesVendedor.objects.filter(idVen_id=vendedor.idVend).values('idTi_id','status','idTi_id__nombreTi','idSolVen')
     return render(request, "vendedor/vendedor_solicitudes.html",{'solicitudes':solicitudes,'tipo':tipo}) 
 
 @login_required(login_url='login')
 def vendedor_ventas(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    vendedor = Vendedor.objects.get(idUser_id=userid)
+    catalogo = Catalogo.objects.filter()
+
     return render(request, "vendedor/vendedor_ventas.html") 
 
 @login_required(login_url='login')

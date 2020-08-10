@@ -64,7 +64,26 @@ def añadir_producto_carrito(request,idProd):
             actualizar = CarritoProducto.objects.filter(idProducto_id=idProd).update(cantidad=cantidad_nueva)
         else:
             carrito_producto = CarritoProducto (idCarrito_id=carrito.idCarrito,idCatalogo_id=idCatProd.idCatal,idProducto_id=idProd,cantidad=cantidad).save()
-    return render(request, "tienda/categorias.html")
+    
+    listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito)
+    productos = []
+    subtotal = 0.0
+    cantidad = 0
+    print("CANTIDAD: " + str(cantidad))
+    for producto in listaC:
+        prod = Producto.objects.get(idProd=producto.idProducto_id)
+        cantidad = cantidad + producto.cantidad
+        if producto.cantidad > 1:
+            subtotal= subtotal + (float(prod.precioProd)*producto.cantidad)
+        else:
+            subtotal = subtotal + float(prod.precioProd)
+        
+        productos.append(prod)
+    print("SUBTOTAL: " + str(subtotal))
+    actualizacion = Carrito.objects.filter(idCons_id=cons.idConsumidor).update(cantidad=cantidad,subtotal=subtotal)
+    carro = Carrito.objects.get(idCons_id=cons.idConsumidor)
+    context = {'productos':productos, 'carrito':carro, 'listaC':listaC}
+    return render(request, "tienda/carrito.html",context)
 
 @login_required(login_url='login')
 def carrito(request):
@@ -157,6 +176,8 @@ def pago_exitoso(request):
             cantidad = cantidad + producto.cantidad
             venta = venta + (float(prod.precioProd)*producto.cantidad)
             ventas = Ventas_vendedor(idCatalogo_id=producto.idCatalogo_id,idProducto_id=producto.idProducto_id,cantidad=cantidad,venta=venta).save()
+            existencias_up = prod.existenciasProd - cantidad
+            descuento = Producto.objects.filter(idProd=producto.idProducto_id).update(existenciasProd=existencias_up)
             quitar = CarritoProducto.objects.filter(idProducto_id=prod.idProd).delete()
         conteo = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito).count()
         if (conteo != 1):
