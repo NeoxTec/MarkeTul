@@ -134,10 +134,11 @@ def guardar_config(request):
     nombre = request.POST['nombreVend'],
     telefono = request.POST['telefono'],
     correo = request.POST['correo']
+    descripcion = request.POST['descripcion']
     telefono = int(str(telefono[0]))
     nc = request.POST['nc']
     cc = request.POST['cc']
-    configuracion = Vendedor.objects.filter(idUser_id = userid).update(nombreVend=str(nombre[0]), telefono=telefono, correo=str(correo))
+    configuracion = Vendedor.objects.filter(idUser_id = userid).update(nombreVend=str(nombre[0]), telefono=telefono, correo=str(correo),descripcion=str(descripcion))
 
     if nc and nc == cc:
         usuario.set_password(nc)

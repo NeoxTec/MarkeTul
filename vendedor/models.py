@@ -8,6 +8,7 @@ class Vendedor(models.Model):
     nombreVend = models.CharField(max_length=200)
     telefono = models.BigIntegerField(null=True, blank=True)
     correo = models.CharField(max_length=200, null=True, blank=True,)
+    descripcion = models.TextField(null=True, blank=True)
     idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
 class SolicitudesVendedor(models.Model):

@@ -31,6 +31,11 @@
                         <label for="correp">Correo Electrónico</label>
                         <input type="text" class="form-control" id="correo" name="correo" value="{{datos.correo}}" required>
                     </div>
+                   <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea class="form-control" id="descripcion" rows="3" aria-describedby="info_descripcion" name="descripcion">{{datos.descripcion}}</textarea>
+                        <small id="info_descripcion" class="form-text text-muted">Ingresa una descripción sobre ti, esta aparecerá en tu catálogo</small>
+                    </div> 
                     <div class="form-group">
                         <label for="nc">Nueva Contraseña</label>
                         <input type="password" class="form-control" id="nc" name="nc">
