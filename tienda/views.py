@@ -203,19 +203,27 @@ def guardar_direccion(request):
 @login_required(login_url='login')
 def post_forma_pago(request):
     userid = request.user.id
+    conteo = Forma_Pago.objects.filter(idUser_id=userid).count()
     nombre_propietario = request.POST['nombre_propietario'],
     numero_tarjeta = request.POST['numero_tarjeta'],
     mes = request.POST['mes']
     anio = request.POST['anio']
-    #crea objeto
-    pago = Forma_Pago(nombre_propietario = str(nombre_propietario[0]), numero_tarjeta = str(numero_tarjeta[0]), 
-    fvencimiento = (str(mes)+"/"+str(anio)), idUser_id=userid)
-    #guarda objeto en bd
-    pago.save()
-    #redirecciona a la pagina
+    tipo = request.POST['tipo_pago']
+    if conteo != 1:
+        #crea objeto
+        pago = Forma_Pago(nombre_propietario = str(nombre_propietario[0]), numero_tarjeta = str(numero_tarjeta[0]), 
+        mes_vencimiento=str(mes),anio_vencimiento=str(anio), tipo_pago=str(tipo), idUser_id=userid)
+        #guarda objeto en bd
+        pago.save()
+        #redirecciona a la pagina
+    else:
+        actualizar = Forma_Pago.objects.filter(idUser_id=userid).update(nombre_propietario = str(nombre_propietario[0]), numero_tarjeta = str(numero_tarjeta[0]), 
+        mes_vencimiento=str(mes),anio_vencimiento=str(anio), tipo_pago=str(tipo))
+        
     userid = request.user.id
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
-    return render(request,"tienda/forma_pago.html", {'datos':datos_consumidor})
+    info_pago = Forma_Pago.objects.get(idUser_id=userid)
+    return render(request, "tienda/forma_pago.html", {'datos':datos_consumidor,'info':info_pago})
     
 def direccion_envio1(request):
     return render(request, "tienda/direccion_envio1.html")
@@ -224,7 +232,8 @@ def direccion_envio1(request):
 def forma_pago(request):
     userid = request.user.id
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
-    return render(request, "tienda/forma_pago.html", {'datos':datos_consumidor})
+    info_pago = Forma_Pago.objects.get(idUser_id=userid)
+    return render(request, "tienda/forma_pago.html", {'datos':datos_consumidor,'info':info_pago})
 
 def pago_error(request):
     return render(request, "tienda/pago_error.html")

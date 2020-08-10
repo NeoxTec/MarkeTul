@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 </head>
+{% block title %} Forma de Pago{% endblock %}
 {% block content %}
 
 <body>
@@ -70,51 +71,51 @@
             {% for message in messages %}<p id="message"><h4>{{message}}</h4></p>{% endfor %}
             <h4 class="card-title" align="left">M&eacute;todos de Pago</h4>
             <hr>
-            <div class="form-check form-check-inline">
-              <input style="margin-left: -1px" class="form-check-input" type="radio" name="inlineRadioOptions"
-                id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">Tarjeta de Cr&eacute;dito</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input style="margin-left: -4px" class="form-check-input" type="radio" name="inlineRadioOptions"
-                id="inlineRadio3" value="option3">
-              <label class="form-check-label" for="inlineRadio3">Tarjeta de D&eacute;bito</label>
-            </div>
-            <p>&nbsp;</p>
-
             <div class="form-group row">
               <label for="inputPassword" class="col-form-label" required>Nombre de la Tarjeta</label>
               <div class="col-sm-8">
-                <input class="form-control" placeholder="Nombre del propietario*" required name="nombre_propietario" value="">
+                <input class="form-control" placeholder="Nombre del propietario*" required name="nombre_propietario" value="{{info.nombre_propietario}}">
               </div>
             </div>
 
             <div class="form-group row">
               <label for="inputPassword" class=" col-form-label" required>N&uacute;mero de la Tarjeta</label>
               <div class="col-sm-8">
-                <input class="form-control" placeholder="0000 0000 0000 0000*" required name="numero_tarjeta">
+                <input class="form-control" placeholder="0000 0000 0000 0000*" required name="numero_tarjeta" value="{{info.numero_tarjeta}}">
               </div>
             </div>
 
             <div class="form-group row">
               <label for="inputPassword" class=" col-form-label" required>Fecha Vencimiento &nbsp;&nbsp; </label>
               <div class="col-sm-3">
-                <input class="form-control" placeholder="Mes" required name="mes">
+                <input class="form-control" placeholder="Mes" required name="mes" value="{{info.mes_vencimiento}}">
               </div>
               <div class="col-sm-3">
-                <input class="form-control" placeholder="A&ntilde;o" required name="anio">
+                <input class="form-control" placeholder="A&ntilde;o" required name="anio" value="{{info.anio_vencimiento}}">
               </div>
             </div>
-
+            <div class="form-row align-items-center">
+                    <label class="col-form-label">Tipo de Pago</label>
+                    <select class="form-control" name="tipo_pago">
+                        <option>Selecciona un Tipo de Pago</option>
+                        {% if info.tipo_pago == "debito" %}
+                            <option value="debito" selected>Tarjeta de Débito</option>
+                            <option value="credito">Tarjeta de Crédito</option>
+                        {% elif info.tipo_pago == "credito"%}
+                            <option value="debito">Tarjeta de Débito</option>
+                            <option value="credito" selected>Tarjeta de Crédito</option>
+                        {% endif %}
+                    </select>
+            </div>
             <div class="container">
               <br>
               <button style="margin-left:25px" type="submit" class="btn btn-success btn-lg" href="#ventana5"
                 class="btn btn-success btn-lg" data-toggle="modal"><img src="{% static 'core/img/mastercard.png' %}"
                   width="30" height="30">&nbsp;&nbsp;&nbsp;Guardar</button>
               </form>
-              <button style="margin-left: 25px" type="submit" class="btn btn-dark btn-lg" href="#ventana6"
+              <!--<button style="margin-left: 25px" type="submit" class="btn btn-dark btn-lg" href="#ventana6"
                 class="btn btn-success btn-lg" data-toggle="modal"><img src="{% static 'core/img/payment.png' %}"
-                  width="30" height="30">&nbsp;&nbsp;&nbsp;PayPal</button></a>
+                  width="30" height="30">&nbsp;&nbsp;&nbsp;PayPal</button></a>-->
             </div>
             </div>
             <!-- GUARDAR -->

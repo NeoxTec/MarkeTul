@@ -17,7 +17,9 @@ class Forma_Pago(models.Model):
     idForma_pago = models.AutoField(primary_key=True)
     nombre_propietario = models.CharField(max_length=50)
     numero_tarjeta = models.CharField(max_length=16)
-    fvencimiento = models.CharField(max_length=12, null=True, blank=True)
+    mes_vencimiento = models.CharField(max_length=3,null=True,blank=True)
+    anio_vencimiento = models.CharField(max_length=3,null=True,blank=True)
+    tipo_pago = models.CharField(max_length=20, null=True,blank=True)
     idUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
 # Añadir forma de pago en efectivo y Paypal
@@ -56,3 +58,4 @@ class ProductoComprado(models.Model):
     idProCom = models.AutoField(primary_key=True)
     idCompra = models.ForeignKey(Compras, null=True,blank=True, on_delete=models.CASCADE)
     idProducto = models.ForeignKey(Producto,null=True, blank=True, on_delete=models.CASCADE)
+    cantidad = models.SmallIntegerField(null=True, blank=True)

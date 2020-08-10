@@ -43,7 +43,7 @@
     </div>
 </div>
 <nav class="align-self-center" >
- <div style="margin-top:-655px; margin-left:15rem;">
+ <div style="margin-top:-355px; margin-left:15rem;">
     <!-- PARTE UNO -->
     {% for producto in productos  %}
         <form action="{% url 'añadir_producto_carrito' producto.idProd %}" method="post" > {% csrf_token %}
