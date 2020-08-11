@@ -21,7 +21,7 @@
                 <div class="card card-bordered">
                 {% for tienda in tiendas  %}
                     {% if listaC.idTien_id == tienda.idTi %}
-                        <img class="card-img-top img-fluid" src="/core/{{tienda.logoTi.url}}" alt="image">
+                        <img class="card-img-top img-fluid" src="{{tienda.logoTi.url}}" alt="image">
                     {% endif %}
                 {% endfor %}
                     <div class="card-body">
