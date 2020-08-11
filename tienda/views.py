@@ -5,6 +5,7 @@ from vendedor.models import Vendedor,Catalogo, CatalogoProducto,Ventas_vendedor
 from tienda.models import Consumidor,Carrito,Direccion,CarritoProducto, Compras, ProductoComprado, Forma_Pago
 from django.contrib.auth.models import User
 from registration.views import login,loginPage
+from django.db.models import Q
 
 from django.contrib import messages
 
@@ -43,35 +44,39 @@ def carrito_compras(request,idProd,idCatal):
 
 @login_required(login_url='login')
 def añadir_producto_carrito(request,idProd):
+    # Obtiene el catalogo del producto
     catalogo_producto = CatalogoProducto.objects.get(idProducto_id=idProd)
+    # Obtiene el producto
     producto = Producto.objects.get(idProd=idProd)
+    # Id del catalogo del producto
     idCatProd = catalogo_producto.idCatalogo
     print("ID_CATALOGO:" + str(idCatProd.idCatal))
+    # Obtiene el id del usuario
     userid = request.user.id
+    # Obtiene los datos del perfil consumidor del usuario
     cons = Consumidor.objects.get(idUser_id=userid)
+    # Obtiene el carrito del consumidor logueado
     carrito = Carrito.objects.get(idCons_id=cons.idConsumidor)
+    # Obtiene la Cantidad del producto
     cantidad = request.POST['cantidad']
+    # Covierte a entero la cantidad
     cantidad = int(cantidad)
-    agregado = CarritoProducto.objects.filter(idProducto_id=idProd).count()
-    print("AGREGADO: "+str(agregado))
+    # Conteo de si ya se agrego el producto
+    conteo = CarritoProducto.objects.filter(idProducto_id=idProd,idCatalogo_id=idCatProd.idCatal,idCarrito_id=carrito.idCarrito).count()
+    print("Conteo: "+str(conteo))
     print("ID_CONS:" + str(cons.idConsumidor))
-    print("CANTIDAD: " +str(cantidad))
-    conteo = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito).count()
-    if (conteo != 1):
-        carrito_producto = CarritoProducto (idCarrito_id=carrito.idCarrito,idCatalogo_id=idCatProd.idCatal,idProducto_id=idProd,cantidad=cantidad).save()
+    if conteo == 1:
+        prod_ag = CarritoProducto.objects.get(idProducto_id=idProd)
+        cantidad_nueva = prod_ag.cantidad + cantidad
+        actualizar = CarritoProducto.objects.filter(idProducto_id=idProd,idCarrito_id=carrito.idCarrito,idCatalogo=idCatProd.idCatal).update(cantidad=cantidad_nueva)
     else:
-        if agregado:
-            prod_ag = CarritoProducto.objects.get(dProducto_id=idProd)
-            cantidad_nueva = prod_ag.cantidad + cantidad
-            print("CANTIDAD_NUEVA:"+str(cantidad_nueva))
-            actualizar = CarritoProducto.objects.filter(idProducto_id=idProd).update(cantidad=cantidad_nueva)
-        else:
-            carrito_producto = CarritoProducto (idCarrito_id=carrito.idCarrito,idCatalogo_id=idCatProd.idCatal,idProducto_id=idProd,cantidad=cantidad).save()
+        carrito_producto = CarritoProducto (idCarrito_id=carrito.idCarrito,idCatalogo_id=idCatProd.idCatal,idProducto_id=idProd,cantidad=cantidad).save()
     
     listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito)
     productos = []
     subtotal = 0.0
     cantidad = 0
+    print("CANTIDAD: " + str(cantidad))
     for producto in listaC:
         prod = Producto.objects.get(idProd=producto.idProducto_id)
         cantidad = cantidad + producto.cantidad
@@ -112,23 +117,24 @@ def carrito(request):
     context = {'productos':productos, 'carrito':carro, 'listaC':listaC}
     return render(request, "tienda/carrito.html",context)
 
+@login_required(login_url='login')
 def eliminar_producto_carrito(request,idProd,idCarrito):
     userid = request.user.id
-    cantidad = request.POST['cantidad']
-    cantidad = int(cantidad)
+    cantidad_recuperada = request.POST['cantidad']
+    cantidad_recuperada = int(cantidad_recuperada)
     cantidad_nueva = 0
     producto_eliminar = CarritoProducto.objects.get(idProducto_id=idProd)
     print("CARRITO:" + str(idCarrito))
     print("PRODUCTO: "+ str(idProd))
 
-    if cantidad != producto_eliminar.cantidad:
+    if cantidad_recuperada < producto_eliminar.cantidad:
 
-        cantidad_nueva = (producto_eliminar.cantidad - cantidad)
+        cantidad_nueva = (producto_eliminar.cantidad - cantidad_recuperada)
         print("CANTIDAD_NUEVA: "+ str(cantidad_nueva))
 
         eliminar = CarritoProducto.objects.filter(idProducto_id=idProd,idCarrito_id=idCarrito).update(cantidad=cantidad_nueva)
 
-    elif cantidad == producto_eliminar.cantidad:
+    elif cantidad_recuperada == producto_eliminar.cantidad:
         
         eliminar = CarritoProducto.objects.filter(idProducto_id=idProd,idCarrito_id=idCarrito).delete()
 
