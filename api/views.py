@@ -4,10 +4,10 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import VentasSerializer,ConfigAdminSerializer, ConfigVendedorSerializer,VendedoresSerializer,ConfigConsumidorSerializer,Categoria_ComputoSerializer
+from .serializers import VentasSerializer,ConfigAdminSerializer, ConfigVendedorSerializer,VendedoresSerializer,ConfigConsumidorSerializer,Categoria_ComputoSerializer,CatalogoProductoSerializer
 
-from vendedor.models import Vendedor,SolicitudesVendedor, Ventas_vendedor,Catalogo,Vendedor
-from admin_dash.models import Tienda,Administrador
+from vendedor.models import Vendedor,SolicitudesVendedor, Ventas_vendedor,Catalogo,Vendedor,CatalogoProducto
+from admin_dash.models import Tienda,Administrador,Producto
 from tienda.models import Consumidor
 
 from django.conf import settings
@@ -23,7 +23,8 @@ def apiOverview(request):
         'List': '/vendedores/',
         'Detail View':'/consumidor-config/',
         'Detail View':'/vendedor-config/',
-        'List':'/categoria-computo/'
+        'List':'/categoria-computo/',
+        'List':'/catalogo-computo/<int:idCatal>/'
         
     }
     return Response(api_urls)
@@ -92,3 +93,12 @@ def categoria_computo(request):
     serializer = Categoria_ComputoSerializer(vendedores, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def catalogo_productos(request,idCatal):
+    listaP = CatalogoProducto.objects.filter(idCatalogo_id=idCatal)
+    productos = []
+    for producto in listaP:
+        pro = Producto.objects.get(idProd=producto.idProducto_id)
+        productos.append(pro)
+    serializer = CatalogoProductoSerializer(productos, many=True)
+    return Response(serializer.data)
