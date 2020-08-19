@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'web',
     'admin_dash',
     'tienda',
-    'vendedor'
+    'vendedor',
+
+    'api.apps.ApiConfig',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

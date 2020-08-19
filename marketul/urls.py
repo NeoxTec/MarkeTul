@@ -37,6 +37,9 @@ urlpatterns = [
     # Paths de Registration
     path('accounts/', include('registration.urls')),
 
+    #Paths de las API
+    path('api/', include('api.urls')),
+
 ]
 
 if settings.DEBUG:
