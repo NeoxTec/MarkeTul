@@ -27,3 +27,8 @@ class ConfigConsumidorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Consumidor
         fields = '__all__'
+
+class Categoria_ComputoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vendedor
+        fields = '__all__'

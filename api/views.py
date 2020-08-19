@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import VentasSerializer,ConfigAdminSerializer, ConfigVendedorSerializer,VendedoresSerializer,ConfigConsumidorSerializer
+from .serializers import VentasSerializer,ConfigAdminSerializer, ConfigVendedorSerializer,VendedoresSerializer,ConfigConsumidorSerializer,Categoria_ComputoSerializer
 
 from vendedor.models import Vendedor,SolicitudesVendedor, Ventas_vendedor,Catalogo,Vendedor
 from admin_dash.models import Tienda,Administrador
@@ -23,6 +23,7 @@ def apiOverview(request):
         'List': '/vendedores/',
         'Detail View':'/consumidor-config/',
         'Detail View':'/vendedor-config/',
+        'List':'/categoria-computo/'
         
     }
     return Response(api_urls)
@@ -80,3 +81,14 @@ def consumidor_config(request):
         datos_cons = Consumidor.objects.get(idUser_id=20)
     serializer = ConfigConsumidorSerializer(datos_cons)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def categoria_computo(request):
+    listaCv = Catalogo.objects.filter(categoria="Computo")
+    vendedores = []
+    for catalogo in listaCv:
+        vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
+        vendedores.append(vendedor)
+    serializer = Categoria_ComputoSerializer(vendedores, many=True)
+    return Response(serializer.data)
+
