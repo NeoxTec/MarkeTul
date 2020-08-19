@@ -7,6 +7,7 @@ from django.core.files.storage import FileSystemStorage
 from registration.models import Usuario_Tipo
 from registration.views import login,loginPage
 from django.contrib import messages
+from django.conf import settings
 
 from django.contrib.auth.decorators import login_required
 
@@ -93,10 +94,14 @@ def admin_nueva_tienda(request):
 
     #Almacenamiento de imagen
     nati = request.FILES['logoTi'] #toma el documento que se sube
-    fs = FileSystemStorage(location='media/tienda') #indica ruta de almacenamiento
-    print("nombre: " + nati.name +" peso: " + str(nati.size) ) #verifica datos de archivo
-    fs.save(str(nati.name),nati) #almacena el archivo con su nombre original y tipo de archivo
-
+    if settings.DEBUG:
+        fs = FileSystemStorage(location='media/tienda') #indica ruta de almacenamiento
+        print("nombre: " + nati.name +" peso: " + str(nati.size) ) #verifica datos de archivo
+        fs.save(str(nati.name),nati) #almacena el archivo con su nombre original y tipo de archivo
+    else:
+        fs = FileSystemStorage(location='static/media/tienda') #indica ruta de almacenamiento
+        print("nombre: " + nati.name +" peso: " + str(nati.size) ) #verifica datos de archivo
+        fs.save(str(nati.name),nati) #almacena el archivo con su nombre original y tipo de archivo
     Tienda(idAdmin_id=idad, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi="tienda/"+ str(nati.name)).save()
 
     listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
