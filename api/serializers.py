@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from vendedor.models import Vendedor,SolicitudesVendedor, Ventas_vendedor,Catalogo
 from admin_dash.models import Tienda,Administrador, Producto
-from tienda.models import Consumidor
+from tienda.models import Consumidor,Carrito,CarritoProducto
 
 class VentasSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,6 +34,16 @@ class Categoria_ComputoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CatalogoProductoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Producto
+        fields = '__all__'
+
+class CarritoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Carrito
+        fields = '__all__'
+
+class CarritoProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
         fields = '__all__'

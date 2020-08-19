@@ -4,11 +4,11 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import VentasSerializer,ConfigAdminSerializer, ConfigVendedorSerializer,VendedoresSerializer,ConfigConsumidorSerializer,Categoria_ComputoSerializer,CatalogoProductoSerializer
+from .serializers import VentasSerializer,ConfigAdminSerializer, ConfigVendedorSerializer,VendedoresSerializer,ConfigConsumidorSerializer,Categoria_ComputoSerializer,CatalogoProductoSerializer,CarritoSerializer,CarritoProductoSerializer
 
 from vendedor.models import Vendedor,SolicitudesVendedor, Ventas_vendedor,Catalogo,Vendedor,CatalogoProducto
 from admin_dash.models import Tienda,Administrador,Producto
-from tienda.models import Consumidor
+from tienda.models import Consumidor,Carrito,CarritoProducto
 
 from django.conf import settings
 
@@ -24,7 +24,9 @@ def apiOverview(request):
         'Detail View':'/consumidor-config/',
         'Detail View':'/vendedor-config/',
         'List':'/categoria-computo/',
-        'List':'/catalogo-computo/<int:idCatal>/'
+        'List':'/catalogo-computo/<int:idCatal>/',
+        'List':'/carrito/',
+        'List':'/carrito-productos/',
         
     }
     return Response(api_urls)
@@ -101,4 +103,32 @@ def catalogo_productos(request,idCatal):
         pro = Producto.objects.get(idProd=producto.idProducto_id)
         productos.append(pro)
     serializer = CatalogoProductoSerializer(productos, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def carrito(request):
+    if settings.DEBUG:
+        carrito = Carrito.objects.get(idCons_id=6)
+    else:
+        carrito = Carrito.objects.get(idCons_id=4)
+    serializer = CarritoSerializer(carrito)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def carrito_productos(request):
+    if settings.DEBUG:
+        carrito = Carrito.objects.get(idCons_id=6)
+        listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito)
+        productos = []
+        for producto in listaC:
+            prod = Producto.objects.get(idProd=producto.idProducto_id)
+            productos.append(prod)
+    else:
+        carrito = Carrito.objects.get(idCons_id=4)
+        listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito)
+        productos = []
+        for producto in listaC:
+            prod = Producto.objects.get(idProd=producto.idProducto_id)
+            productos.append(prod)
+    serializer = CarritoProductoSerializer(productos, many=True)
     return Response(serializer.data)
