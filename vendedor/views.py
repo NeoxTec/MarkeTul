@@ -59,7 +59,8 @@ def catalogo_tienda_sn(request,idTi):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     listaP = Producto.objects.filter(idTi_id=idTi)
-    context = {'productos': listaP,'tipo':tipo}
+    tienda = Tienda.objects.get(idTi=idTi)
+    context = {'productos': listaP,'tipo':tipo,'tienda':tienda}
     return render(request, "vendedor/catalogo_tienda_sn.html",context)
 
 def editar_catalogo_2(request):
@@ -73,7 +74,8 @@ def catalogo_tienda(request,idTi,idCatal):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     listaP = Producto.objects.filter(idTi_id=idTi)
-    context = {'productos': listaP,'idCatal':idCatal,'tipo':tipo}
+    tienda = Tienda.objects.get(idTi=idTi)
+    context = {'productos': listaP,'idCatal':idCatal,'tipo':tipo,'tienda':tienda}
     idCatal = idCatal
     for producto in listaP:
         print(producto.imagenProd)
