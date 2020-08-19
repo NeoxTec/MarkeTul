@@ -37,38 +37,25 @@
 <hr>
 <div class="site-section testimonial-wrap" id="Afiliados-section">
   <br>
-  <div class="container">
+ <div class="container">
     <div class="row mb-5">
       <div class="col-12 text-center">
         <h2 class="section-title mb-3">Negocios Afiliados</h2>
       </div>
     </div>
-  </div>
+ </div>
   <br>
   <div class="slide-one-item home-slider owl-carousel">
-      <div>
+  {% for listaT in tiendas %}
+    <div>
         <div class="testimonial">
           <figure class="mb-4 d-block align-items-center justify-content-center">
-            <div><img src="{% static 'core/img/barajas.png' %}" alt="Image" class="w-100 img-fluid mb-3"></div>
+            <div><img src="/media/{{listaT.logoTi}}" alt="Image" class="w-100 img-fluid mb-3"></div>
           </figure>
         </div>
       </div>
-      <div>
-        <div class="testimonial">
-          <figure class="mb-4 d-block align-items-center justify-content-center">
-            <div><img src="{% static 'core/img/plaza.png' %}" alt="Image" class="w-100 img-fluid mb-3"></div>
-          </figure>
-        </div>
-      </div>
-
-      <div>
-        <div class="testimonial">
-          <figure class="mb-4 d-block align-items-center justify-content-center">
-            <div><img src="{% static 'core/img/boutique.jpg' %}" alt="Image" class="w-100 img-fluid mb-3"></div>
-          </figure>
-        </div>
-      </div>
-    </div>
+  {% endfor %}
+  </div>
 </div>
 <br>
 <hr>
