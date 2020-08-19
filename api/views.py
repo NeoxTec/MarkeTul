@@ -8,6 +8,7 @@ from .serializers import VentasSerializer,ConfigAdminSerializer, ConfigVendedorS
 
 from vendedor.models import Vendedor,SolicitudesVendedor, Ventas_vendedor,Catalogo,Vendedor
 from admin_dash.models import Tienda,Administrador
+from tienda.models import Consumidor
 
 from django.conf import settings
 
@@ -66,4 +67,13 @@ def vendedor_config(request):
     else:
         datos_vendedor = Vendedor.objects.get(idUser_id=19)
     serializer = ConfigVendedorSerializer(datos_vendedor)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def consumidor_config(request):
+    if settings.DEBUG:
+        datos_consumidor = Consumidor.objects.get(idUser_id=18)
+    else:
+        datos_consumidor = Consumidor.objects.get(idUser_id=20)
+    serializer = ConfigConsumidorSerializer(datos_vendedor)
     return Response(serializer.data)
