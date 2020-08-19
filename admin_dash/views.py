@@ -142,12 +142,18 @@ def nuevo_registro(request):
     existencias = request.POST['existenciasProd'],
     existencias = int(str(existencias[0]))
     
+    if settings.DEBUG:
     #Almacenamiento de imagen
-    nami = request.FILES['imagenProd'] #toma el documento que se sube
-    fs = FileSystemStorage(location='media/productos') #indica ruta de almacenamiento
-    print("nombre: " + nami.name +" peso: " + str(nami.size) ) #verifica datos de archivo
-    fs.save(str(nami.name),nami) #almacena el archivo con su nombre original y tipo de archivo
-    
+        nami = request.FILES['imagenProd'] #toma el documento que se sube
+        fs = FileSystemStorage(location='media/productos') #indica ruta de almacenamiento
+        print("nombre: " + nami.name +" peso: " + str(nami.size) ) #verifica datos de archivo
+        fs.save(str(nami.name),nami) #almacena el archivo con su nombre original y tipo de archivo
+    else:
+        #Almacenamiento de imagen
+        nami = request.FILES['imagenProd'] #toma el documento que se sube
+        fs = FileSystemStorage(location='static/media/productos') #indica ruta de almacenamiento
+        print("nombre: " + nami.name +" peso: " + str(nami.size) ) #verifica datos de archivo
+        fs.save(str(nami.name),nami) #almacena el archivo con su nombre original y tipo de archivo
     #crea objeto
     prod = Producto(nombreProd= str(nombre[0]), categoriaProd= str(cat[0]), imagenProd="productos/"+str(imgsave[0]),
                     marcaProd=str(marca[0]), descripcionProd=str(descripcion[0]), precioProd=float(precio[0]), 

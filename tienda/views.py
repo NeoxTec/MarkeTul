@@ -328,6 +328,7 @@ def catalogos(request, idCatal):
     for producto in listaP:
         pro = Producto.objects.get(idProd=producto.idProducto_id)
         productos.append(pro)
+        print("URL:"+str(pro.imagenProd))
     catalogo = Catalogo.objects.get(idCatal=idCatal)
     vendedor = Vendedor.objects.get(idVend=catalogo.idVen_id)
     return render(request, "tienda/catalogos.html", {'productos':productos,'catalogo':catalogo,'vendedor':vendedor})
