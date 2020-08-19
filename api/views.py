@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import VentasSerializer,ConfigAdminSerializer, ConfigVendedorSerializer,VendedoresSerializer
+from .serializers import VentasSerializer,ConfigAdminSerializer, ConfigVendedorSerializer,VendedoresSerializer,ConfigConsumidorSerializer
 
 from vendedor.models import Vendedor,SolicitudesVendedor, Ventas_vendedor,Catalogo,Vendedor
 from admin_dash.models import Tienda,Administrador
@@ -20,7 +20,10 @@ def apiOverview(request):
     api_urls = {
         'List':'/ventas-list/',
         'Detail View':'/config-admin/',
-        'List': '/vendedores/'
+        'List': '/vendedores/',
+        'Detail View':'/consumidor-config/',
+        'Detail View':'/vendedor-config/',
+        
     }
     return Response(api_urls)
 
@@ -72,8 +75,8 @@ def vendedor_config(request):
 @api_view(['GET'])
 def consumidor_config(request):
     if settings.DEBUG:
-        datos_consumidor = Consumidor.objects.get(idUser_id=18)
+        datos_cons = Consumidor.objects.get(idUser_id=18)
     else:
-        datos_consumidor = Consumidor.objects.get(idUser_id=20)
-    serializer = ConfigConsumidorSerializer(datos_vendedor)
+        datos_cons = Consumidor.objects.get(idUser_id=20)
+    serializer = ConfigConsumidorSerializer(datos_cons)
     return Response(serializer.data)
