@@ -28,7 +28,7 @@
       <form action="{% url 'pago_exitoso' %}" method="post" > {% csrf_token %}
       {% for producto in productos %}
         <tr>
-          <th scope="row"><img  src="{{producto.imagenProd.url}}" width="160" height="160"/></th>
+          <th scope="row"><img  src="/static/core/media/{{producto.imagenProd}}" width="160" height="160"/></th>
           <td>{{producto.nombreProd}}</td>
           {% for prod in listaC %}
               {% if prod.idProducto_id == producto.idProd %}
