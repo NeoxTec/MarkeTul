@@ -252,6 +252,8 @@ def admin_detalle_producto_eliminado(request,id):
 def admin_solicitudes_vendedor(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    admin = Administrador.objects.get(idUser=userid)
+    idAdmin = int(admin.id)
     print("ID_USER:" + str(idAdmin))
     solicitudes = SolicitudesVendedor.objects.filter(noadmin=idAdmin).values('idSolVen','nombreV','correoV','direccionV','edadVen','status','idTi_id','idTi_id__nombreTi')#consulta de campos con inner join idTi__nombreTi es de la tabla de tiendas
     return render(request, "admin_dash/admin_solicitudes_vendedor.html",{'solicitudes':solicitudes,'tipo':tipo})
