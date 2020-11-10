@@ -1,0 +1,112 @@
+{% extends 'tienda/master_tienda.html' %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</head>
+{% block title %} Forma de Pago{% endblock %}
+{% block content %}
+
+<body>
+  {% load static %}
+ 
+  <div class="izquierda">
+    <!-- Barra lateral -->
+    <div class="fila" style="margin-left:10px; margin-top: 0px;" class="d-flex flex-row bd-highlight mb-3" >
+      
+        <aside class="sidebar-left">
+          <nav>
+            <div class="card" style="width: 20rem; margin-top:20px" align="center" >
+              <div class="card-body" align="center">
+              <h5 class="card-title">{{datos.nombre}}</h5>
+              <p class="card-text">{{datos.correo}}</p>
+              <p class="card-text">{{datos.telefono}}</p>
+              </div>
+
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="height: 70px;">
+                  <h5><a href="{% url 'compras' %}"><button type="submit" style="margin-left: 2px; width: 180px; "
+                        class="btn btn-dark btn-lg"><img src="{% static 'core/img/bag.png' %}" width="30"
+                        height="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compras&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
+                  </h5>
+                </li>
+                <li class="list-group-item" style="height: 70px;">
+                  <h5><a href="{% url 'pedidos' %}"><button type="submit" style="margin-left: 2px; width: 180px;"
+                        class="btn btn-light btn-lg"><img src="{% static 'core/img/money.png' %}" width="30"
+                          height="30">&nbsp;&nbsp;&nbsp;Pedidos&nbsp;&nbsp;</button></a></h5>
+                </li>
+                <li class="list-group-item" style="height: 70px;">
+                  <h5><a href="{% url 'direccion_envio' %}"><button type="submit"
+                        style="margin-left: 2px; width: 180px;" class="btn btn-dark btn-lg"><img
+                          src="{% static 'core/img/home-run.png' %}" width="30"
+                          height="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dirección&nbsp;&nbsp;&nbsp;&nbsp;</button></a></h5>
+                </li>
+                <li class="list-group-item">
+                  <h5><a href="{% url 'configuracion_cuenta' %}"><button type="submit"
+                        style="margin-left: 2px; width: 180px;" class="btn btn-dark btn-lg"><img
+                          src="{% static 'core/img/confi.jpeg' %}" width="30"
+                          height="30">&nbsp;Configuración&nbsp;&nbsp;</button></a></h5>
+                </li>
+                <li class="list-group-item">
+                  <h5><a href="{% url 'logout' %}"><button type="submit" style="margin-left: 2px; width: 180px;"
+                        class="btn btn-danger btn-lg"><img src="{% static 'core/img/cerrar.jpeg' %}" width="30"
+                          height="30">&nbsp;Cerrar Sesion&nbsp;&nbsp;</button></a></h5>
+                </li>
+              </ul>
+          </nav>
+        </aside>
+      
+    </div>
+  </div>
+ <div class="d-flex justify-content-center" style="margin-top:-420px;"></div>
+ 
+  <div style="margin-top:15px;">
+    <a href="{% url 'categorias' %}"><img src="{% static 'core/img/back.png' %}"  width="30" height="35" style= "margin-left:1000px;"></a>
+      <h5 style="margin-top:-25px; margin-left:1050px;">Continuar comprando</h5>
+  </div>
+
+<div class="card" align="center" style="width:50rem; margin-left:360px">
+  <div class="card-body" align="center">
+    <h1>
+      <center>Pedidos</center>
+    </h1>
+    {% for  message in messages %}
+        <p id="message"><h4>{{message}}</h4></p>
+    {% endfor %}
+    &nbsp;
+    <div>
+      <div class="d-flex justify-content-center">
+
+        <div style="width: 1000px;">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">Impresora Epson</th>
+              <td>En proceso</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.minjs"></script>
+   
+    </body>
+    {% endblock %}
+</html>

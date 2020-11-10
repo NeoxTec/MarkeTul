@@ -223,6 +223,12 @@ def compras(request):
     return render(request, "tienda/compras.html",{'datos':datos_consumidor,'compras':compras})
 
 @login_required(login_url='login')
+def pedidos(request):
+    userid = request.user.id
+    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
+    return render(request, "tienda/pedidos.html",{'datos':datos_consumidor})
+
+@login_required(login_url='login')
 def configuracion_cuenta(request):
     userid = request.user.id # Se obtiene el id
     print("IDUSUARIO: "+str(userid))
