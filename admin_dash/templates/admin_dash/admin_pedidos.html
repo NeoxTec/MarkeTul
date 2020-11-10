@@ -1,0 +1,45 @@
+{% extends 'admin_dash/master_dashboard.html' %}
+
+{% block titulo_pag %}Administrador de Tienda{% endblock %}
+
+{% block pagina %}Pedidos{% endblock %}
+
+{% block sub_pagina %}Inicio{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+<!-- Dark table inicia -->
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Pedidos</h4>
+            <div class="data-tables datatable-dark">
+                <table id="dataTable3" class="text-center">
+                    <thead class="text-capitalize">
+                        <tr>
+                            <th>id</th>
+                            <th>Producto</th>
+                            <th>Estatus</th>
+                            <th>Envío</th>
+                            <th>Entrega</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>MARK01</td>
+                        <td>Impresora Epson</td>
+                        <td>Entregado</td>
+                        <td><button class="btn btn-info btn-sm" ><i class="ti-truck" >  </i>Enviado</button></td>
+                        <td><button class="btn btn-success btn-sm"><i class="ti-package">  </i>Entregado</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Dark table finaliza -->
+</div>
+
+{% endblock %}

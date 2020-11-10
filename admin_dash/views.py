@@ -57,6 +57,12 @@ def vendedores(request):
     return render(request, "admin_dash/vendedores.html",{'solicitudes':solicitudes,'tipo':tipo})
 
 @login_required(login_url='login')
+def admin_pedidos(request):
+    userid = request.user.id
+    tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    return render(request, "admin_dash/admin_pedidos.html",{'tipo':tipo})
+
+@login_required(login_url='login')
 def admin_productos(request):
     listaP = Producto.objects.all()
     print (listaP)

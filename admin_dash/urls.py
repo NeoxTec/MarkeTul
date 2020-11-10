@@ -26,4 +26,5 @@ urlpatterns = [
     path('update_config/', admin_views.update_config, name="update_config"),
     path('vendedores/',admin_views.vendedores, name="vendedores"),
     path('nueva_tienda/',admin_views.admin_tiendas, name='nueva_tienda'),
+    path('admin_pedidos/',admin_views.admin_pedidos, name='admin_pedidos'),
 ]
