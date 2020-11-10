@@ -60,3 +60,9 @@ class ProductoComprado(models.Model):
     idCompra = models.ForeignKey(Compras, null=True,blank=True, on_delete=models.CASCADE)
     idProducto = models.ForeignKey(Producto,null=True, blank=True, on_delete=models.CASCADE)
     cantidad = models.SmallIntegerField(null=True, blank=True)
+
+"""class Pedido(models.Model):
+    idPedido = models.CharField(max_length=200,null=True)
+    idProducto_pedido = models.ForeignKey(Producto,null=True, blank=True, on_delete=models.CASCADE)
+    idCatalogo = models.ForeignKey(Catalogo, null=True, blank=True, on_delete=models.CASCADE)
+    estado = models.SmallIntegerField(null=True, blank=True)"""
