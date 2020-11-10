@@ -209,7 +209,7 @@ def pago_exitoso(request):
 
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
     compras = Compras.objects.filter(idCons_id=datos_consumidor.idConsumidor)
-    return render(request,"tienda/compras.html",{'datos':datos_consumidor,'compras':compras})
+    return render(request,"tienda/pedidos.html",{'datos':datos_consumidor})#,'compras':compras})
 
 @login_required(login_url='login')
 def detalle_producto(request):
