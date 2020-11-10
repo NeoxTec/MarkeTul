@@ -80,7 +80,6 @@ def admin_productos_tienda(request,id):
 
 @login_required(login_url='login')
 def admin_tiendas(request):
-    print(idAdmin)
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     admin = Administrador.objects.get(idUser=userid)
