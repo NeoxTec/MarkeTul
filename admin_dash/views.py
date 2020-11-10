@@ -52,6 +52,8 @@ def admin_dash(request):
 def vendedores(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    admin = Administrador.objects.get(idUser=userid)
+    idAdmin = int(admin.id)
     tienda = Tienda.objects.get(idAdmin_id=idAdmin)
     solicitudes = SolicitudesVendedor.objects.filter(idTi_id=tienda.idTi)
     return render(request, "admin_dash/vendedores.html",{'solicitudes':solicitudes,'tipo':tipo})
