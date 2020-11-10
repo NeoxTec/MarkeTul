@@ -78,15 +78,16 @@ def admin_tiendas(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
-    admin = Administrador.objects.get(id=idAdmin)
+    admin = Administrador.objects.get(idUser=userid)
     return render(request, "admin_dash/admin_tiendas.html",{'tiendas':listaT,'admin':admin,'tipo':tipo})
 
 @login_required(login_url='login')
 def admin_nueva_tienda(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
+    admin = Administrador.objects.get(idUser=userid)
+    idAdmin = int(admin.id)
     print(idAdmin)
-    idad = idAdmin
     name = request.POST['nombreTi'],
     image = request.FILES['logoTi']
     idTienda = Tienda.objects.last()
@@ -102,7 +103,7 @@ def admin_nueva_tienda(request):
         fs = FileSystemStorage(location='static/media/tienda') #indica ruta de almacenamiento
         print("nombre: " + nati.name +" peso: " + str(nati.size) ) #verifica datos de archivo
         fs.save(str(nati.name),nati) #almacena el archivo con su nombre original y tipo de archivo
-    Tienda(idAdmin_id=idad, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi="tienda/"+ str(nati.name)).save()
+    Tienda(idAdmin_id=idAdmin, idTi=idTienda.idTi + 1,nombreTi=str(name[0]),logoTi="tienda/"+ str(nati.name)).save()
 
     listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
     admin = Administrador.objects.get(id=idAdmin)
@@ -330,6 +331,6 @@ def update_config(request):
     else:
         messages.info(request,"Contraseñas no coinciden")
 
-    datos_admin = Administrador.objects.get(id=idAdmin)
+    datos_admin = Administrador.objects.get(idUser_id=userid)
     print("ID_ADMIN:" + str(idAdmin))
     return render(request, "admin_dash/config_admin.html",{'datos':datos_admin,'tipo':tipo})
