@@ -84,7 +84,7 @@ def admin_tiendas(request):
     userid = request.user.id
     tipo = Usuario_Tipo.objects.get(idUser_id=userid)
     admin = Administrador.objects.get(idUser=userid)
-    idAdmin = int(admin.idUser)
+    idAdmin = int(admin.id)
     listaT = Tienda.objects.filter(idAdmin_id=idAdmin)
     return render(request, "admin_dash/admin_tiendas.html",{'tiendas':listaT,'admin':admin,'tipo':tipo})
 
