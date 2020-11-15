@@ -29,7 +29,7 @@ urlpatterns = [
     path('proceso_pago/',tienda_views.proceso_pago, name="proceso_pago"),
     path('pago_error/',tienda_views.pago_error, name="pago_error"),
     path('pago_exitoso/',tienda_views.pago_exitoso, name="pago_exitoso"),
-    path('pedidos/',tienda_views.pedidos, name="pedidos"),
+    path('pedidos/<int:idCompra>',tienda_views.pedidos, name="pedidos"),
     
     
 

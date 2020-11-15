@@ -222,10 +222,16 @@ def compras(request):
     return render(request, "tienda/compras.html",{'datos':datos_consumidor,'compras':compras})
 
 @login_required(login_url='login')
-def pedidos(request):
+def pedidos(request,idCompra):
     userid = request.user.id
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
-    return render(request, "tienda/pedidos.html",{'datos':datos_consumidor})
+    pedidos = []
+    productos = ProductoComprado.objects.filter(idCompra=idCompra)
+    for producto in productos:
+        pedido = Producto.objects.get(idProd=producto.idProducto_id)
+        pedidos.append(pedido)
+        print (pedidos)
+    return render(request, "tienda/pedidos.html",{'datos':datos_consumidor,'pedidos':pedidos})
 
 @login_required(login_url='login')
 def configuracion_cuenta(request):

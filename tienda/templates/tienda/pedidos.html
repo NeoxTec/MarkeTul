@@ -33,11 +33,6 @@
                   </h5>
                 </li>
                 <li class="list-group-item" style="height: 70px;">
-                  <h5><a href="{% url 'pedidos' %}"><button type="submit" style="margin-left: 2px; width: 180px;"
-                        class="btn btn-light btn-lg"><img src="{% static 'core/img/money.png' %}" width="30"
-                          height="30">&nbsp;&nbsp;&nbsp;Pedidos&nbsp;&nbsp;</button></a></h5>
-                </li>
-                <li class="list-group-item" style="height: 70px;">
                   <h5><a href="{% url 'direccion_envio' %}"><button type="submit"
                         style="margin-left: 2px; width: 180px;" class="btn btn-dark btn-lg"><img
                           src="{% static 'core/img/home-run.png' %}" width="30"
@@ -88,10 +83,18 @@
               </tr>
             </thead>
             <tbody>
-            <tr>
-              <th scope="row">Impresora Epson</th>
-              <td>En proceso</td>
-            </tr>
+            {% for pedido in pedidos %}
+              <tr>
+                <th scope="row">{{pedido.nombreProd}}</th>
+                {% if pedido.status == 0 %}
+                  <td>Pendiente</td>
+                {% elif pedido.status == 1 %}
+                  <td>Enviado</td>
+                {% elif pedido.status == 2%}
+                  <td>Entregado</td>
+                {% endif %}
+              </tr>
+            {% endfor %}
             </tbody>
           </table>
         </div>
