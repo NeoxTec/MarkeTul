@@ -231,7 +231,7 @@ def pedidos(request,idCompra):
         pedido = Producto.objects.get(idProd=producto.idProducto_id)
         pedidos.append(pedido)
         print (pedidos)
-    return render(request, "tienda/pedidos.html",{'datos':datos_consumidor,'pedidos':pedidos})
+    return render(request, "tienda/pedidos.html",{'datos':datos_consumidor,'pedidos':pedidos,'productos':productos})
 
 @login_required(login_url='login')
 def configuracion_cuenta(request):

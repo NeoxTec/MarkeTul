@@ -86,14 +86,17 @@
             {% for pedido in pedidos %}
               <tr>
                 <th scope="row">{{pedido.nombreProd}}</th>
-               <!-- {% if pedido.status == 0 %}
-                  <td>Pendiente</td>
-                {% elif pedido.status == 1 %}
-                  <td>Enviado</td>
-                {% elif pedido.status == 2%}
-                  <td>Entregado</td>
-                {% endif %}-->
-                <td>Pendiente</td>
+                {% for producto in productos %}
+                  {% if producto.idProducto_id == pedido.idProd%}
+                    {% if producto.status == 0 %}
+                        <td>Pendiente</td>
+                      {% elif producto.status == 1 %}
+                        <td>Enviado</td>
+                      {% elif producto.status == 2%}
+                        <td>Entregado</td>
+                      {% endif %}
+                  {% endif %}
+                {% endfor %}
               </tr>
             {% endfor %}
             </tbody>
