@@ -177,39 +177,38 @@ def pago_exitoso(request):
     userid = request.user.id
     cons = Consumidor.objects.get(idUser_id=userid) 
     carrito = Carrito.objects.get(idCons_id=cons.idConsumidor)
-    conteo = Forma_Pago.objects.filter(idUser_id=userid).count()
-    forma = Forma_Pago.objects.get(idUser_id=userid)
+    #conteo = Forma_Pago.objects.filter(idUser_id=userid).count()
+    #forma = Forma_Pago.objects.get(idUser_id=userid)
     datos_consumidor = Consumidor.objects.get(idUser_id=userid)
     total = int(carrito.subtotal)
-    if (conteo != 1):
+    """if (conteo != 1):
         messages.warning(request, 'Error en el pago, agregue una forma de pago')
         userid = request.user.id
         datos_consumidor = Consumidor.objects.get(idUser_id=userid)
         return render(request, "tienda/forma_pago.html", {'datos':datos_consumidor})
-    else:
-        compras = Compras(idForma_pago_id=forma.idForma_pago,idCons_id=datos_consumidor.idConsumidor,total=total).save()
-        ultima_compra = Compras.objects.last()
-        compra_nueva = Compras.objects.get(idCompra=ultima_compra.idCompra)
-        listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito)
-        for producto in listaC:
-            cantidad = 0
-            venta = 0.0
-            prod = Producto.objects.get(idProd=producto.idProducto_id)
-            comprado = ProductoComprado(idCompra_id=compra_nueva.idCompra,idProducto_id=prod.idProd).save()
-            cantidad = cantidad + producto.cantidad
-            venta = venta + (float(prod.precioProd)*producto.cantidad)
-            ventas = Ventas_vendedor(idCatalogo_id=producto.idCatalogo_id,idProducto_id=producto.idProducto_id,cantidad=cantidad,venta=venta).save()
-            existencias_up = prod.existenciasProd - cantidad
-            descuento = Producto.objects.filter(idProd=producto.idProducto_id).update(existenciasProd=existencias_up)
-            quitar = CarritoProducto.objects.filter(idProducto_id=prod.idProd).delete()
-        conteo = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito).count()
-        if (conteo != 1):
-            actualizar = Carrito.objects.filter(idCons_id=cons.idConsumidor).update(cantidad=0,subtotal=0.0)
-        messages.success(request, '¡Felicidades! Tu compra ha sido exitosa.')
+    else:"""
+    agregar_compras = Compras(idCons_id=datos_consumidor.idConsumidor,total=total).save()
+    ultima_compra = Compras.objects.last()
+    compra_nueva = Compras.objects.get(idCompra=ultima_compra.idCompra)
+    listaC = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito)
+    for producto in listaC:
+        cantidad = 0
+        venta = 0.0
+        prod = Producto.objects.get(idProd=producto.idProducto_id)
+        comprado = ProductoComprado(idCompra_id=compra_nueva.idCompra,idProducto_id=prod.idProd,status=0).save()
+        cantidad = cantidad + producto.cantidad
+        venta = venta + (float(prod.precioProd)*producto.cantidad)
+        ventas = Ventas_vendedor(idCatalogo_id=producto.idCatalogo_id,idProducto_id=producto.idProducto_id,cantidad=cantidad,venta=venta).save()
+        existencias_up = prod.existenciasProd - cantidad
+        descuento = Producto.objects.filter(idProd=producto.idProducto_id).update(existenciasProd=existencias_up)
+        quitar = CarritoProducto.objects.filter(idProducto_id=prod.idProd).delete()
+    conteo = CarritoProducto.objects.filter(idCarrito_id=carrito.idCarrito).count()
+    if (conteo != 1):
+        actualizar = Carrito.objects.filter(idCons_id=cons.idConsumidor).update(cantidad=0,subtotal=0.0)
+    messages.success(request, '¡Felicidades! Tu compra ha sido exitosa.')
 
-    datos_consumidor = Consumidor.objects.get(idUser_id=userid)
     compras = Compras.objects.filter(idCons_id=datos_consumidor.idConsumidor)
-    return render(request,"tienda/pedidos.html",{'datos':datos_consumidor})#,'compras':compras})
+    return render(request,"tienda/compras.html",{'datos':datos_consumidor,'compras':compras})
 
 @login_required(login_url='login')
 def detalle_producto(request):
